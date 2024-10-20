@@ -7,14 +7,14 @@ escolher um modelo de negócio de seu interesse e utilizando cliente real ou fic
 Para a concepção, modelagem e implementação do projeto, ele deverá ser dividido nas seguintes
 etapas:
 
-## Objetivo
+##### Objetivo
 Descreva o objetivo do seu projeto de forma clara e objetiva. Os objetivos do projeto consistem
 no que você planeja alcançar ao final do seu projeto. Isso pode incluir entregáveis e ativos, ou
 objetivos mais intangíveis, como o aumento da produtividade ou da motivação. Os objetivos do
 seu projeto devem ter metas específicas, viáveis e com prazos determinados, que possam ser
 avaliadas ao término do projeto.
 
-## Modelo de Negócio
+##### Modelo de Negócio
 Descreva de forma simples e objetiva, qual o modelo de negócio da empresa. Qual o ramo em
 que atua, qual o seu mercado e quem são os seus clientes.
 Levantamento dos requisitos
@@ -22,23 +22,23 @@ Aqui deverão ser especificados, detalhadamente, todos os requisitos funcionais 
 ao cliente e seus colaboradores. O detalhamento é imprescindível a construção dos modelos a
 serem desenvolvidos.
 
-## Escolha do SGBD
+##### Escolha do SGBD
 Nesta etapa, deverá ser escolhido o SGBD a ser utilizado. A escolha deverá ser acompanhada
 de uma justificativa detalhada.
 
-## Geração do Modelo Conceitual
+##### Geração do Modelo Conceitual
 A partir dos requisitos levantados, deverá ser criado o diagrama de entidades e relacionamentos
 (DER). Após o desenho, o diagrama deverá ser validado com o cliente.
 Obs. O modelo deverá ter pelo menos 5 entidades. Também deverá possuir no mínimo um
 relacionamento do tipo N:N.
 
-## Geração do Modelo Lógico
+##### Geração do Modelo Lógico
 A partir do modelo conceitual, deverá ser criado o modelo lógico para posterior utilização no
 modelo físico.
 Obs.: O modelo lógico deverá conter os domínios de todos os atributos de acordo com o
 SGBDR escolhido.
 
-## Modelo Físico
+##### Modelo Físico
 Criação das Tabelas
 Nesta etapa, deverão ser criadas todas as tabelas e respectivos relacionamentos. Durante a
 criação das tabelas, deverão ser atendidos os seguintes requisitos em relação as restrições de
@@ -54,12 +54,17 @@ exclusão em cascata;
 • Deverá ser utilizada a restrição UNIQUE pelo menos uma vez no projeto;
 • Deverá ser utilizada a restrição DEFAULT pelo menos uma vez no projeto;
 
-## Alimentação das Tabelas
+##### Alimentação das Tabelas
 Nesta etapa, as tabelas deverão ser alimentadas com no mínimo três registros cada tabela. Todo
 o código de alimentação deverá constar do projeto apresentado.
 
-## Consultas
+##### Consultas
 Deverão ser feitas consultas que atendam as seguintes exigências:
 • Utilizar ALIAS em tabelas;
 • Utilizar pelos menos 2 joins em uma mesma expressão SQL;
 • Utilizar as funções de agregação (SUM, COUNT, AVG, MAX, MIN);
+
+
+##### 2º Ciclo Avaliativo
+Vencimento em 31 de outubro de 2024 23:59
+18 de out – 31 de out
