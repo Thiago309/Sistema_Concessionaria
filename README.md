@@ -65,6 +65,6 @@ Deverão ser feitas consultas que atendam as seguintes exigências:
 • Utilizar as funções de agregação (SUM, COUNT, AVG, MAX, MIN);
 
 
-##### 2º Ciclo Avaliativo
+#### 2º Ciclo Avaliativo
 Vencimento em 31 de outubro de 2024 23:59
 18 de out – 31 de out
