@@ -68,3 +68,7 @@ Deverão ser feitas consultas que atendam as seguintes exigências:
 #### 2º Ciclo Avaliativo
 Vencimento em 31 de outubro de 2024 23:59
 18 de out – 31 de out
+
+
+#### LucidChart
+https://lucid.app/lucidchart/460483b0-04dd-4a47-b51e-eb087debb9a4/edit?invitationId=inv_d5ebfb20-b5ca-43b5-a550-8c944982b6c9&page=HWEp-vi-RSFO#
