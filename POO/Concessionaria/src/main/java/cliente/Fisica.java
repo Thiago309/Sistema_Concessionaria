@@ -1,21 +1,21 @@
-package Cliente;
+package cliente;
 
-public class Juridica {
+public class Fisica {
     import java.util.ArrayList;
 import java.util.List;
 
-    public class ClientePessoaJuridica {
+    public class ClientePessoaFisica {
         // Atributos privados
-        private String nomeFantasia;
-        private String cnpj;
+        private String nome;
+        private String cpf;
         private String telefone;
         private String email;
         private List<Venda> historicoCompras;
 
         // Construtor
-        public ClientePessoaJuridica(String nomeFantasia, String cnpj, String telefone, String email) {
-            this.nomeFantasia = nomeFantasia;
-            this.cnpj = cnpj;
+        public ClientePessoaFisica(String nome, String cpf, String telefone, String email) {
+            this.nome = nome;
+            this.cpf = cpf;
             this.telefone = telefone;
             this.email = email;
             this.historicoCompras = new ArrayList<>();
@@ -25,7 +25,7 @@ import java.util.List;
         public void realizarCompra(Carro carro) {
             Venda venda = new Venda(carro);
             historicoCompras.add(venda);
-            System.out.println("Compra realizada com sucesso para " + nomeFantasia);
+            System.out.println("Compra realizada com sucesso para " + nome);
         }
 
         // Método público para consultar histórico de compras
@@ -34,20 +34,20 @@ import java.util.List;
         }
 
         // Getters e Setters
-        public String getNomeFantasia() {
-            return nomeFantasia;
+        public String getNome() {
+            return nome;
         }
 
-        public void setNomeFantasia(String nomeFantasia) {
-            this.nomeFantasia = nomeFantasia;
+        public void setNome(String nome) {
+            this.nome = nome;
         }
 
-        public String getCnpj() {
-            return cnpj;
+        public String getCpf() {
+            return cpf;
         }
 
-        public void setCnpj(String cnpj) {
-            this.cnpj = cnpj;
+        public void setCpf(String cpf) {
+            this.cpf = cpf;
         }
 
         public String getTelefone() {

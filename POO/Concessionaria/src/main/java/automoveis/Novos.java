@@ -1,6 +1,6 @@
 package Automoveis;
 
-public class Carro {
+public class Novos {
     private String marca;
     private String modelo;
     private int ano;
