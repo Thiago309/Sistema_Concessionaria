@@ -1,8 +1,8 @@
 package cliente;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Fisica {
-    import java.util.ArrayList;
-import java.util.List;
 
     public class ClientePessoaFisica {
         // Atributos privados

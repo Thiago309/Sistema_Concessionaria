@@ -1,4 +1,4 @@
-package Vedendor;
+package funcionario;
 
 public class Funcionario {
     public class Vendedor {
