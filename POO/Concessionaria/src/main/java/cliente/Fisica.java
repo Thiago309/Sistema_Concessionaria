@@ -4,17 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 public class Fisica extends Cliente {
-    private String cpf;
     private String nome;
+    private String cpf;
     private Date dataNascimento;
     private String telefone;
     private char sexo;
 
-    public PessoaFisica() {
+    public Fisica() {
         super(); // Chama o construtor padrão da superclasse
     }
 
-    public PessoaFisica(String idCliente, String cep, String logradouro, int numero, String complemento,
+    public Fisica(String idCliente, String cep, String logradouro, int numero, String complemento,
                         String cpf, String nome, Date dataNascimento, String telefone, char sexo) {
         super(idCliente, cep, logradouro, numero, complemento); // Chamada do construtor da superclasse
         this.cpf = cpf;
@@ -154,5 +154,5 @@ public class Fisica extends Cliente {
 }
 
    */
-     */
+
 
