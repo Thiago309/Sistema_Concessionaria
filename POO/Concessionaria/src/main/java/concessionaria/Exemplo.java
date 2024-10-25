@@ -1,5 +1,5 @@
 package concessionaria;
 
-public class exemplo {
+public class Exemplo {
     private String nome;
 }
