@@ -1,7 +1,23 @@
 package funcionario;
 
 public class Funcionario {
-    public class Vendedor {
+    private String idFuncionario;
+    private String nome;
+
+
+    public String getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(String idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+}
+
+
+
+    /*
+    /*public class Vendedor {
         private String nome;
         private String matricula;
         private double comissao;
@@ -20,7 +36,7 @@ public class Funcionario {
             return venda;
         }
 
-        // Método para calcular a comissão com base no valor da venda
+       Método para calcular a comissão com base no valor da venda
         public double calcularComissao(double valorVenda) {
             return valorVenda * comissao;
         }
@@ -51,4 +67,5 @@ public class Funcionario {
         }
     }
 
-}
+*/
+

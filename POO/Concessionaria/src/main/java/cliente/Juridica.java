@@ -1,6 +1,57 @@
 package cliente;
 
-public class Juridica {
+public class Juridica extends Cliente {
+    private String nomeFantasia;
+    private String cnpj;
+    private String site;
+    private String inscricaoEstadual;
+
+    public PessoaJuridica() {
+        super(); // Chama o construtor padrão da superclasse
+    }
+
+    public PessoaJuridica(String idCliente, String cep, String logradouro, int numero, String complemento,
+                          String nomeFantasia, String cnpj, String site, String inscricaoEstadual) {
+        super(idCliente, cep, logradouro, numero, complemento);
+        this.nomeFantasia = nomeFantasia;
+        this.cnpj = cnpj;
+        this.site = site;
+        this.inscricaoEstadual = inscricaoEstadual;
+    }
+
+    public String getNomeFantasia() {
+        return nomeFantasia;
+    }
+
+    public void setNomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public String getInscricaoEstadual() {
+        return inscricaoEstadual;
+    }
+
+    public void setInscricaoEstadual(String inscricaoEstadual) {
+        this.inscricaoEstadual = inscricaoEstadual;
+    }
+}
+    /*
     import java.util.ArrayList;
 import java.util.List;
 
@@ -68,3 +119,5 @@ import java.util.List;
     }
 
 }
+
+     */
