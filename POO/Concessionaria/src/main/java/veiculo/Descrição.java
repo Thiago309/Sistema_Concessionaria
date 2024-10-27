@@ -1,6 +1,6 @@
 package veiculo;
 
-public class Moto extends Veiculo {
+public class Descrição extends Veiculo {
         private String numeroChassi;
         private int cilindradas;
 

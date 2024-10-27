@@ -1,4 +1,4 @@
-package historico;
+package ncv;
 
 public class Historico {
 }

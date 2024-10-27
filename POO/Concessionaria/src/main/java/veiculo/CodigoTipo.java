@@ -1,6 +1,6 @@
 package veiculo;
 
-public class Carro extends Veiculo {
+public class CodigoTipo extends Veiculo {
     private String numeroChassi;
     private int cavalosPotencia;
 
