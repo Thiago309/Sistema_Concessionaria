@@ -1,4 +1,4 @@
-package Manutencao;
+package manutencao;
 
 public class Servico {
 }

@@ -1,3 +1,4 @@
+/*
 package veiculo;
 
 public class Descrição extends Veiculo {
@@ -9,3 +10,4 @@ public class Descrição extends Veiculo {
         public void setNumeroChassi(String numeroChassi) { this.numeroChassi = numeroChassi; }
 
 }
+*/

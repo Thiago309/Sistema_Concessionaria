@@ -1,3 +1,4 @@
+/*
 package veiculo;
 
 public class CodigoTipo extends Veiculo {
@@ -9,3 +10,4 @@ public class CodigoTipo extends Veiculo {
     public void setNumeroChassi(String numeroChassi) { this.numeroChassi = numeroChassi; }
 
 }
+*/

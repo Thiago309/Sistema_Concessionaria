@@ -2,30 +2,63 @@ package formaDePagamento;
 
 import java.util.Date;
 
-public class Financiamento extends FormaDePagamento {
-    private String idFinanciamento;
-    private int nrParcelas;
+public class Financiamento extends Pagamento {
+    private int idFinanciamento;
+    private double finValorParcelas;
+    private int finNumeroParcelas;
     private double juros;
-    private double vlParcelas;
 
-    public Financiamento(String idPagamento, Date data, double valor, String idFinanciamento, int nrParcelas,
-                         double juros, double vlParcelas) {
-        super(idPagamento, data, valor);
+    // Construtor
+    public Financiamento(int idPagamento, int idNf, Date dataEfetuacao, double valor, int idFinanciamento,
+                         double finValorParcelas, int finNumeroParcelas, double juros) {
+        super(idPagamento, idNf, dataEfetuacao, valor);
         this.idFinanciamento = idFinanciamento;
-        this.nrParcelas = nrParcelas;
+        this.finValorParcelas = finValorParcelas;
+        this.finNumeroParcelas = finNumeroParcelas;
         this.juros = juros;
-        this.vlParcelas = vlParcelas;
     }
 
-    public String getIdFinanciamento() {
+    // Getters e Setters
+    public int getIdFinanciamento() {
         return idFinanciamento;
     }
 
-    public void setIdFinanciamento(String idFinanciamento) {
+    public void setIdFinanciamento(int idFinanciamento) {
         this.idFinanciamento = idFinanciamento;
     }
 
-    public double calcularJurosTotais() {
-        return (vlParcelas * nrParcelas) * (juros / 100);
+    public double getFinValorParcelas() {
+        return finValorParcelas;
+    }
+
+    public void setFinValorParcelas(double finValorParcelas) {
+        this.finValorParcelas = finValorParcelas;
+    }
+
+    public int getFinNumeroParcelas() {
+        return finNumeroParcelas;
+    }
+
+    public void setFinNumeroParcelas(int finNumeroParcelas) {
+        this.finNumeroParcelas = finNumeroParcelas;
+    }
+
+    public double getJuros() {
+        return juros;
+    }
+
+    public void setJuros(double juros) {
+        this.juros = juros;
+    }
+
+    // Método para exibir informações do financiamento
+    @Override
+    public void exibirInfo() {
+        super.exibirInfo();
+        System.out.println("ID Financiamento: " + idFinanciamento);
+        System.out.println("Valor das Parcelas: " + finValorParcelas);
+        System.out.println("Número de Parcelas: " + finNumeroParcelas);
+        System.out.println("Juros: " + juros);
     }
 }
+

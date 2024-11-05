@@ -2,32 +2,26 @@ package formaDePagamento;
 
 import java.util.Date;
 
-public class Cheque extends FormaDePagamento {
-    private String numeroCheque;
-    private String banco;
+public class Cheque extends Pagamento {
+    private int numeroCheque;
     private String agencia;
+    private String banco;
 
-    public Cheque(String idPagamento, Date data, double valor, String numeroCheque, String banco, String agencia) {
-        super(idPagamento, data, valor);
+    // Construtor
+    public Cheque(int idPagamento, int idNf, Date dataEfetuacao, double valor, int numeroCheque, String agencia, String banco) {
+        super(idPagamento, idNf, dataEfetuacao, valor);
         this.numeroCheque = numeroCheque;
-        this.banco = banco;
         this.agencia = agencia;
+        this.banco = banco;
     }
 
-    public String getNumeroCheque() {
+    // Getters e Setters
+    public int getNumeroCheque() {
         return numeroCheque;
     }
 
-    public void setNumeroCheque(String numeroCheque) {
+    public void setNumeroCheque(int numeroCheque) {
         this.numeroCheque = numeroCheque;
-    }
-
-    public String getBanco() {
-        return banco;
-    }
-
-    public void setBanco(String banco) {
-        this.banco = banco;
     }
 
     public String getAgencia() {
@@ -38,4 +32,21 @@ public class Cheque extends FormaDePagamento {
         this.agencia = agencia;
     }
 
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
+    // Método para exibir informações do cheque
+    @Override
+    public void exibirInfo() {
+        super.exibirInfo();
+        System.out.println("Número do Cheque: " + numeroCheque);
+        System.out.println("Agência: " + agencia);
+        System.out.println("Banco: " + banco);
+    }
 }
+
