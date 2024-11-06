@@ -9,7 +9,7 @@ public class Cheque extends Pagamento {
 
     // Construtor
     public Cheque(int idPagamento, int idNf, Date dataEfetuacao, double valor, int numeroCheque, String agencia, String banco) {
-        super(idPagamento, idNf, dataEfetuacao, valor);
+        super(idPagamento, idNf, dataEfetuacao, valor);  // Certifique-se de que o construtor de 'Pagamento' existe
         this.numeroCheque = numeroCheque;
         this.agencia = agencia;
         this.banco = banco;
@@ -43,10 +43,9 @@ public class Cheque extends Pagamento {
     // Método para exibir informações do cheque
     @Override
     public void exibirInfo() {
-        super.exibirInfo();
+        super.exibirInfo();  // Certifique-se de que o método 'exibirInfo' existe em 'Pagamento'
         System.out.println("Número do Cheque: " + numeroCheque);
         System.out.println("Agência: " + agencia);
         System.out.println("Banco: " + banco);
     }
 }
-
