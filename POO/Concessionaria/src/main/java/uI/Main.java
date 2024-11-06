@@ -1,4 +1,5 @@
 package uI;
+
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,6 +7,10 @@ import java.util.*;
 
 import cliente.Cliente;
 import cliente.Cliente.*;
+import ncv.Ncv;
+import ncv.Ncv.*;
+import nvv.Nvv;
+import nvv.Nvv.*;
 import veiculo.Veiculo;
 import veiculo.Veiculo.*;
 import servicos.Seguro;
@@ -15,10 +20,13 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
+
         ClienteService clienteService = new ClienteService();
         VeiculoService veiculoService = new VeiculoService();
         Seguro.SeguroService seguroService = new Seguro.SeguroService();
         Manutencao.ManutencaoService manutencaoService = new Manutencao.ManutencaoService();
+        NcvService ncvService = new NcvService();
+        NvvService nvvService = new NvvService();
 
         int opc, opc2, opc3, opc4;
 
@@ -29,6 +37,7 @@ public class Main {
             System.out.println("4. Gerenciar Nota de Compras");
             System.out.println("5. Gerenciar Nota de Vendas");
             System.out.println("0. Sair");
+            System.out.print("\nSelecione: ");
 
             opc = input.nextInt();
 
@@ -43,7 +52,7 @@ public class Main {
                         System.out.println("4. Atualizar Cliente");
                         System.out.println("5. Deletar Cliente");
                         System.out.println("0. Sair");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("\nEscolha uma opção: ");
 
                         opc2 = input.nextInt();
 
@@ -191,7 +200,7 @@ public class Main {
                         System.out.println("4. Atualizar Veiculos");
                         System.out.println("5. Deletar Veiculos");
                         System.out.println("0. Sair");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("\nEscolha uma opção: ");
 
                         opc2 = input.nextInt();
 
@@ -287,7 +296,7 @@ public class Main {
                                         System.out.println("Veículo atualizado com sucesso.");
 
                                     } else {
-                                        System.out.println("Erro ao atualizar o veículo.");
+                                        System.out.println("Erro ao atualizar informações do veículo.");
 
                                     }
                                 } else {
@@ -329,7 +338,7 @@ public class Main {
                         System.out.println("2. Cancelar Serviço");
                         System.out.println("3. Listar Serviços");
                         System.out.println("0. Sair");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("\nEscolha uma opção: ");
 
                         opc2 = input.nextInt();
 
@@ -425,10 +434,13 @@ public class Main {
                                                 // Deletar Seguro
                                                 System.out.print("Digite o número da apólice do seguro a ser deletado: ");
                                                 int numeroDeletar = input.nextInt();
+
                                                 if (seguroService.deleteSeguro(numeroDeletar)) {
                                                     System.out.println("Seguro deletado com sucesso.");
+
                                                 } else {
                                                     System.out.println("Seguro não encontrado.");
+
                                                 }
                                                 break;
 
@@ -448,11 +460,12 @@ public class Main {
                                     System.out.println("3. Buscar Manutenção");
                                     System.out.println("4. Deletar Manutenção");
                                     System.out.println("0. Sair");
-                                    System.out.print("Escolha uma opção: ");
+                                    System.out.print("\nEscolha uma opção: ");
 
-                                    opc4 = input.nextInt();
                                     do{
+                                        opc4 = input.nextInt();
                                         switch (opc4) {
+
                                             case 1:
                                                 System.out.print("ID da Manutenção: ");
                                                 int idManutencao = input.nextInt();
@@ -494,6 +507,7 @@ public class Main {
 
                                             case 2:
                                                 System.out.println("\n--- Lista de Manutenções ---");
+
                                                 for (Manutencao manutencao : manutencaoService.getAllManutencoes()) {
                                                     System.out.println("ID: " + manutencao.getIdManutencao() + ", Chassi: " + manutencao.getChassi() + ", Responsável: " + manutencao.getResponsavel());
 
@@ -518,18 +532,18 @@ public class Main {
                                             case 4:
                                                 System.out.print("Digite o ID da manutenção para atualizar: ");
                                                 int idAtualizar = input.nextInt();
-                                                input.nextLine();
 
                                                 Manutencao manutencaoParaAtualizar = manutencaoService.getManutencao(idAtualizar);
 
                                                 if (manutencaoParaAtualizar != null) {
+                                                    Date manuNovaDataProxima = null;
+
                                                     System.out.print("Novo Chassi: ");
                                                     int novoChassi = input.nextInt();
 
                                                     System.out.print("Novo Custo da Manutenção: ");
                                                     BigDecimal novoCusto = input.nextBigDecimal();
 
-                                                    Date manuNovaDataProxima = null;
 
                                                     System.out.print("Nova Data da Próxima Manutenção (dd/MM/yyyy): ");
                                                     String novaDataProxima = input.nextLine();
@@ -541,13 +555,16 @@ public class Main {
 
                                                     }catch (ParseException i) {
                                                         System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+                                                        System.out.println("Tente novamente...");
 
                                                     }
 
                                                     System.out.print("Novo Responsável: ");
                                                     String novoResponsavel = input.nextLine();
+
                                                     System.out.print("Novo Tipo de Manutenção: ");
                                                     String novoTipo = input.nextLine();
+
                                                     System.out.print("Novo Status: ");
                                                     String novoStatus = input.nextLine();
 
@@ -598,24 +615,177 @@ public class Main {
                         System.out.println("\n--- Lista de Compras ---");
                         System.out.println("1. Realizar Compra de Veiculos");
                         System.out.println("2. Listar Compras Realizadas de Veiculos");
+                        System.out.println("3. Procurar por nota de Compra");
+                        System.out.println("4. Deletar Compra Realizada de Veiculo");
                         System.out.println("0. Sair");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("\nEscolha uma opção: ");
 
                         opc2 = input.nextInt();
 
+                        switch (opc2) {
+                            case 1:
+                                Date compraDataNCV = null;
+
+                                System.out.print("ID do NCV: ");
+                                int idNCV = input.nextInt();
+
+                                System.out.print("ID do Funcionário: ");
+                                int idFuncionario = input.nextInt();
+
+                                System.out.print("Data do NCV (dd/MM/yyyy): ");
+                                String dataNCV = input.nextLine();
+                                SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
+
+                                try{
+                                    compraDataNCV = formatoData1.parse(dataNCV);
+                                    System.out.println("Data registrada com sucesso: " + compraDataNCV);
+
+                                }catch (ParseException i){
+                                    System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+                                    System.out.println("Tente novamente...");
+                                }
+
+                                System.out.print("Valor do NCV: ");
+                                BigDecimal valorNCV = input.nextBigDecimal();
+
+                                Ncv novoNcv = ncvService.addNcv(idNCV, idFuncionario, dataNCV, valorNCV);
+                                System.out.println("NCV adicionado com ID: " + novoNcv.getIdNCV());
+                                break;
+
+                            case 2:
+                                System.out.println("\n--- Lista de NCVs ---");
+
+                                for (Ncv ncv : ncvService.getAllNcvs()) {
+                                    System.out.println("ID: " + ncv.getIdNCV() + ", Funcionário: " + ncv.getIdFuncionario() + ", Valor: " + ncv.getValorNCV());
+
+                                }
+                                break;
+
+                            case 3:
+                                System.out.print("Digite o ID do NCV: ");
+                                int idBuscar = input.nextInt();
+                                Ncv ncvEncontrado = ncvService.getNcv(idBuscar);
+
+                                if (ncvEncontrado != null) {
+                                    System.out.println("NCV encontrado: ID " + ncvEncontrado.getIdNCV() + ", Data " + ", Valor " + ncvEncontrado.getValorNCV());
+
+                                } else {
+                                    System.out.println("NCV não encontrado.");
+
+                                }
+                                break;
+
+                            case 4:
+                                System.out.print("Digite o ID do NCV para deletar: ");
+                                int idDeletar = input.nextInt();
+
+                                if (ncvService.deleteNcv(idDeletar)) {
+                                    System.out.println("NCV deletado com sucesso.");
+
+                                } else {
+                                    System.out.println("NCV não encontrado.");
+
+                                }
+                                break;
+
+                            case 0:
+                                System.out.println("Saindo...");
+                                break;
+
+                            default:
+                                System.out.println("Opção inválida. Tente novamente.");
+                        }
                     }while (opc2 != 0);
 
                 case 5:
                     do{
-                        System.out.println("\n--- Lista de Venda ---");
+                        System.out.println("\n--- Lista de Vendas---");
                         System.out.println("1. Realizar Venda de Veiculos");
                         System.out.println("2. Listar Vendas Realizadas de Veiculos");
+                        System.out.println("3. Procurar por nota de Venda");
+                        System.out.println("4. Deletar Venda Realizada de Veiculo");
                         System.out.println("0. Sair");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("\nEscolha uma opção: ");
 
                         opc2 = input.nextInt();
 
+                        switch (opc2) {
+                            case 1:
+                                Date vendaDataNVV = null;
 
+                                System.out.print("ID do NVV: ");
+                                int idNVV = input.nextInt();
+
+                                System.out.print("ID do Funcionário: ");
+                                int idFuncionario = input.nextInt();
+
+                                System.out.print("Data do NVV (dd/MM/yyyy): ");
+                                String dataNVV = input.nextLine();
+                                SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
+
+                                try{
+                                    vendaDataNVV = formatoData1.parse(dataNVV);
+                                    System.out.println("Data registrada com sucesso: " + vendaDataNVV);
+
+                                } catch (ParseException e) {
+                                    System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+                                    System.out.println("Tente novamente...");
+
+                                }
+
+                                System.out.print("Valor do NVV: ");
+                                double valorNVV = input.nextDouble();
+
+                                Nvv novoNvv = nvvService.addNvv(idNVV, idFuncionario, dataNVV, valorNVV);
+                                System.out.println("NVV adicionado com ID: " + novoNvv.getIdNVV());
+                                break;
+
+                            case 2:
+                                System.out.println("\n--- Lista de NVVs ---");
+
+                                for (Nvv nvv : nvvService.getAllNvvs()) {
+                                    System.out.println("ID: " + nvv.getIdNVV() + ", Funcionário: " + nvv.getIdFuncionario() +
+                                            ", Data: " + ", Valor: " + nvv.getValorNVV());
+
+                                }
+                                break;
+
+                            case 3:
+                                System.out.print("Digite o ID do NVV: ");
+                                int idBuscar = input.nextInt();
+
+                                Nvv nvvEncontrado = nvvService.getNvv(idBuscar);
+
+                                if (nvvEncontrado != null) {
+                                    System.out.println("NVV encontrado: ID " + nvvEncontrado.getIdNVV() + ", Funcionário " + nvvEncontrado.getIdFuncionario() +
+                                            ", Data " + ", Valor " + nvvEncontrado.getValorNVV());
+
+                                } else {
+                                    System.out.println("NVV não encontrado.");
+
+                                }
+                                break;
+
+                            case 5:
+                                System.out.print("Digite o ID do NVV para deletar: ");
+                                int idDeletar = input.nextInt();
+
+                                if (nvvService.deleteNvv(idDeletar)) {
+                                    System.out.println("NVV deletado com sucesso.");
+
+                                } else {
+                                    System.out.println("NVV não encontrado.");
+
+                                }
+                                break;
+
+                            case 6:
+                                System.out.println("Saindo...");
+                                break;
+
+                            default:
+                                System.out.println("Opção inválida. Tente novamente.");
+                        }
                     }while (opc2 != 0);
 
                 case 0:

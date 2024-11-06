@@ -1,16 +1,17 @@
 package nvv;
 
-import java.math.BigDecimal;
+import java.util.*;
 import java.util.Date;
+
 public class Nvv {
     // Atributos
     private int idNVV;
     private int idFuncionario;
-    private Date dataNVV;
+    private String dataNVV;
     private double valorNVV;
 
     // Construtor
-    public NVV(int idNVV, int idFuncionario, Date dataNVV, double valorNVV) {
+    public Nvv(int idNVV, int idFuncionario, String dataNVV, double valorNVV) {
         this.idNVV = idNVV;
         this.idFuncionario = idFuncionario;
         this.dataNVV = dataNVV;
@@ -35,12 +36,12 @@ public class Nvv {
 
     }
 
-    public Date getDataNVV() {
+    public String getDataNVV() {
         return dataNVV;
     }
 
     public void setDataNVV(Date dataNVV) {
-        this.dataNVV = dataNVV;
+        this.dataNVV = String.valueOf(dataNVV);
     }
 
     public double getValorNVV() {
@@ -51,6 +52,39 @@ public class Nvv {
         this.valorNVV = valorNVV;
     }
 
-    // Outros métodos (opcional)
-    // ... outros métodos que você pode adicionar, como calcular impostos, etc.
+    public static class NvvService {
+        private List<Nvv> nvvs = new ArrayList<>();
+
+        // Create
+        public Nvv addNvv(int idNVV, int idFuncionario, String dataNVV, double valorNVV) {
+            Nvv nvv = new Nvv(idNVV, idFuncionario, dataNVV, valorNVV);
+            nvvs.add(nvv);
+            return nvv;
+        }
+
+        // Read
+        public Nvv getNvv(int idNVV) {
+            for (Nvv nvv : nvvs) {
+                if (nvv.getIdNVV() == idNVV) {
+                    return nvv;
+                }
+            }
+            return null;
+        }
+
+        // Delete
+        public boolean deleteNvv(int idNVV) {
+            Nvv nvv = getNvv(idNVV);
+            if (nvv != null) {
+                nvvs.remove(nvv);
+                return true;
+            }
+            return false;
+        }
+
+        // Listar todos os NVVs
+        public List<Nvv> getAllNvvs() {
+            return new ArrayList<>(nvvs);
+        }
+    }
 }

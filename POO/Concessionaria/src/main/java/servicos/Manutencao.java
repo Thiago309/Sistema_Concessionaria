@@ -1,6 +1,5 @@
 package servicos;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,7 @@ public class Manutencao {
     private int idManutencao;
     private int chassi;
     private BigDecimal custoManutencao;
-    private Date dataProximaManutencao;
+    private String dataProximaManutencao;
     private String responsavel;
     private String tipoManutencao;
     private String status;
@@ -38,11 +37,11 @@ public class Manutencao {
         this.custoManutencao = custoManutencao;
     }
 
-    public Date getDataProximaManutencao() {
+    public String getDataProximaManutencao() {
         return dataProximaManutencao;
     }
 
-    public void setDataProximaManutencao(Date dataProximaManutencao) {
+    public void setDataProximaManutencao(String dataProximaManutencao) {
         this.dataProximaManutencao = dataProximaManutencao;
     }
 
