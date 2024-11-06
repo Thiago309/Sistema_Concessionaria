@@ -104,7 +104,7 @@ public class Cliente {
                     return cliente;
                 }
             }
-
+            System.out.print("Cliente não encontrado em nossos sistemas.");
             return null; // Cliente não encontrado
         }
 
@@ -129,6 +129,7 @@ public class Cliente {
                 return true; // Atualização bem-sucedida
             }
 
+            System.out.print("Cliente não encontrado em nossos sistemas.");
             return false; // Cliente não encontrado
 
         }
@@ -140,6 +141,7 @@ public class Cliente {
                 clientes.remove(cliente);
                 return true; // Exclusão bem-sucedida
             }
+            System.out.print("Cliente não encontrado em nossos sistemas.");
             return false; // Cliente não encontrado
         }
 
