@@ -187,13 +187,14 @@ public class Main {
                                 }
                                 break;
                             case 0:
-                                System.out.println("Saindo...");
+                                System.out.println("Retornando ao menu principal...");
                                 break;
 
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
                     } while (opc2 != 0);
+                    break;
 
                 case 2:
                     do{
@@ -331,6 +332,7 @@ public class Main {
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
                     }while (opc2 != 0);
+                    break;
                 case 3:
                         System.out.println("\n--- Lista de Serviços ---");
                         System.out.println("1. Agendar Serviços");
@@ -448,17 +450,18 @@ public class Main {
                                                 System.out.println("Opção inválida. Tente novamente.");
                                         }
                                     } while (opc2 != 0);
-
                                 }else if (opc3 == 2){
-                                    System.out.println("\n--- Menu Manutenção Veicular ---");
-                                    System.out.println("1. Adicionar Manutenção");
-                                    System.out.println("2. Listar Manutenções");
-                                    System.out.println("3. Buscar Manutenção");
-                                    System.out.println("4. Deletar Manutenção");
-                                    System.out.println("0. Sair");
-                                    System.out.print("\nEscolha uma opção: ");
-
                                     do{
+                                        System.out.println("\n--- Menu Manutenção Veicular ---");
+                                        System.out.println("1. Adicionar Manutenção");
+                                        System.out.println("2. Listar Manutenções");
+                                        System.out.println("3. Buscar Manutenção");
+                                        System.out.println("4. Atualizar Manutenção"); // **Alteração: Adicionada a opção de Atualizar**
+                                        System.out.println("5. Deletar Manutenção"); // **Alteração: Mudou de 4 para 5**
+                                        System.out.println("0. Sair");
+                                        System.out.print("\nEscolha uma opção: ");
+
+
                                         opc4 = input.nextInt();
                                         input.nextLine();
                                         switch (opc4) {
@@ -587,10 +590,10 @@ public class Main {
                                                 input.nextLine();
 
                                                 if (manutencaoService.deleteManutencao(idDeletar)) {
-                                                    System.out.println("Manutenção deletada com sucesso.");
+                                                    System.out.println("\nManutenção deletada com sucesso.");
 
                                                 } else {
-                                                    System.out.println("Manutenção não encontrada.");
+                                                    System.out.println("\nManutenção não encontrada.");
 
                                                 }
                                                 break;
@@ -603,6 +606,7 @@ public class Main {
 
                                         }
                                     }while (opc4 != 0);
+                                    break;
 
                                 }else{
                                     System.out.println("Opção invalida. Tente novamente. Mais tarde.");
