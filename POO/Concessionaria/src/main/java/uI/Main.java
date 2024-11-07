@@ -59,6 +59,7 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Cliente
+                                input.nextLine();
                                 System.out.print("Nome: ");
                                 String nome = input.nextLine();
 
@@ -70,6 +71,7 @@ public class Main {
 
                                 System.out.print("Número: ");
                                 int numero = input.nextInt();
+                                input.nextLine();
 
                                 System.out.print("Complemento: ");
                                 String complemento = input.nextLine();
@@ -95,10 +97,13 @@ public class Main {
                             case 2:
                                 // Listar Clientes
                                 System.out.println("\n--- Lista de Clientes ---");
-
-                                for (Cliente cliente : clienteService.getAllClientes()) {
-                                    System.out.println("ID: " + cliente.getIdCliente() + ", Nome: " + cliente.getNome());
-
+                                List<Cliente> clientes = clienteService.getAllClientes(); // **Verde: Obtém a lista de clientes**
+                                if (clientes.isEmpty()) { // **Verde: Verifica se a lista está vazia**
+                                    System.out.println("Nenhum cliente cadastrado."); // **Verde: Exibe mensagem caso não haja clientes**
+                                } else {
+                                    for (Cliente cliente : clientes) {
+                                        System.out.println("ID: " + cliente.getIdCliente() + ", Nome: " + cliente.getNome());
+                                    }
                                 }
                                 break;
                             case 3:
@@ -120,6 +125,7 @@ public class Main {
                                 // Atualizar Cliente
                                 System.out.print("Digite o ID do cliente a ser atualizado: ");
                                 int idAtualizar = input.nextInt();
+                                input.nextLine();
 
                                 Cliente clienteParaAtualizar = clienteService.getCliente(idAtualizar);
 
@@ -135,6 +141,7 @@ public class Main {
 
                                     System.out.print("Novo Número: ");
                                     int novoNumero = input.nextInt();
+                                    input.nextLine();
 
                                     System.out.print("Novo Complemento: ");
                                     String novoComplemento = input.nextLine();
@@ -206,9 +213,11 @@ public class Main {
                                 // Adicionar Veículo
                                 System.out.print("Chassi: ");
                                 int chassi = input.nextInt();
+                                input.nextLine();
 
                                 System.out.print("Quantidade de Km: ");
                                 double qtdKm = input.nextDouble();
+                                input.nextLine();
 
                                 System.out.print("Cor: ");
                                 String cor = input.nextLine();
@@ -246,6 +255,7 @@ public class Main {
                                 System.out.print("Digite o chassi do veículo: ");
 
                                 int chassiBuscar = input.nextInt();
+                                input.nextLine();
                                 Veiculo veiculoEncontrado = veiculoService.getVeiculo(chassiBuscar);
 
                                 if (veiculoEncontrado != null) {
@@ -261,12 +271,14 @@ public class Main {
                                 System.out.print("Digite o chassi do veículo a ser atualizado: ");
 
                                 int chassiAtualizar = input.nextInt();
+                                input.nextLine();
 
                                 Veiculo veiculoParaAtualizar = veiculoService.getVeiculo(chassiAtualizar);
 
                                 if (veiculoParaAtualizar != null) {
                                     System.out.print("Nova Quantidade de Km: ");
                                     double novaQtdKm = input.nextDouble();
+                                    input.nextLine();
 
                                     System.out.print("Nova Cor: ");
                                     String novaCor = input.nextLine();
@@ -302,6 +314,7 @@ public class Main {
                                 // Deletar Veículo
                                 System.out.print("Digite o chassi do veículo a ser deletado: ");
                                 int chassiDeletar = input.nextInt();
+                                input.nextLine();
 
                                 if (veiculoService.deleteVeiculo(chassiDeletar)) {
                                     System.out.println("Veículo deletado com sucesso.");
@@ -331,7 +344,7 @@ public class Main {
                         switch (opc2){
                             case 1:
                                 System.out.println("Qual tipo de serviço você deseja agendar?");
-                                System.out.println("Digite: \n1. Seguro, \n2. Manutenção.");
+                                System.out.println("Digite: \n1. Seguro \n2. Manutenção");
                                 opc3 = input.nextInt();
 
                                 if(opc3 == 1) {
@@ -349,7 +362,7 @@ public class Main {
                                         switch (opc4) {
                                             case 1:
                                                 // Adicionar Seguro
-                                                System.out.print("Número da Apólice: ");
+                                                System.out.print("\nNúmero da Apólice: ");
                                                 int numeroApolice = input.nextInt();
 
                                                 System.out.print("Chassi: ");
@@ -359,6 +372,7 @@ public class Main {
 
                                                 System.out.print("Informe a Data Inicial da Apólice (dd/MM/yyyy): ");
                                                 String dataInicial = input.nextLine();
+                                                input.nextLine();
 
                                                 System.out.print("Informe a Data Final (dd/MM/yyyy): ");
                                                 String dataFinal = input.nextLine();
@@ -378,9 +392,11 @@ public class Main {
 
                                                 System.out.print("Cobertura: ");
                                                 String cobertura = input.nextLine();
+                                                input.nextLine();
 
                                                 System.out.print("Franquia: ");
                                                 BigDecimal franquia = input.nextBigDecimal();
+                                                input.nextLine();
 
                                                 Seguro novoSeguro = seguroService.addSeguro(numeroApolice, chassi, segDataInicial, segDataFinal, segPreco, cobertura, franquia);
                                                 System.out.println("Seguro adicionado com número de apólice: " + novoSeguro.getNumeroApolice());
@@ -444,17 +460,21 @@ public class Main {
 
                                     do{
                                         opc4 = input.nextInt();
+                                        input.nextLine();
                                         switch (opc4) {
 
                                             case 1:
                                                 System.out.print("ID da Manutenção: ");
                                                 int idManutencao = input.nextInt();
+                                                input.nextLine();
 
                                                 System.out.print("Chassi: ");
                                                 int chassi = input.nextInt();
+                                                input.nextLine();
 
                                                 System.out.print("Custo da Manutenção: ");
                                                 BigDecimal custoManutencao = input.nextBigDecimal();
+                                                input.nextLine();
 
                                                 Date manudataProximaManutencao = null;
 
@@ -495,6 +515,7 @@ public class Main {
                                             case 3:
                                                 System.out.print("Digite o ID da manutenção: ");
                                                 int idBuscar = input.nextInt();
+                                                input.nextLine();
 
                                                 Manutencao manutencaoEncontrada = manutencaoService.getManutencao(idBuscar);
 
@@ -509,6 +530,7 @@ public class Main {
                                             case 4:
                                                 System.out.print("Digite o ID da manutenção para atualizar: ");
                                                 int idAtualizar = input.nextInt();
+                                                input.nextLine();
 
                                                 Manutencao manutencaoParaAtualizar = manutencaoService.getManutencao(idAtualizar);
 
@@ -517,9 +539,11 @@ public class Main {
 
                                                     System.out.print("Novo Chassi: ");
                                                     int novoChassi = input.nextInt();
+                                                    input.nextLine();
 
                                                     System.out.print("Novo Custo da Manutenção: ");
                                                     BigDecimal novoCusto = input.nextBigDecimal();
+                                                    input.nextLine();
 
                                                     System.out.print("Nova Data da Próxima Manutenção (dd/MM/yyyy): ");
                                                     String novaDataProxima = input.nextLine();
@@ -560,6 +584,7 @@ public class Main {
                                             case 5:
                                                 System.out.print("Digite o ID da manutenção para deletar: ");
                                                 int idDeletar = input.nextInt();
+                                                input.nextLine();
 
                                                 if (manutencaoService.deleteManutencao(idDeletar)) {
                                                     System.out.println("Manutenção deletada com sucesso.");
