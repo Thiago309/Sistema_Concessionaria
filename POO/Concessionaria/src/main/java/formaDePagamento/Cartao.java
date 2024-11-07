@@ -2,7 +2,7 @@ package formaDePagamento;
 
 import java.util.Date;
 
-public class cartao {
+public class Cartao {
     public class Cartao extends Pagamento {
         private int idCartao;
         private int numeroCartao;

@@ -1,7 +1,13 @@
 package ncv;
 
 import java.math.BigDecimal;
+import java.time.DateTimeException;
 import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Ncv {
     private int idNCV;
@@ -18,8 +24,17 @@ public class Ncv {
     }
 
     public Ncv(int idNCV, int idFuncionario, String dataNCV, BigDecimal valorNCV) {
-
+        try {
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+            this.idNCV = idNCV;
+            this.idFuncionario = idFuncionario;
+            this.dataNCV = formatoData.parse(dataNCV);
+            this.valorNCV = valorNCV;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
+
 
     // Getters e Setters
     public int getIdNCV() {
@@ -58,7 +73,7 @@ public class Ncv {
         private List<Ncv> ncvs = new ArrayList<>();
 
         // Criando uma nota de compra.
-        public Ncv addNcv(int idNCV, int idFuncionario, String dataNCV, BigDecimal valorNCV) {
+        public Ncv addNcv(int idNCV, int idFuncionario, Date dataNCV, BigDecimal valorNCV) {
             Ncv ncv = new Ncv(idNCV, idFuncionario, dataNCV, valorNCV);
             ncvs.add(ncv);
             return ncv;

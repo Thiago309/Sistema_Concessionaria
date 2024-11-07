@@ -1,8 +1,9 @@
-/*
 package cliente;
+
 import java.util.Date;
 
-class PessoaFisica extends Cliente {
+public class PessoaFisica extends Cliente {
+
     private String cpf;
     private char sexo;
     private Date dtNascimento;
@@ -42,14 +43,11 @@ class PessoaFisica extends Cliente {
         this.dtNascimento = dtNascimento;
     }
 
-    // Mtodo para exibir informações da pessoa física
-
+    // Método para exibir informações da pessoa física
     public void exibirInfo() {
-        super.exibirInfo();
+        super.exibirInfo(); // Chama o método exibirInfo da classe Cliente
         System.out.println("CPF: " + cpf);
         System.out.println("Sexo: " + sexo);
         System.out.println("Data de Nascimento: " + dtNascimento);
     }
 }
-*/
-

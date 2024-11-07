@@ -1,4 +1,4 @@
-package manutencao;
+package servico;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
 package tipoVeiculo;
 
-public class tipo {
+public class Tipo {
 }

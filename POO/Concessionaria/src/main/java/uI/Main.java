@@ -13,8 +13,8 @@ import nvv.Nvv;
 import nvv.Nvv.*;
 import veiculo.Veiculo;
 import veiculo.Veiculo.*;
-import servicos.Seguro;
-import servicos.Manutencao;
+import operacoes.Seguro;
+import operacoes.Manutencao;
 
 public class Main {
     public static void main(String[] args) {
@@ -197,7 +197,7 @@ public class Main {
                     break;
 
                 case 2:
-                    do{
+                    do {
                         System.out.println("\n--- Lista de Veiculos ---");
                         System.out.println("1. Adicionar Veiculos");
                         System.out.println("2. Listar Veiculos");
@@ -209,7 +209,7 @@ public class Main {
 
                         opc2 = input.nextInt();
 
-                        switch (opc2){
+                        switch (opc2) {
                             case 1:
                                 // Adicionar Veículo
                                 System.out.print("Chassi: ");
@@ -331,9 +331,11 @@ public class Main {
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
-                    }while (opc2 != 0);
+                    } while (opc2 != 0);
                     break;
+
                 case 3:
+                    do {
                         System.out.println("\n--- Lista de Serviços ---");
                         System.out.println("1. Agendar Serviços");
                         System.out.println("2. Cancelar Serviço");
@@ -343,13 +345,13 @@ public class Main {
 
                         opc2 = input.nextInt();
 
-                        switch (opc2){
+                        switch (opc2) {
                             case 1:
                                 System.out.println("Qual tipo de serviço você deseja agendar?");
                                 System.out.println("Digite: \n1. Seguro \n2. Manutenção");
                                 opc3 = input.nextInt();
 
-                                if(opc3 == 1) {
+                                if (opc3 == 1) {
                                     do {
                                         System.out.println("\n--- Menu Seguro ---");
                                         System.out.println("1. Adicionar Seguro");
@@ -450,8 +452,8 @@ public class Main {
                                                 System.out.println("Opção inválida. Tente novamente.");
                                         }
                                     } while (opc2 != 0);
-                                }else if (opc3 == 2){
-                                    do{
+                                } else if (opc3 == 2) {
+                                    do {
                                         System.out.println("\n--- Menu Manutenção Veicular ---");
                                         System.out.println("1. Adicionar Manutenção");
                                         System.out.println("2. Listar Manutenções");
@@ -485,7 +487,7 @@ public class Main {
                                                 String dataProximaManutencao = input.nextLine();
                                                 SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-                                                try{
+                                                try {
                                                     manudataProximaManutencao = formatoData.parse(dataProximaManutencao);
                                                     System.out.println("Data registrada com sucesso: " + manudataProximaManutencao);
 
@@ -552,11 +554,11 @@ public class Main {
                                                     String novaDataProxima = input.nextLine();
                                                     SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
 
-                                                    try{
+                                                    try {
                                                         manuNovaDataProxima = formatoData1.parse(novaDataProxima);
                                                         System.out.println("Data registrada com sucesso: " + manuNovaDataProxima);
 
-                                                    }catch (ParseException i) {
+                                                    } catch (ParseException i) {
                                                         System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
                                                         System.out.println("Tente novamente...");
 
@@ -605,17 +607,19 @@ public class Main {
                                                 System.out.println("Opção inválida. Tente novamente.");
 
                                         }
-                                    }while (opc4 != 0);
+                                    } while (opc4 != 0);
                                     break;
 
-                                }else{
+                                } else {
                                     System.out.println("Opção invalida. Tente novamente. Mais tarde.");
-
                                 }
                                 break;
                         }
+                    } while (opc2 != 0);
+                    break;
+
                 case 4:
-                    do{
+                    do {
                         System.out.println("\n--- Lista de Compras ---");
                         System.out.println("1. Realizar Compra de Veiculos");
                         System.out.println("2. Listar Compras Realizadas de Veiculos");
@@ -635,16 +639,17 @@ public class Main {
 
                                 System.out.print("ID do Funcionário: ");
                                 int idFuncionario = input.nextInt();
+                                input.nextLine();
 
                                 System.out.print("Data do NCV (dd/MM/yyyy): ");
                                 String dataNCV = input.nextLine();
                                 SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
 
-                                try{
+                                try {
                                     compraDataNCV = formatoData1.parse(dataNCV);
                                     System.out.println("Data registrada com sucesso: " + compraDataNCV);
 
-                                }catch (ParseException i){
+                                } catch (ParseException i) {
                                     System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
                                     System.out.println("Tente novamente...");
                                 }
@@ -652,7 +657,8 @@ public class Main {
                                 System.out.print("Valor do NCV: ");
                                 BigDecimal valorNCV = input.nextBigDecimal();
 
-                                Ncv novoNcv = ncvService.addNcv(idNCV, idFuncionario, dataNCV, valorNCV);
+                                Date NovaDataNCV = new Date();
+                                Ncv novoNcv = ncvService.addNcv(idNCV, idFuncionario, NovaDataNCV, valorNCV);
                                 System.out.println("NCV adicionado com ID: " + novoNcv.getIdNCV());
                                 break;
 
@@ -661,7 +667,6 @@ public class Main {
 
                                 for (Ncv ncv : ncvService.getAllNcvs()) {
                                     System.out.println("ID: " + ncv.getIdNCV() + ", Funcionário: " + ncv.getIdFuncionario() + ", Valor: " + ncv.getValorNCV());
-
                                 }
                                 break;
 
@@ -699,10 +704,11 @@ public class Main {
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
-                    }while (opc2 != 0);
+                    } while (opc2 != 0);
+                    break;
 
                 case 5:
-                    do{
+                    do {
                         System.out.println("\n--- Lista de Vendas---");
                         System.out.println("1. Realizar Venda de Veiculos");
                         System.out.println("2. Listar Vendas Realizadas de Veiculos");
@@ -722,12 +728,13 @@ public class Main {
 
                                 System.out.print("ID do Funcionário: ");
                                 int idFuncionario = input.nextInt();
+                                input.nextLine();
 
                                 System.out.print("Data do NVV (dd/MM/yyyy): ");
                                 String dataNVV = input.nextLine();
                                 SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
 
-                                try{
+                                try {
                                     vendaDataNVV = formatoData1.parse(dataNVV);
                                     System.out.println("Data registrada com sucesso: " + vendaDataNVV);
 
@@ -770,7 +777,7 @@ public class Main {
                                 }
                                 break;
 
-                            case 5:
+                            case 4:
                                 System.out.print("Digite o ID do NVV para deletar: ");
                                 int idDeletar = input.nextInt();
 
@@ -783,18 +790,14 @@ public class Main {
                                 }
                                 break;
 
-                            case 6:
+                            case 0:
                                 System.out.println("Saindo...");
                                 break;
 
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
-                    }while (opc2 != 0);
-
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
+                    } while (opc2 != 0);
 
                 default:
                     System.out.println("Opção inválida. Tente novamente.");

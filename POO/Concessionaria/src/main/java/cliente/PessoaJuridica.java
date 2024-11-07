@@ -1,7 +1,6 @@
-/*
 package cliente;
 
-class PessoaJuridica extends Cliente {
+public class PessoaJuridica extends Cliente{
     private String cnpj;
     private String inscricaoEstadual;
     private String nomeFantasia;
@@ -51,14 +50,12 @@ class PessoaJuridica extends Cliente {
         this.site = site;
     }
 
-    // Mtodo para exibir informações da pessoa jurídica
-
+    // Método para exibir informações da pessoa jurídica
     public void exibirInfo() {
-        super.exibirInfo();
+        super.exibirInfo(); // Chama o método exibirInfo da classe Cliente
         System.out.println("CNPJ: " + cnpj);
         System.out.println("Inscrição Estadual: " + inscricaoEstadual);
         System.out.println("Nome Fantasia: " + nomeFantasia);
         System.out.println("Site: " + site);
     }
 }
-*/
