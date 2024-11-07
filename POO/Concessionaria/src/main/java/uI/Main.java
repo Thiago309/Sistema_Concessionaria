@@ -92,7 +92,6 @@ public class Main {
                                 Cliente novoCliente = clienteService.addCliente(nome, cep, logradouro, numero, complemento, bairro, telefone, estado, cidade, email);
                                 System.out.println("Cliente adicionado com ID: " + novoCliente.getIdCliente());
                                 break;
-
                             case 2:
                                 // Listar Clientes
                                 System.out.println("\n--- Lista de Clientes ---");
@@ -102,7 +101,6 @@ public class Main {
 
                                 }
                                 break;
-
                             case 3:
                                 // Buscar Cliente
                                 System.out.print("Digite o ID do cliente: ");
@@ -118,7 +116,6 @@ public class Main {
 
                                 }
                                 break;
-
                             case 4:
                                 // Atualizar Cliente
                                 System.out.print("Digite o ID do cliente a ser atualizado: ");
@@ -169,7 +166,6 @@ public class Main {
 
                                 }
                                 break;
-
                             case 5:
                                 // Deletar Cliente
                                 System.out.print("Digite o ID do cliente a ser deletado: ");
@@ -177,11 +173,12 @@ public class Main {
 
                                 if (clienteService.deleteCliente(idDeletar)) {
                                     System.out.println("Cliente deletado com sucesso.");
+
                                 } else {
                                     System.out.println("Cliente não encontrado.");
+
                                 }
                                 break;
-
                             case 0:
                                 System.out.println("Saindo...");
                                 break;
@@ -235,7 +232,6 @@ public class Main {
                                 System.out.println("O novo veículo foi adicionado através do numero do chassi: " + novoVeiculo.getChassi());
 
                                 break;
-
                             case 2:
                                 // Listar Veículos
                                 System.out.println("\n--- Lista de Veículos ---");
@@ -245,7 +241,6 @@ public class Main {
 
                                 }
                                 break;
-
                             case 3:
                                 // Buscar Veículo
                                 System.out.print("Digite o chassi do veículo: ");
@@ -261,7 +256,6 @@ public class Main {
 
                                 }
                                 break;
-
                             case 4:
                                 // Atualizar Veículo
                                 System.out.print("Digite o chassi do veículo a ser atualizado: ");
@@ -303,9 +297,7 @@ public class Main {
                                     System.out.println("Veículo não encontrado.");
 
                                 }
-
                                 break;
-
                             case 5:
                                 // Deletar Veículo
                                 System.out.print("Digite o chassi do veículo a ser deletado: ");
@@ -319,20 +311,14 @@ public class Main {
 
                                 }
                                 break;
-
                             case 0:
                                 System.out.println("Saindo...");
                                 break;
-
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
-
                     }while (opc2 != 0);
-
                 case 3:
-
-
                         System.out.println("\n--- Lista de Serviços ---");
                         System.out.println("1. Agendar Serviços");
                         System.out.println("2. Cancelar Serviço");
@@ -376,9 +362,7 @@ public class Main {
 
                                                 System.out.print("Informe a Data Final (dd/MM/yyyy): ");
                                                 String dataFinal = input.nextLine();
-
                                                 SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-
 
                                                 try {
                                                     segDataInicial = formatoData.parse(dataInicial);
@@ -402,17 +386,16 @@ public class Main {
                                                 System.out.println("Seguro adicionado com número de apólice: " + novoSeguro.getNumeroApolice());
 
                                                 break;
-
                                             case 2:
                                                 // Listar Seguros
                                                 System.out.println("\n--- Lista de Seguros ---");
 
                                                 for (Seguro seguro : seguroService.getAllSeguros()) {
                                                     System.out.println("Número da Apólice: " + seguro.getNumeroApolice() + ", Chassi: " + seguro.getChassi() + ", Cobertura: " + seguro.getCobertura());
+
                                                 }
 
                                                 break;
-
                                             case 3:
                                                 // Buscar Seguro
                                                 System.out.print("Digite o número da apólice: ");
@@ -427,9 +410,7 @@ public class Main {
                                                 } else {
                                                     System.out.println("Seguro não encontrado.");
                                                 }
-
                                                 break;
-
                                             case 4:
                                                 // Deletar Seguro
                                                 System.out.print("Digite o número da apólice do seguro a ser deletado: ");
@@ -443,7 +424,6 @@ public class Main {
 
                                                 }
                                                 break;
-
                                             case 0:
                                                 System.out.println("Saindo...");
                                                 break;
@@ -504,7 +484,6 @@ public class Main {
 
                                                 System.out.println("Manutenção adicionada com ID: " + novaManutencao.getIdManutencao());
                                                 break;
-
                                             case 2:
                                                 System.out.println("\n--- Lista de Manutenções ---");
 
@@ -513,7 +492,6 @@ public class Main {
 
                                                 }
                                                 break;
-
                                             case 3:
                                                 System.out.print("Digite o ID da manutenção: ");
                                                 int idBuscar = input.nextInt();
@@ -528,7 +506,6 @@ public class Main {
 
                                                 }
                                                 break;
-
                                             case 4:
                                                 System.out.print("Digite o ID da manutenção para atualizar: ");
                                                 int idAtualizar = input.nextInt();
@@ -543,7 +520,6 @@ public class Main {
 
                                                     System.out.print("Novo Custo da Manutenção: ");
                                                     BigDecimal novoCusto = input.nextBigDecimal();
-
 
                                                     System.out.print("Nova Data da Próxima Manutenção (dd/MM/yyyy): ");
                                                     String novaDataProxima = input.nextLine();
@@ -575,12 +551,12 @@ public class Main {
                                                         System.out.println("Erro ao atualizar a manutenção.");
 
                                                     }
+                                                    break;
                                                 } else {
                                                     System.out.println("Manutenção não encontrada.");
 
                                                 }
                                                 break;
-
                                             case 5:
                                                 System.out.print("Digite o ID da manutenção para deletar: ");
                                                 int idDeletar = input.nextInt();
@@ -593,7 +569,6 @@ public class Main {
 
                                                 }
                                                 break;
-
                                             case 0:
                                                 System.out.println("Saindo...");
                                                 break;
@@ -604,12 +579,12 @@ public class Main {
                                         }
                                     }while (opc4 != 0);
 
-
                                 }else{
                                     System.out.println("Opção invalida. Tente novamente. Mais tarde.");
-                                }
-                        }
 
+                                }
+                                break;
+                        }
                 case 4:
                     do{
                         System.out.println("\n--- Lista de Compras ---");
