@@ -1,7 +1,5 @@
-package funcionario;
+package Models;
 
-import ncv.Ncv;
-import nvv.Nvv;
 import java.util.List;
 
 public class Funcionario {

@@ -1,20 +1,19 @@
-package uI;
+package View;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import cliente.Cliente;
-import cliente.Cliente.*;
-import ncv.Ncv;
-import ncv.Ncv.*;
-import nvv.Nvv;
-import nvv.Nvv.*;
-import veiculo.Veiculo;
-import veiculo.Veiculo.*;
-import operacoes.Seguro;
-import operacoes.Manutencao;
+import Models.Cliente;
+import Models.Cliente.*;
+import Models.Ncv;
+import Models.Ncv.*;
+import Models.Nvv;
+import Models.Nvv.*;
+import Models.Veiculo;
+import Models.Veiculo.*;
+import Models.Seguro;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class Main {
         ClienteService clienteService = new ClienteService();
         VeiculoService veiculoService = new VeiculoService();
         Seguro.SeguroService seguroService = new Seguro.SeguroService();
-        Manutencao.ManutencaoService manutencaoService = new Manutencao.ManutencaoService();
+        Nvv.Manutencao.ManutencaoService manutencaoService = new Nvv.Manutencao.ManutencaoService();
         NcvService ncvService = new NcvService();
         NvvService nvvService = new NvvService();
 
@@ -504,7 +503,7 @@ public class Main {
                                                 System.out.print("Status: "); // Em processo, concluida ou cancelada.
                                                 String status = input.nextLine();
 
-                                                Manutencao novaManutencao = manutencaoService.addManutencao(idManutencao, chassi, custoManutencao,
+                                                Nvv.Manutencao novaManutencao = manutencaoService.addManutencao(idManutencao, chassi, custoManutencao,
                                                         dataProximaManutencao, responsavel, tipoManutencao, status);
 
                                                 System.out.println("Manutenção adicionada com ID: " + novaManutencao.getIdManutencao());
@@ -512,7 +511,7 @@ public class Main {
                                             case 2:
                                                 System.out.println("\n--- Lista de Manutenções ---");
 
-                                                for (Manutencao manutencao : manutencaoService.getAllManutencoes()) {
+                                                for (Nvv.Manutencao manutencao : manutencaoService.getAllManutencoes()) {
                                                     System.out.println("ID: " + manutencao.getIdManutencao() + ", Chassi: " + manutencao.getChassi() + ", Responsável: " + manutencao.getResponsavel());
 
                                                 }
@@ -522,7 +521,7 @@ public class Main {
                                                 int idBuscar = input.nextInt();
                                                 input.nextLine();
 
-                                                Manutencao manutencaoEncontrada = manutencaoService.getManutencao(idBuscar);
+                                                Nvv.Manutencao manutencaoEncontrada = manutencaoService.getManutencao(idBuscar);
 
                                                 if (manutencaoEncontrada != null) {
                                                     System.out.println("Manutenção encontrada: Tipo " + manutencaoEncontrada.getTipoManutencao() + ", Status " + manutencaoEncontrada.getStatus());
@@ -537,7 +536,7 @@ public class Main {
                                                 int idAtualizar = input.nextInt();
                                                 input.nextLine();
 
-                                                Manutencao manutencaoParaAtualizar = manutencaoService.getManutencao(idAtualizar);
+                                                Nvv.Manutencao manutencaoParaAtualizar = manutencaoService.getManutencao(idAtualizar);
 
                                                 if (manutencaoParaAtualizar != null) {
                                                     Date manuNovaDataProxima = null;

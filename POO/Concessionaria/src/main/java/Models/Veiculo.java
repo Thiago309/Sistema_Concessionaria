@@ -1,4 +1,4 @@
-package veiculo;
+package Models;
 import java.util.*;
 
 public class Veiculo {
