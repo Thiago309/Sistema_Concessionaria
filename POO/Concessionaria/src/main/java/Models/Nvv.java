@@ -1,3 +1,8 @@
+/*******************************************************************
+ * Nota de Venda do Veiculo.                                       *
+ * Este metodo regista todas as vendas dos veiculos para clientes  *
+ * em um banco de dados.                                           *
+ *******************************************************************/
 package Models;
 
 import java.math.BigDecimal;

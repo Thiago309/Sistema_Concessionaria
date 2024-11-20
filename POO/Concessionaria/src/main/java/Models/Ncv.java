@@ -1,3 +1,9 @@
+
+/*****************************************************************
+ * Nota de Compra do Veiculo.                                    *
+ * Este metodo regista todos as compras de veiculos dos clientes *
+ * em um banco de dados.                                         *
+ *****************************************************************/
 package Models;
 
 import java.math.BigDecimal;
