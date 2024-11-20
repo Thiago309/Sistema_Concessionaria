@@ -26,33 +26,18 @@ public class Main {
         Nvv.Manutencao.ManutencaoService manutencaoService = new Nvv.Manutencao.ManutencaoService();
         NcvService ncvService = new NcvService();
         NvvService nvvService = new NvvService();
+        MenusConcessionaria menus = new MenusConcessionaria();
 
         int opc, opc2, opc3, opc4;
 
         do {
-            System.out.println("1. Gerenciar Clientes");
-            System.out.println("2. Gerenciar Veiculos");
-            System.out.println("3. Gerenciar Serviços");
-            System.out.println("4. Gerenciar Nota de Compras");
-            System.out.println("5. Gerenciar Nota de Vendas");
-            System.out.println("0. Sair");
-            System.out.print("\nSelecione: ");
-
+            menus.principal();
             opc = input.nextInt();
 
             switch (opc) {
-
                 case 1:
                     do {
-                        System.out.println("\n--- Menu de Clientes ---");
-                        System.out.println("1. Adicionar Cliente");
-                        System.out.println("2. Listar Clientes");
-                        System.out.println("3. Buscar Cliente");
-                        System.out.println("4. Atualizar Cliente");
-                        System.out.println("5. Deletar Cliente");
-                        System.out.println("0. Sair");
-                        System.out.print("\nEscolha uma opção: ");
-
+                        menus.clientes();
                         opc2 = input.nextInt();
 
                         switch (opc2) {
@@ -93,6 +78,7 @@ public class Main {
                                 Cliente novoCliente = clienteService.addCliente(nome, cep, logradouro, numero, complemento, bairro, telefone, estado, cidade, email);
                                 System.out.println("Cliente adicionado com ID: " + novoCliente.getIdCliente());
                                 break;
+
                             case 2:
                                 // Listar Clientes
                                 System.out.println("\n--- Lista de Clientes ---");
@@ -105,6 +91,7 @@ public class Main {
                                     }
                                 }
                                 break;
+
                             case 3:
                                 // Buscar Cliente
                                 System.out.print("Digite o ID do cliente: ");
@@ -120,6 +107,7 @@ public class Main {
 
                                 }
                                 break;
+
                             case 4:
                                 // Atualizar Cliente
                                 System.out.print("Digite o ID do cliente a ser atualizado: ");
@@ -172,6 +160,7 @@ public class Main {
 
                                 }
                                 break;
+
                             case 5:
                                 // Deletar Cliente
                                 System.out.print("Digite o ID do cliente a ser deletado: ");
@@ -185,6 +174,7 @@ public class Main {
 
                                 }
                                 break;
+
                             case 0:
                                 System.out.println("Retornando ao menu principal...");
                                 break;
@@ -197,15 +187,7 @@ public class Main {
 
                 case 2:
                     do {
-                        System.out.println("\n--- Lista de Veiculos ---");
-                        System.out.println("1. Adicionar Veiculos");
-                        System.out.println("2. Listar Veiculos");
-                        System.out.println("3. Buscar Veiculos");
-                        System.out.println("4. Atualizar Veiculos");
-                        System.out.println("5. Deletar Veiculos");
-                        System.out.println("0. Sair");
-                        System.out.print("\nEscolha uma opção: ");
-
+                        menus.veiculos();
                         opc2 = input.nextInt();
 
                         switch (opc2) {
@@ -241,6 +223,7 @@ public class Main {
                                 System.out.println("O novo veículo foi adicionado através do numero do chassi: " + novoVeiculo.getChassi());
 
                                 break;
+
                             case 2:
                                 // Listar Veículos
                                 System.out.println("\n--- Lista de Veículos ---");
@@ -250,6 +233,7 @@ public class Main {
 
                                 }
                                 break;
+
                             case 3:
                                 // Buscar Veículo
                                 System.out.print("Digite o chassi do veículo: ");
@@ -266,6 +250,7 @@ public class Main {
 
                                 }
                                 break;
+
                             case 4:
                                 // Atualizar Veículo
                                 System.out.print("Digite o chassi do veículo a ser atualizado: ");
@@ -310,6 +295,7 @@ public class Main {
 
                                 }
                                 break;
+
                             case 5:
                                 // Deletar Veículo
                                 System.out.print("Digite o chassi do veículo a ser deletado: ");
@@ -324,6 +310,7 @@ public class Main {
 
                                 }
                                 break;
+
                             case 0:
                                 System.out.println("Saindo...");
                                 break;
@@ -335,13 +322,7 @@ public class Main {
 
                 case 3:
                     do {
-                        System.out.println("\n--- Lista de Serviços ---");
-                        System.out.println("1. Agendar Serviços");
-                        System.out.println("2. Cancelar Serviço");
-                        System.out.println("3. Listar Serviços");
-                        System.out.println("0. Sair");
-                        System.out.print("\nEscolha uma opção: ");
-
+                        menus.servicos();
                         opc2 = input.nextInt();
 
                         switch (opc2) {
@@ -352,14 +333,7 @@ public class Main {
 
                                 if (opc3 == 1) {
                                     do {
-                                        System.out.println("\n--- Menu Seguro ---");
-                                        System.out.println("1. Adicionar Seguro");
-                                        System.out.println("2. Listar Seguros");
-                                        System.out.println("3. Buscar Seguro");
-                                        System.out.println("4. Deletar Seguro");
-                                        System.out.println("0. Sair");
-                                        System.out.print("Escolha uma opção: ");
-
+                                        menus.seguros();
                                         opc4 = input.nextInt();
 
                                         switch (opc4) {
@@ -405,6 +379,7 @@ public class Main {
                                                 System.out.println("Seguro adicionado com número de apólice: " + novoSeguro.getNumeroApolice());
 
                                                 break;
+
                                             case 2:
                                                 // Listar Seguros
                                                 System.out.println("\n--- Lista de Seguros ---");
@@ -415,6 +390,7 @@ public class Main {
                                                 }
 
                                                 break;
+
                                             case 3:
                                                 // Buscar Seguro
                                                 System.out.print("Digite o número da apólice: ");
@@ -430,6 +406,7 @@ public class Main {
                                                     System.out.println("Seguro não encontrado.");
                                                 }
                                                 break;
+
                                             case 4:
                                                 // Deletar Seguro
                                                 System.out.print("Digite o número da apólice do seguro a ser deletado: ");
@@ -443,6 +420,7 @@ public class Main {
 
                                                 }
                                                 break;
+
                                             case 0:
                                                 System.out.println("Saindo...");
                                                 break;
@@ -451,18 +429,10 @@ public class Main {
                                                 System.out.println("Opção inválida. Tente novamente.");
                                         }
                                     } while (opc2 != 0);
+
                                 } else if (opc3 == 2) {
                                     do {
-                                        System.out.println("\n--- Menu Manutenção Veicular ---");
-                                        System.out.println("1. Adicionar Manutenção");
-                                        System.out.println("2. Listar Manutenções");
-                                        System.out.println("3. Buscar Manutenção");
-                                        System.out.println("4. Atualizar Manutenção"); // **Alteração: Adicionada a opção de Atualizar**
-                                        System.out.println("5. Deletar Manutenção"); // **Alteração: Mudou de 4 para 5**
-                                        System.out.println("0. Sair");
-                                        System.out.print("\nEscolha uma opção: ");
-
-
+                                        menus.manutencao();
                                         opc4 = input.nextInt();
                                         input.nextLine();
                                         switch (opc4) {
@@ -508,6 +478,7 @@ public class Main {
 
                                                 System.out.println("Manutenção adicionada com ID: " + novaManutencao.getIdManutencao());
                                                 break;
+
                                             case 2:
                                                 System.out.println("\n--- Lista de Manutenções ---");
 
@@ -516,6 +487,7 @@ public class Main {
 
                                                 }
                                                 break;
+
                                             case 3:
                                                 System.out.print("Digite o ID da manutenção: ");
                                                 int idBuscar = input.nextInt();
@@ -531,6 +503,7 @@ public class Main {
 
                                                 }
                                                 break;
+
                                             case 4:
                                                 System.out.print("Digite o ID da manutenção para atualizar: ");
                                                 int idAtualizar = input.nextInt();
@@ -580,11 +553,12 @@ public class Main {
 
                                                     }
                                                     break;
+
                                                 } else {
                                                     System.out.println("Manutenção não encontrada.");
-
                                                 }
                                                 break;
+
                                             case 5:
                                                 System.out.print("Digite o ID da manutenção para deletar: ");
                                                 int idDeletar = input.nextInt();
@@ -598,6 +572,7 @@ public class Main {
 
                                                 }
                                                 break;
+
                                             case 0:
                                                 System.out.println("Saindo...");
                                                 break;
@@ -619,14 +594,7 @@ public class Main {
 
                 case 4:
                     do {
-                        System.out.println("\n--- Lista de Compras ---");
-                        System.out.println("1. Realizar Compra de Veiculos");
-                        System.out.println("2. Listar Compras Realizadas de Veiculos");
-                        System.out.println("3. Procurar por nota de Compra");
-                        System.out.println("4. Deletar Compra Realizada de Veiculo");
-                        System.out.println("0. Sair");
-                        System.out.print("\nEscolha uma opção: ");
-
+                        menus.compraVeiculo();
                         opc2 = input.nextInt();
 
                         switch (opc2) {
@@ -708,14 +676,7 @@ public class Main {
 
                 case 5:
                     do {
-                        System.out.println("\n--- Lista de Vendas---");
-                        System.out.println("1. Realizar Venda de Veiculos");
-                        System.out.println("2. Listar Vendas Realizadas de Veiculos");
-                        System.out.println("3. Procurar por nota de Venda");
-                        System.out.println("4. Deletar Venda Realizada de Veiculo");
-                        System.out.println("0. Sair");
-                        System.out.print("\nEscolha uma opção: ");
-
+                        menus.vendaVeiculo();
                         opc2 = input.nextInt();
 
                         switch (opc2) {
