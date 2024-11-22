@@ -1,6 +1,5 @@
 package models.clientes;
 import jakarta.persistence.*;
-import java.util.*;
 
 @Entity
 @Table(name="cliente") //Nome da tabela no SQL.
@@ -63,9 +62,7 @@ public class Cliente {
     }
 
     /*Construtor da class abstrata Cliente*/
-    public Cliente() {
-
-    }
+    public Cliente() {}
 
     // Getters e Setters
     public int getIdCliente() {
@@ -112,19 +109,4 @@ public class Cliente {
 
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
-
-    protected void exibirInfo() {
-        System.out.println("ID do Cliente: " + idCliente);
-        System.out.println("Nome: " + nome);
-        System.out.println("CPF: " + cpf);
-        System.out.println("CEP: " + cep);
-        System.out.println("Logradouro: " + logradouro);
-        System.out.println("Número: " + numero);
-        System.out.println("Complemento: " + complemento);
-        System.out.println("Bairro: " + bairro);
-        System.out.println("Telefone: " + telefone);
-        System.out.println("Estado: " + estado);
-        System.out.println("Cidade: " + cidade);
-        System.out.println("Email: " + email);
-    }
 }

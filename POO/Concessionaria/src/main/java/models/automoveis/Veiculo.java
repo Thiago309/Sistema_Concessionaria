@@ -1,19 +1,44 @@
 package models.automoveis;
-import java.util.*;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="Veiculo")
+@MappedSuperclass
 public class Veiculo {
+    @Id
+    @Column(name="idVeiculo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Gera ID automaticamente no banco
+    private int idVeiculo;
 
-    private int chassi;
+    @Column(name="chassi")
+    private String chassi;
+
+    @Column(name="qtdKm")
     private double qtdKm;
+
+    @Column(name="cor")
     private String cor;
+
+    @Column(name="localizacaoPatio")
     private String localizacaoPatio;
+
+    @Column(name="modelo")
     private String modelo;
+
+    @Column(name="marca")
     private String marca;
+
+    @Column(name="statusVeiculo")
     private String statusVeiculo;
+
+    @Column(name="ano")
     private String ano;
 
     // Construtor
-    public Veiculo(int chassi, double qtdKm, String cor, String localizacaoPatio, String modelo, String marca, String statusVeiculo, String ano) {
+    public Veiculo(String chassi, double qtdKm, String cor, String localizacaoPatio, String modelo, String marca,
+                   String statusVeiculo, String ano) {
+
         this.chassi = chassi;
         this.qtdKm = qtdKm;
         this.cor = cor;
@@ -24,19 +49,17 @@ public class Veiculo {
         this.ano = ano;
     }
 
+    public Veiculo() {}
+
     // Getters e Setters
-    public int getChassi() {
+    public String getChassi() {
         return chassi;
     }
-
-    public void setChassi(int chassi) {
+    public void setChassi(String chassi) {
         this.chassi = chassi;
     }
 
-    public double getQtdKm() {
-        return qtdKm;
-    }
-
+    public double getQtdKm() {return qtdKm;}
     public void setQtdKm(double qtdKm) {
         this.qtdKm = qtdKm;
     }
@@ -44,7 +67,6 @@ public class Veiculo {
     public String getCor() {
         return cor;
     }
-
     public void setCor(String cor) {
         this.cor = cor;
     }
@@ -52,7 +74,6 @@ public class Veiculo {
     public String getLocalizacaoPatio() {
         return localizacaoPatio;
     }
-
     public void setLocalizacaoPatio(String localizacaoPatio) {
         this.localizacaoPatio = localizacaoPatio;
     }
@@ -60,7 +81,6 @@ public class Veiculo {
     public String getModelo() {
         return modelo;
     }
-
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
@@ -68,7 +88,6 @@ public class Veiculo {
     public String getMarca() {
         return marca;
     }
-
     public void setMarca(String marca) {
         this.marca = marca;
     }
@@ -76,7 +95,6 @@ public class Veiculo {
     public String getStatusVeiculo() {
         return statusVeiculo;
     }
-
     public void setStatusVeiculo(String statusVeiculo) {
         this.statusVeiculo = statusVeiculo;
     }
@@ -84,23 +102,12 @@ public class Veiculo {
     public String getAno() {
         return ano;
     }
-
     public void setAno(String ano) {
         this.ano = ano;
     }
 
-    public static class VeiculoService {
-        private List<Veiculo> veiculos = new ArrayList<>();
 
-        // Create Adiciona um novo veiculo a lista;
-        public Veiculo addVeiculo(int chassi, double qtdKm, String cor, String localizacaoPatio, String modelo,
-                                  String marca, String statusVeiculo, String ano) {
-
-            Veiculo veiculo = new Veiculo(chassi, qtdKm, cor, localizacaoPatio, modelo, marca, statusVeiculo, ano);
-            veiculos.add(veiculo);
-            return veiculo;
-        }
-
+/*
         // Read procura pelo veiculo através do chassi (chave unica).
         public Veiculo getVeiculo(int chassi) {
             for (Veiculo veiculo : veiculos) {
@@ -146,6 +153,6 @@ public class Veiculo {
         public List<Veiculo> getAllVeiculos() {
             return new ArrayList<>(veiculos);
         }
-    }
+    }*/
 }
 
