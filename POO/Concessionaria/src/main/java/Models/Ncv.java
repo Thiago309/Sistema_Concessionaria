@@ -5,7 +5,7 @@
  * em um banco de dados.                                         *
  *****************************************************************/
 package Models;
-
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

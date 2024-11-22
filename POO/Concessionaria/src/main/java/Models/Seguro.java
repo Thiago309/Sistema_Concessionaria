@@ -1,7 +1,7 @@
 package Models;
 import java.math.BigDecimal;
 import java.util.*;
-
+import jakarta.persistence.*;
 public class Seguro {
     private int numeroApolice;
     private int chassi;

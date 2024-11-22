@@ -1,6 +1,6 @@
 package Models;
 import java.util.*;
-
+import jakarta.persistence.*;
 public class Veiculo {
 
     private int chassi;

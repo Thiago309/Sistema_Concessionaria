@@ -1,6 +1,6 @@
 package Models;
 import java.util.Date;
-
+import jakarta.persistence.*;
 public class Pagamento {
     private int idPagamento;
     private int idNf;

@@ -1,5 +1,5 @@
 package Models;
-
+import jakarta.persistence.*;
 import java.util.Date;
 
 public class Financiamento extends Pagamento {
