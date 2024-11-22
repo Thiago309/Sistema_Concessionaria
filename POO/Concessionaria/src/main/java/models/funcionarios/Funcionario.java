@@ -1,5 +1,7 @@
-package Models;
-import jakarta.persistence.*;
+package models.funcionarios;
+import models.notas.Ncv;
+import models.notas.Nvv;
+
 import java.util.List;
 
 public class Funcionario {

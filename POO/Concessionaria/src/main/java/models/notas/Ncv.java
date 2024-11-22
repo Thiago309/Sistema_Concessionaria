@@ -4,8 +4,7 @@
  * Este metodo regista todos as compras de veiculos dos clientes *
  * em um banco de dados.                                         *
  *****************************************************************/
-package Models;
-import jakarta.persistence.*;
+package models.notas;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

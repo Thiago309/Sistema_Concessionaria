@@ -1,4 +1,4 @@
-package View;
+package view;
 
 public class MenusConcessionaria {
     public void principal() {
@@ -16,8 +16,7 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Cliente");
         System.out.println("2. Listar Clientes");
         System.out.println("3. Buscar Cliente");
-        System.out.println("4. Atualizar Cliente");
-        System.out.println("5. Deletar Cliente");
+        System.out.println("4. Deletar Cliente");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }

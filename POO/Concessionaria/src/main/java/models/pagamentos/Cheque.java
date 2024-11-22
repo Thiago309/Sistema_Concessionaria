@@ -1,4 +1,4 @@
-package Models;
+package models.pagamentos;
 
 import java.util.Date;
 

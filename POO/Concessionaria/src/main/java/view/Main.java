@@ -1,30 +1,20 @@
-package View;
+package view;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import Models.Cliente;
-import Models.Cliente.*;
-import Models.Ncv;
-import Models.Ncv.*;
-import Models.Nvv;
-import Models.Nvv.*;
-import Models.Veiculo;
-import Models.Veiculo.*;
-import Models.Seguro;
+import controller.ClientesController;
+import interfaces.RepositorioClientes;
+import repository.RepositorioClientesLista;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        ClienteService clienteService = new ClienteService();
-        VeiculoService veiculoService = new VeiculoService();
-        Seguro.SeguroService seguroService = new Seguro.SeguroService();
-        Nvv.Manutencao.ManutencaoService manutencaoService = new Nvv.Manutencao.ManutencaoService();
-        NcvService ncvService = new NcvService();
-        NvvService nvvService = new NvvService();
+        ClientesController clientesController = new ClientesController();
+        RepositorioClientes repositorioClientes = new RepositorioClientesLista();
         MenusConcessionaria menus = new MenusConcessionaria();
 
         int opc, opc2, opc3, opc4;
@@ -42,141 +32,22 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Cliente
-                                input.nextLine();
-                                System.out.print("Nome: ");
-                                String nome = input.nextLine();
-
-                                System.out.print("CEP: ");
-                                String cep = input.nextLine();
-
-                                System.out.print("Logradouro: ");
-                                String logradouro = input.nextLine();
-
-                                System.out.print("Número: ");
-                                int numero = input.nextInt();
-                                input.nextLine();
-
-                                System.out.print("Complemento: ");
-                                String complemento = input.nextLine();
-
-                                System.out.print("Bairro: ");
-                                String bairro = input.nextLine();
-
-                                System.out.print("Telefone: ");
-                                String telefone = input.nextLine();
-
-                                System.out.print("Estado: ");
-                                String estado = input.nextLine();
-
-                                System.out.print("Cidade: ");
-                                String cidade = input.nextLine();
-
-                                System.out.print("Email: ");
-                                String email = input.nextLine();
-
-                                Cliente novoCliente = clienteService.addCliente(nome, cep, logradouro, numero, complemento, bairro, telefone, estado, cidade, email);
-                                System.out.println("Cliente adicionado com ID: " + novoCliente.getIdCliente());
-                                break;
+                                clientesController.addCliente(repositorioClientes); break;
 
                             case 2:
                                 // Listar Clientes
-                                System.out.println("\n--- Lista de Clientes ---");
-                                List<Cliente> clientes = clienteService.getAllClientes(); // **Verde: Obtém a lista de clientes**
-                                if (clientes.isEmpty()) { // **Verde: Verifica se a lista está vazia**
-                                    System.out.println("Nenhum cliente cadastrado."); // **Verde: Exibe mensagem caso não haja clientes**
-                                } else {
-                                    for (Cliente cliente : clientes) {
-                                        System.out.println("ID: " + cliente.getIdCliente() + ", Nome: " + cliente.getNome());
-                                    }
-                                }
-                                break;
+                                clientesController.getAllClientes(repositorioClientes); break;
 
                             case 3:
                                 // Buscar Cliente
-                                System.out.print("Digite o ID do cliente: ");
-                                int idBuscar = input.nextInt();
-
-                                Cliente clienteEncontrado = clienteService.getCliente(idBuscar);
-
-                                if (clienteEncontrado != null) {
-                                    System.out.println("Cliente encontrado: " + clienteEncontrado.getNome());
-
-                                } else {
-                                    System.out.println("Cliente não encontrado.");
-
-                                }
-                                break;
+                                clientesController.readCliente(repositorioClientes); break;
 
                             case 4:
-                                // Atualizar Cliente
-                                System.out.print("Digite o ID do cliente a ser atualizado: ");
-                                int idAtualizar = input.nextInt();
-                                input.nextLine();
-
-                                Cliente clienteParaAtualizar = clienteService.getCliente(idAtualizar);
-
-                                if (clienteParaAtualizar != null) {
-                                    System.out.print("Novo Nome: ");
-                                    String novoNome = input.nextLine();
-
-                                    System.out.print("Novo CEP: ");
-                                    String novoCep = input.nextLine();
-
-                                    System.out.print("Novo Logradouro: ");
-                                    String novoLogradouro = input.nextLine();
-
-                                    System.out.print("Novo Número: ");
-                                    int novoNumero = input.nextInt();
-                                    input.nextLine();
-
-                                    System.out.print("Novo Complemento: ");
-                                    String novoComplemento = input.nextLine();
-
-                                    System.out.print("Novo Bairro: ");
-                                    String novoBairro = input.nextLine();
-
-                                    System.out.print("Novo Telefone: ");
-                                    String novoTelefone = input.nextLine();
-
-                                    System.out.print("Novo Estado: ");
-                                    String novoEstado = input.nextLine();
-
-                                    System.out.print("Nova Cidade: ");
-                                    String novaCidade = input.nextLine();
-
-                                    System.out.print("Novo Email: ");
-                                    String novoEmail = input.nextLine();
-
-                                    if (clienteService.updateCliente(idAtualizar, novoNome, novoCep, novoLogradouro, novoNumero, novoComplemento, novoBairro, novoTelefone, novoEstado, novaCidade, novoEmail)) {
-                                        System.out.println("Cliente atualizado com sucesso.");
-
-                                    } else {
-                                        System.out.println("Erro ao atualizar o cliente.");
-
-                                    }
-                                } else {
-                                    System.out.println("Cliente não encontrado.");
-
-                                }
-                                break;
-
-                            case 5:
                                 // Deletar Cliente
-                                System.out.print("Digite o ID do cliente a ser deletado: ");
-                                int idDeletar = input.nextInt();
-
-                                if (clienteService.deleteCliente(idDeletar)) {
-                                    System.out.println("Cliente deletado com sucesso.");
-
-                                } else {
-                                    System.out.println("Cliente não encontrado.");
-
-                                }
-                                break;
+                                clientesController.deleteCliente(repositorioClientes); break;
 
                             case 0:
-                                System.out.println("Retornando ao menu principal...");
-                                break;
+                                System.out.println("Retornando ao menu principal..."); break;
 
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
@@ -192,122 +63,27 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Veículo
-                                System.out.print("Chassi: ");
-                                int chassi = input.nextInt();
-                                input.nextLine();
-
-                                System.out.print("Quantidade de Km: ");
-                                double qtdKm = input.nextDouble();
-                                input.nextLine();
-
-                                System.out.print("Cor: ");
-                                String cor = input.nextLine();
-
-                                System.out.print("Localização no pátio: ");
-                                String localizacaoPatio = input.nextLine();
-
-                                System.out.print("Modelo: ");
-                                String modelo = input.nextLine();
-
-                                System.out.print("Marca: ");
-                                String marca = input.nextLine();
-
-                                System.out.print("Status do Veículo: ");
-                                String statusVeiculo = input.nextLine();
-
-                                System.out.print("Ano: ");
-                                String ano = input.nextLine();
-
-                                Veiculo novoVeiculo = veiculoService.addVeiculo(chassi, qtdKm, cor, localizacaoPatio, modelo, marca, statusVeiculo, ano);
-                                System.out.println("O novo veículo foi adicionado através do numero do chassi: " + novoVeiculo.getChassi());
 
                                 break;
 
                             case 2:
                                 // Listar Veículos
-                                System.out.println("\n--- Lista de Veículos ---");
 
-                                for (Veiculo veiculo : veiculoService.getAllVeiculos()) {
-                                    System.out.println("Chassi: " + veiculo.getChassi() + ", Modelo: " + veiculo.getModelo() + ", Marca: " + veiculo.getMarca());
-
-                                }
                                 break;
 
                             case 3:
                                 // Buscar Veículo
-                                System.out.print("Digite o chassi do veículo: ");
 
-                                int chassiBuscar = input.nextInt();
-                                input.nextLine();
-                                Veiculo veiculoEncontrado = veiculoService.getVeiculo(chassiBuscar);
-
-                                if (veiculoEncontrado != null) {
-                                    System.out.println("Veículo encontrado: Modelo " + veiculoEncontrado.getModelo() + ", Marca " + veiculoEncontrado.getMarca());
-
-                                } else {
-                                    System.out.println("Veículo não encontrado.");
-
-                                }
                                 break;
 
                             case 4:
                                 // Atualizar Veículo
-                                System.out.print("Digite o chassi do veículo a ser atualizado: ");
 
-                                int chassiAtualizar = input.nextInt();
-                                input.nextLine();
-
-                                Veiculo veiculoParaAtualizar = veiculoService.getVeiculo(chassiAtualizar);
-
-                                if (veiculoParaAtualizar != null) {
-                                    System.out.print("Nova Quantidade de Km: ");
-                                    double novaQtdKm = input.nextDouble();
-                                    input.nextLine();
-
-                                    System.out.print("Nova Cor: ");
-                                    String novaCor = input.nextLine();
-
-                                    System.out.print("Nova Localização no pátio: ");
-                                    String novaLocalizacaoPatio = input.nextLine();
-
-                                    System.out.print("Novo Modelo: ");
-                                    String novoModelo = input.nextLine();
-
-                                    System.out.print("Nova Marca: ");
-                                    String novaMarca = input.nextLine();
-
-                                    System.out.print("Novo Status do Veículo: ");
-                                    String novoStatusVeiculo = input.nextLine();
-
-                                    System.out.print("Novo Ano: ");
-                                    String novoAno = input.nextLine();
-
-                                    if (veiculoService.updateVeiculo(chassiAtualizar, novaQtdKm, novaCor, novaLocalizacaoPatio, novoModelo, novaMarca, novoStatusVeiculo, novoAno)) {
-                                        System.out.println("Veículo atualizado com sucesso.");
-
-                                    } else {
-                                        System.out.println("Erro ao atualizar informações do veículo.");
-
-                                    }
-                                } else {
-                                    System.out.println("Veículo não encontrado.");
-
-                                }
                                 break;
 
                             case 5:
                                 // Deletar Veículo
-                                System.out.print("Digite o chassi do veículo a ser deletado: ");
-                                int chassiDeletar = input.nextInt();
-                                input.nextLine();
 
-                                if (veiculoService.deleteVeiculo(chassiDeletar)) {
-                                    System.out.println("Veículo deletado com sucesso.");
-
-                                } else {
-                                    System.out.println("Veículo não encontrado.");
-
-                                }
                                 break;
 
                             case 0:

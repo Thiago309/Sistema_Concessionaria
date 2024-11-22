@@ -3,8 +3,7 @@
  * Este metodo regista todas as vendas dos veiculos para clientes  *
  * em um banco de dados.                                           *
  *******************************************************************/
-package Models;
-import jakarta.persistence.*;
+package models.notas;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.Date;
