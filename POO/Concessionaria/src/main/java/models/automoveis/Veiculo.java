@@ -1,5 +1,4 @@
 package models.automoveis;
-
 import jakarta.persistence.*;
 
 @Entity
