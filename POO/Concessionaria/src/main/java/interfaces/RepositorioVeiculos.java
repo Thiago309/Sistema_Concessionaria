@@ -1,7 +1,7 @@
 package interfaces;
 
 import java.util.List;
-import models.automoveis.Veiculo;
+import models.veiculos.Veiculo;
 
 public interface RepositorioVeiculos {
     void criar(Veiculo veiculo);

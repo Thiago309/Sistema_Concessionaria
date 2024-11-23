@@ -1,4 +1,4 @@
-package models.automoveis;
+package models.veiculos;
 import jakarta.persistence.*;
 
 @Entity
@@ -47,21 +47,17 @@ public class Veiculo {
         this.statusVeiculo = statusVeiculo;
         this.ano = ano;
     }
-
+    //Construtor da class Veiculo
     public Veiculo() {}
 
     // Getters e Setters
     public String getChassi() {
         return chassi;
     }
-    public void setChassi(String chassi) {
-        this.chassi = chassi;
-    }
+    public void setChassi(String chassi) {this.chassi = chassi;}
 
     public double getQtdKm() {return qtdKm;}
-    public void setQtdKm(double qtdKm) {
-        this.qtdKm = qtdKm;
-    }
+    public void setQtdKm(double qtdKm) {this.qtdKm = qtdKm;}
 
     public String getCor() {
         return cor;
@@ -104,54 +100,5 @@ public class Veiculo {
     public void setAno(String ano) {
         this.ano = ano;
     }
-
-
-/*
-        // Read procura pelo veiculo através do chassi (chave unica).
-        public Veiculo getVeiculo(int chassi) {
-            for (Veiculo veiculo : veiculos) {
-                if (veiculo.getChassi() == chassi) {
-                    return veiculo;
-
-                }
-            }
-            System.out.print("Veiculo não encontrado em nossos sistemas.");
-            return null; // Veículo não encontrado
-        }
-
-        // Update
-        public boolean updateVeiculo(int chassi, double qtdKm, String cor, String localizacaoPatio, String modelo,
-                                     String marca, String statusVeiculo, String ano) {
-            Veiculo veiculo = getVeiculo(chassi);
-            if (veiculo != null) {
-                veiculo.setQtdKm(qtdKm);
-                veiculo.setCor(cor);
-                veiculo.setLocalizacaoPatio(localizacaoPatio);
-                veiculo.setModelo(modelo);
-                veiculo.setMarca(marca);
-                veiculo.setStatusVeiculo(statusVeiculo);
-                veiculo.setAno(ano);
-                return true; // Atualização bem-sucedida
-            }
-            System.out.print("Veiculo não encontrado em nossos sistemas.");
-            return false; // Veículo não encontrado
-        }
-
-        // Delete
-        public boolean deleteVeiculo(int chassi) {
-            Veiculo veiculo = getVeiculo(chassi);
-            if (veiculo != null) {
-                veiculos.remove(veiculo);
-                return true; // Exclusão bem-sucedida
-            }
-            System.out.print("Veiculo não encontrado em nossos sistemas.");
-            return false; // Veículo não encontrado
-        }
-
-        // Listar todos os veículos
-        public List<Veiculo> getAllVeiculos() {
-            return new ArrayList<>(veiculos);
-        }
-    }*/
 }
 

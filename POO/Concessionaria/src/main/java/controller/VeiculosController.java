@@ -1,9 +1,8 @@
 package controller;
 
-import interfaces.RepositorioClientes;
-import jakarta.persistence.Column;
-import models.automoveis.Veiculo;
 import interfaces.RepositorioVeiculos;
+import jakarta.persistence.Column;
+import models.veiculos.Veiculo;
 import java.util.Scanner;
 
 public class VeiculosController {
@@ -20,30 +19,30 @@ public class VeiculosController {
     String statusVeiculo;
     String ano;
 
-    public void addVeiculo(RepositorioVeiculos repositorioVeiculos){
+    public void addVeiculo(RepositorioVeiculos repositorioVeiculos) {
         veiculo = new Veiculo();
 
-        System.out.println("Digite o chassi do veiculo: ");
+        System.out.println("Digite o numero de chassi do veiculo: ");
         chassi = input.nextLine();
         veiculo.setChassi(chassi);
 
-        System.out.println("Digite a quantidade de Quilometros rodados pelo veiculo: ");
+        System.out.println("Digite a quantidade de quilometros rodados: ");
         qtdKm = input.nextDouble();
         veiculo.setQtdKm(qtdKm);
 
-        System.out.println("Informe a cor do veiculo: ");
+        System.out.println("Digite a cor do automovel: ");
         cor = input.nextLine();
         veiculo.setCor(cor);
 
-        System.out.println("Informe a localização no pátio: ");
+        System.out.println("Digite o localizacao no pátio: ");
         localizacaoPatio = input.nextLine();
         veiculo.setLocalizacaoPatio(localizacaoPatio);
 
-        System.out.println("Informe o modelo do veiculo: ");
+        System.out.println("Digite o modelo: ");
         modelo = input.nextLine();
         veiculo.setModelo(modelo);
 
-        System.out.println("Informe a marca: ");
+        System.out.println("Digite o marca: ");
         marca = input.nextLine();
         veiculo.setMarca(marca);
 
@@ -51,22 +50,37 @@ public class VeiculosController {
         statusVeiculo = input.nextLine();
         veiculo.setStatusVeiculo(statusVeiculo);
 
-        System.out.println("Informe o ano do veiculo: ");
-        ano = input.nextLine();
-        veiculo.setAno(ano);
+        repositorioVeiculos.criar(veiculo);
     }
 
-    public void deleteVeiculo(RepositorioVeiculos repositorioClientes) {
+    public void deleteVeiculo(RepositorioVeiculos repositorioVeiculos) {
         System.out.print("Digite o Chassi do veiculo: ");
         chassi = input.nextLine();
 
-        if (chassi != null){
-            repositorioClientes.remover(chassi);
-            System.out.println("Cliente deletado com sucesso!");
+        if (chassi != null) {
+            repositorioVeiculos.remover(chassi);
+            System.out.println("Veiculo deletado com sucesso!");
 
-        }else{
-            System.out.println("Cliente não encontrado em nosso banco de dados!");
+        } else {
+            System.out.println("Veiculo não encontrado em nosso banco de dados!");
 
         }
+    }
+
+    public void readVeiculo(RepositorioVeiculos repositorioVeiculos) {
+        System.out.print("Digite o Chassi do veiculo: ");
+        chassi = input.nextLine();
+
+        if (chassi != null) {
+            System.out.println("Informações do Veiculo: \n" + repositorioVeiculos.buscar(chassi));
+
+        }else {
+            System.out.println("Veiculo não encontrado em nosso bando de dados!");
+
+        }
+    }
+
+    public void getAllClientes(RepositorioVeiculos repositorioVeiculos) {
+        System.out.println(repositorioVeiculos.listarTodos());
     }
 }

@@ -7,15 +7,19 @@ import java.util.*;
 import controller.ClientesController;
 import interfaces.RepositorioClientes;
 import repository.RepositorioClientesLista;
+import controller.VeiculosController;
+import interfaces.RepositorioVeiculos;
+import repository.RepositorioVeiculosLista;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-
+        MenusConcessionaria menus = new MenusConcessionaria();
         ClientesController clientesController = new ClientesController();
         RepositorioClientes repositorioClientes = new RepositorioClientesLista();
-        MenusConcessionaria menus = new MenusConcessionaria();
+        VeiculosController veiculosController = new VeiculosController();
+        RepositorioVeiculos repositorioVeiculos = new RepositorioVeiculosLista();
 
         int opc, opc2, opc3, opc4;
 
@@ -63,32 +67,24 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Veículo
-
-                                break;
+                                veiculosController.addVeiculo(repositorioVeiculos); break;
 
                             case 2:
                                 // Listar Veículos
-
-                                break;
+                                veiculosController.getAllClientes(repositorioVeiculos); break;
 
                             case 3:
                                 // Buscar Veículo
-
+                                veiculosController.readVeiculo(repositorioVeiculos); break;
                                 break;
 
                             case 4:
-                                // Atualizar Veículo
-
-                                break;
-
-                            case 5:
                                 // Deletar Veículo
-
-                                break;
+                                veiculosController.deleteVeiculo(repositorioVeiculos); break;
 
                             case 0:
-                                System.out.println("Saindo...");
-                                break;
+                                System.out.println("Retornando ao menu principal..."); break;
+
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }

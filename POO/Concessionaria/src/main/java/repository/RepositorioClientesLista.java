@@ -2,7 +2,6 @@ package repository;
 
 import interfaces.RepositorioClientes;
 import models.clientes.Cliente;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +15,7 @@ public class RepositorioClientesLista implements RepositorioClientes {
     @Override
     public void criar(Cliente cliente) { clientes.add(cliente); }
 
+    @Override
     public Cliente buscar(String cpf) {
         Cliente clienteProcurado = null;
         for (Cliente cliente : clientes) {
