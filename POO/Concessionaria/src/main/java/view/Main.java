@@ -4,22 +4,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import controller.ClientesController;
-import interfaces.RepositorioClientes;
-import repository.RepositorioClientesLista;
-import controller.VeiculosController;
-import interfaces.RepositorioVeiculos;
-import repository.RepositorioVeiculosLista;
+import controller.*;
+import interfaces.*;
+import repository.*;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
         MenusConcessionaria menus = new MenusConcessionaria();
+
         ClientesController clientesController = new ClientesController();
         RepositorioClientes repositorioClientes = new RepositorioClientesLista();
+
         VeiculosController veiculosController = new VeiculosController();
         RepositorioVeiculos repositorioVeiculos = new RepositorioVeiculosLista();
+
+        ServicosController servicosController = new ServicosController();
+        RepositorioServicos repositorioServicos = new RepositorioServicosLista();
+
+        SegurosController segurosController = new SegurosController();
+        RepositorioSeguros repositorioSeguros = new RepositorioSegurosLista();
 
         int opc, opc2, opc3, opc4;
 
@@ -110,98 +115,37 @@ public class Main {
                                         switch (opc4) {
                                             case 1:
                                                 // Adicionar Seguro
-                                                System.out.print("\nNúmero da Apólice: ");
-                                                int numeroApolice = input.nextInt();
-
-                                                System.out.print("Chassi: ");
-                                                int chassi = input.nextInt();
-
-                                                Date segDataInicial = null, segDataFinal = null; // iniciando variaveis
-
-                                                System.out.print("Informe a Data Inicial da Apólice (dd/MM/yyyy): ");
-                                                String dataInicial = input.nextLine();
-                                                input.nextLine();
-
-                                                System.out.print("Informe a Data Final (dd/MM/yyyy): ");
-                                                String dataFinal = input.nextLine();
-                                                SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-
-                                                try {
-                                                    segDataInicial = formatoData.parse(dataInicial);
-                                                    System.out.println("Data registrada com sucesso: " + segDataInicial);
-
-                                                } catch (ParseException e) {
-                                                    System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
-
-                                                }
-
-                                                System.out.print("Preço do Seguro: ");
-                                                BigDecimal segPreco = input.nextBigDecimal();
-
-                                                System.out.print("Cobertura: ");
-                                                String cobertura = input.nextLine();
-                                                input.nextLine();
-
-                                                System.out.print("Franquia: ");
-                                                BigDecimal franquia = input.nextBigDecimal();
-                                                input.nextLine();
-
-                                                Seguro novoSeguro = seguroService.addSeguro(numeroApolice, chassi, segDataInicial, segDataFinal, segPreco, cobertura, franquia);
-                                                System.out.println("Seguro adicionado com número de apólice: " + novoSeguro.getNumeroApolice());
-
+                                                servicosController.addServico(repositorioServicos);
+                                                segurosController.addSeguro(repositorioSeguros);
                                                 break;
 
                                             case 2:
                                                 // Listar Seguros
-                                                System.out.println("\n--- Lista de Seguros ---");
-
-                                                for (Seguro seguro : seguroService.getAllSeguros()) {
-                                                    System.out.println("Número da Apólice: " + seguro.getNumeroApolice() + ", Chassi: " + seguro.getChassi() + ", Cobertura: " + seguro.getCobertura());
-
-                                                }
-
+                                                servicosController.getAllServicos(repositorioServicos);
+                                                segurosController.getAllSeguros(repositorioSeguros);
                                                 break;
 
                                             case 3:
                                                 // Buscar Seguro
-                                                System.out.print("Digite o número da apólice: ");
-
-                                                int numeroBuscar = input.nextInt();
-
-                                                Seguro seguroEncontrado = seguroService.getSeguro(numeroBuscar);
-
-                                                if (seguroEncontrado != null) {
-                                                    System.out.println("Seguro encontrado: Cobertura " + seguroEncontrado.getCobertura() + ", Preço " + seguroEncontrado.getSegPreco());
-
-                                                } else {
-                                                    System.out.println("Seguro não encontrado.");
-                                                }
+                                                servicosController.deleteServico(repositorioServicos);
+                                                segurosController.deleteSeguro(repositorioSeguros);
                                                 break;
 
                                             case 4:
                                                 // Deletar Seguro
-                                                System.out.print("Digite o número da apólice do seguro a ser deletado: ");
-                                                int numeroDeletar = input.nextInt();
-
-                                                if (seguroService.deleteSeguro(numeroDeletar)) {
-                                                    System.out.println("Seguro deletado com sucesso.");
-
-                                                } else {
-                                                    System.out.println("Seguro não encontrado.");
-
-                                                }
+                                                servicosController.deleteServico(repositorioServicos);
+                                                segurosController.deleteSeguro(repositorioSeguros);
                                                 break;
 
                                             case 0:
-                                                System.out.println("Saindo...");
-                                                break;
+                                                System.out.println("Retornando ao menu principal..."); break;
 
                                             default:
                                                 System.out.println("Opção inválida. Tente novamente.");
                                         }
                                     } while (opc2 != 0);
 
-                                } else if (opc3 == 2) {
+            /*                    } else if (opc3 == 2) {
                                     do {
                                         menus.manutencao();
                                         opc4 = input.nextInt();
@@ -362,7 +306,7 @@ public class Main {
                         }
                     } while (opc2 != 0);
                     break;
-
+*/
                 case 4:
                     do {
                         menus.compraVeiculo();

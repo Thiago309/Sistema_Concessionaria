@@ -1,144 +1,68 @@
 package models.servicos;
+
 import java.math.BigDecimal;
-import java.util.*;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="seguro")
+@MappedSuperclass
 public class Seguro {
+    @Id
+    @Column(name="numeroApolice")
     private int numeroApolice;
-    private int chassi;
-    private Date segDataInicial;
-    private Date segDataFinal;
-    private BigDecimal segPreco;
+
+    @Column(name="chassi")
+    private String segChassi;
+
+    @Column(name="segDataInicial")
+    private String segDataInicial;
+
+    @Column(name="segDataFinal")
+    private String segDataFinal;
+
+    @Column(name="segPreco")
+    private double segPreco;
+
+    @Column(name="cobertura")
     private String cobertura;
-    private BigDecimal franquia;
 
-    // Getters e setters
-    public int getNumeroApolice() {
-        return numeroApolice;
-    }
+    @Column(name="tranquil")
+    private double franquia;
 
-    public void setNumeroApolice(int numeroApolice) {
+    public Seguro(int numeroApolice, String segChassi, String segDataInicial, String segDataFinal, double segPreco,
+                  String cobertura, double franquia) {
+
         this.numeroApolice = numeroApolice;
-    }
-
-    public int getChassi() {
-        return chassi;
-    }
-
-    public void setChassi(int chassi) {
-        this.chassi = chassi;
-    }
-
-    public Date getSegDataInicial() {
-        return segDataInicial;
-    }
-
-    public void setSegDataInicial(Date segDataInicial) {
+        this.segChassi = segChassi;
         this.segDataInicial = segDataInicial;
-    }
-
-    public Date getSegDataFinal() {
-        return segDataFinal;
-    }
-
-    public void setSegDataFinal(Date segDataFinal) {
         this.segDataFinal = segDataFinal;
-    }
-
-    public BigDecimal getSegPreco() {
-        return segPreco;
-    }
-
-    public void setSegPreco(BigDecimal segPreco) {
         this.segPreco = segPreco;
-    }
-
-    public String getCobertura() {
-        return cobertura;
-    }
-
-    public void setCobertura(String cobertura) {
         this.cobertura = cobertura;
-    }
-
-    public BigDecimal getFranquia() {
-        return franquia;
-    }
-
-    public void setFranquia(BigDecimal franquia) {
         this.franquia = franquia;
     }
+    //Construtor da class Seguro
+    public Seguro() {}
 
-    public static class SeguroService {
-        private List<Seguro> seguros = new ArrayList<>();
+    // Getters e setters
+    public int getNumeroApolice() {return numeroApolice;}
+    public void setNumeroApolice(int numeroApolice) {this.numeroApolice = numeroApolice;}
 
-        // Create
-        public Seguro addSeguro(int numeroApolice, int chassi, Date segDataInicial, Date segDataFinal,
-                                BigDecimal segPreco, String cobertura, BigDecimal franquia) {
+    public String getSegChassi() {return segChassi;}
+    public void setSegChassi(String segChassi) {this.segChassi = segChassi;}
 
-            Seguro seguro = new Seguro();
+    public String getSegDataInicial() {return segDataInicial;}
+    public void setSegDataInicial(String segDataInicial) {this.segDataInicial = segDataInicial;}
 
-            seguro.setNumeroApolice(numeroApolice);
-            seguro.setChassi(chassi);
-            seguro.setSegDataInicial(segDataInicial);
-            seguro.setSegDataFinal(segDataFinal);
-            seguro.setSegPreco(segPreco);
-            seguro.setCobertura(cobertura);
-            seguro.setFranquia(franquia);
-            seguros.add(seguro);
+    public String getSegDataFinal() {return segDataFinal;}
+    public void setSegDataFinal(String segDataFinal) {this.segDataFinal = segDataFinal;}
 
-            return seguro;
-        }
+    public double getSegPreco() {return segPreco;}
+    public void setSegPreco(double segPreco) {this.segPreco = segPreco;}
 
-        // Read
-        public Seguro getSeguro(int numeroApolice) {
-            for (Seguro seguro : seguros) {
-                if (seguro.getNumeroApolice() == numeroApolice) {
-                    return seguro;
+    public String getCobertura() {return cobertura;}
+    public void setCobertura(String cobertura) {this.cobertura = cobertura;}
 
-                }
-            }
-            System.out.print("Apolice não encontrada em nossos sistemas.");
-            return null; // Seguro não encontrado
-
-        }
-
-        // Update
-        public boolean updateSeguro(int numeroApolice, int chassi, Date segDataInicial, Date segDataFinal,
-                                    BigDecimal segPreco, String cobertura, BigDecimal franquia) {
-
-            Seguro seguro = getSeguro(numeroApolice);
-
-            if (seguro != null) {
-                seguro.setChassi(chassi);
-                seguro.setSegDataInicial(segDataInicial);
-                seguro.setSegDataFinal(segDataFinal);
-                seguro.setSegPreco(segPreco);
-                seguro.setCobertura(cobertura);
-                seguro.setFranquia(franquia);
-
-                return true; // Atualização bem-sucedida
-            }
-            System.out.print("Apolice não encontrada em nossos sistemas.");
-            return false; // Seguro não encontrado
-
-        }
-
-        // Delete
-        public boolean deleteSeguro(int numeroApolice) {
-            Seguro seguro = getSeguro(numeroApolice);
-            if (seguro != null) {
-                seguros.remove(seguro);
-                return true; // Exclusão bem-sucedida
-            }
-            System.out.print("Apolice não encontrada em nossos sistemas.");
-            return false; // Seguro não encontrado
-
-        }
-
-        // Listar todos os seguros
-        public List<Seguro> getAllSeguros() {
-            return new ArrayList<>(seguros);
-
-        }
+    public double getFranquia() {return franquia;}
+    public void setFranquia(double franquia) {this.franquia = franquia;}
     }
-}

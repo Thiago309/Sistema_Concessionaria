@@ -50,5 +50,4 @@ public class Servico {
 
     public String getDescricaoServico() {return descricaoServico;}
     public void setDescricaoServico(String descricaoServico) {this.descricaoServico = descricaoServico;}
-
 }
