@@ -40,9 +40,7 @@ public class RepositorioClientesLista implements RepositorioClientes {
     }
 
     @Override
-    public void editar(Cliente cliente) {
-
-    }
+    public void editar(Cliente cliente) {}
 
     @Override
     public List<Cliente> listarTodos() {

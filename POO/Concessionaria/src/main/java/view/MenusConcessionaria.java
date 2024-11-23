@@ -36,8 +36,7 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Veiculos");
         System.out.println("2. Listar Veiculos");
         System.out.println("3. Buscar Veiculos");
-        System.out.println("4. Atualizar Veiculos");
-        System.out.println("5. Deletar Veiculos");
+        System.out.println("4. Deletar Veiculos");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
