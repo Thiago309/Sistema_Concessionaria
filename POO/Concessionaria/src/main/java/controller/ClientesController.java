@@ -1,5 +1,4 @@
 package controller;
-
 import interfaces.RepositorioClientes;
 import jakarta.persistence.Column;
 import models.clientes.Cliente;
@@ -25,6 +24,7 @@ public class ClientesController {
     public void addCliente(RepositorioClientes repositorioClientes) {
         cliente = new Cliente();
 
+        System.out.println("Você selecionou a opção registrar um cliente.\n");
         System.out.print("Digite o nome do cliente: ");
         nome = input.nextLine();
         cliente.setNome(nome);
@@ -73,6 +73,8 @@ public class ClientesController {
     }
 
     public void deleteCliente(RepositorioClientes repositorioClientes) {
+
+        System.out.println("Você selecionou a opção remover um cliente.\n");
         System.out.print("Digite o CPF do cliente: ");
         cpf = input.nextLine();
 
@@ -87,6 +89,8 @@ public class ClientesController {
     }
 
     public void readCliente(RepositorioClientes repositorioClientes) {
+
+        System.out.println("Você selecionou a opção buscar por um cliente.\n");
         System.out.print("Digite o CPF do cliente: ");
         cpf = input.nextLine();
         if (cpf != null) {
@@ -99,7 +103,7 @@ public class ClientesController {
     }
 
     public void getAllClientes(RepositorioClientes repositorioClientes) {
+        System.out.println("Você selecionou a opção listar todos os clientes.\n");
         System.out.println(repositorioClientes.listarTodos());
     }
-
 }

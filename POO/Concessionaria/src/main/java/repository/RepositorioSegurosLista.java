@@ -8,9 +8,7 @@ import java.util.List;
 public class RepositorioSegurosLista implements RepositorioSeguros {
     List<Seguro> seguros;
 
-    public RepositorioSegurosLista() {
-        seguros = new ArrayList<Seguro>();
-    }
+    public RepositorioSegurosLista() {seguros = new ArrayList<Seguro>();}
 
     @Override
     public void criar(Seguro seguro) {seguros.add(seguro);}
@@ -24,7 +22,6 @@ public class RepositorioSegurosLista implements RepositorioSeguros {
             }
         }
         return seguroProcurado;
-
     }
 
     @Override

@@ -1,11 +1,8 @@
 package controller;
 
 import interfaces.RepositorioSeguros;
-import interfaces.RepositorioServicos;
 import jakarta.persistence.Column;
 import models.servicos.Seguro;
-
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +10,7 @@ import java.util.Scanner;
 
 public class SegurosController {
     Scanner input = new Scanner(System.in);
-    Seguro seguro = new Seguro();
+    Seguro seguro;
 
     int numeroApolice;
     String segChassi;
@@ -26,6 +23,7 @@ public class SegurosController {
     public void addSeguro(RepositorioSeguros repositorioSeguros) {
         seguro = new Seguro();
 
+        System.out.println("Você selecionou a opção registrar um seguro.\n");
         System.out.println("Digite o numero da Apolice do seguro: ");
         numeroApolice = input.nextInt();
         seguro.setNumeroApolice(numeroApolice);
@@ -35,13 +33,13 @@ public class SegurosController {
         seguro.setSegChassi(segChassi);
 
         Date segDataInicial1 = null, segDataFinal1 = null;
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
         System.out.print("Informe a Data Inicial do servico (dd/MM/yyyy): ");
         segDataInicial = input.next();
 
         System.out.print("Informe a Data Final (dd/MM/yyyy): ");
         segDataFinal = input.next();
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
         try{
             segDataInicial1 = formatoData.parse(segDataInicial);
@@ -76,6 +74,8 @@ public class SegurosController {
     }
 
     public void deleteSeguro(RepositorioSeguros repositorioSeguros) {
+
+        System.out.println("Você selecionou a opção remover um seguro.\n");
         System.out.println("Digite o numero da Apolice do seguro: ");
         numeroApolice = input.nextInt();
 
@@ -89,6 +89,8 @@ public class SegurosController {
     }
 
     public void readSeguro(RepositorioSeguros repositorioSeguros) {
+
+        System.out.println("Você selecionou a opção buscar por um seguro.\n");
         System.out.println("Digite o numero da Apolice do seguro: ");
         numeroApolice = input.nextInt();
         if (numeroApolice != 0){
@@ -100,6 +102,7 @@ public class SegurosController {
     }
 
     public void getAllSeguros(RepositorioSeguros repositorioSeguros) {
+        System.out.println("Você selecionou a opção de listar todos os seguros.\n");
         System.out.println(repositorioSeguros.listarTodos());
     }
 }

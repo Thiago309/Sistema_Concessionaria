@@ -22,7 +22,8 @@ public class ServicosController {
     public void addServico(RepositorioServicos repositorioServicos) {
         servico = new Servico();
 
-        /*O id do serviço tem que ser informado já que é uma tabela de relacionamento com  a tabela manutenção ou
+        System.out.println("Você selecionou a opção registrar um serviço.\n");
+        /*O id do serviço tem que ser informado já que é uma tabela de relacionamento com a tabela manutenção ou
         seguro*/
 
         System.out.println("Digite o id do servico: ");
@@ -64,6 +65,8 @@ public class ServicosController {
     }
 
     public void deleteServico(RepositorioServicos repositorioServicos) {
+
+        System.out.println("Você selecionou a opção deletar um serviço.\n");
         System.out.print("Informe o ID do servico: ");
         idServico = input.nextInt();
 
@@ -78,6 +81,7 @@ public class ServicosController {
     }
 
     public void readServico(RepositorioServicos repositorioServicos) {
+        System.out.println("Você selecionou a opção buscar por um serviço.\n");
         System.out.print("Informe o ID do servico: ");
         idServico = input.nextInt();
         if (idServico != 0) {
@@ -90,7 +94,7 @@ public class ServicosController {
     }
 
     public void getAllServicos(RepositorioServicos repositorioServicos) {
+        System.out.println("Você selecionou a opção listar todos os serviços.\n");
         System.out.println(repositorioServicos.listarTodos());
-
     }
 }

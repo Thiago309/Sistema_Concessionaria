@@ -1,53 +1,28 @@
 package models.funcionarios;
-import models.notas.Ncv;
-import models.notas.Nvv;
+import jakarta.persistence.*;
 
-import java.util.List;
-
+@Entity
+@Table(name="cliente")
+@MappedSuperclass
 public class Funcionario {
-    private String idFuncionario;  // Verifique se este é o tipo desejado (String ou int)
+    @Id
+    @Column(name="idFuncionario")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Gera ID automaticamente no banco
+    private int idFuncionario;
+
+    @Column(name="nome")
     private String nome;
-    private List<Ncv> ncvs;
-    private List<Nvv> nvv;
 
-    // Construtor
-    public Funcionario(String idFuncionario, String nome, List<Ncv> ncv, List<Nvv> nvv) {
+    public Funcionario(int idFuncionario, String nome) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
-        this.ncvs = ncvs;
-        this.nvv = nvv;
     }
 
-    // Getters e Setters
-    public String getIdFuncionario() {  // Altere para int se idFuncionario for um int
-        return idFuncionario;
-    }
+    public Funcionario() {}
 
-    public void setIdFuncionario(String idFuncionario) {  // Altere para int se necessário
-        this.idFuncionario = idFuncionario;
-    }
+    public int getIdFuncionario() {return idFuncionario;}
+    public void setIdFuncionario(int idFuncionario) {this.idFuncionario = idFuncionario;}
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Ncv> getNcvs() {
-        return ncvs;
-    }
-
-    public void setNcvs(List<Ncv> ncvs) {
-        this.ncvs = ncvs;
-    }
-
-    public List<Nvv> getNvv() {
-        return nvv;
-    }
-
-    public void setNvv(List<Nvv> nvv) {
-        this.nvv = nvv;
-    }
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
 }

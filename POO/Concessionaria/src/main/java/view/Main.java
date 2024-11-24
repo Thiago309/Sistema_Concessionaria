@@ -1,9 +1,6 @@
 package view;
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
+import java.util.*;
 import controller.*;
 import interfaces.*;
 import repository.*;
@@ -25,6 +22,18 @@ public class Main {
 
         SegurosController segurosController = new SegurosController();
         RepositorioSeguros repositorioSeguros = new RepositorioSegurosLista();
+
+        ManutencaoController manutencaoController = new ManutencaoController();
+        RepositorioManutencoes repositorioManutencoes = new RepositorioManutencoesLista();
+
+        NcvsController ncvsController = new NcvsController();
+        RepositorioNcvs repositorioNcvs = new RepositorioNcvLista();
+
+        NvvsController nvvsController = new NvvsController();
+        RepositorioNvvs repositorioNvvs = new RepositorioNvvLista();
+
+        FuncionariosController funcionariosController = new FuncionariosController();
+        RepositorioFuncionarios repositorioFuncionarios = new RepositorioFuncionariosLista();
 
         int opc, opc2, opc3, opc4;
 
@@ -81,7 +90,6 @@ public class Main {
                             case 3:
                                 // Buscar Veículo
                                 veiculosController.readVeiculo(repositorioVeiculos); break;
-                                break;
 
                             case 4:
                                 // Deletar Veículo
@@ -114,7 +122,7 @@ public class Main {
 
                                         switch (opc4) {
                                             case 1:
-                                                // Adicionar Seguro
+                                                // Adicionar Seguros
                                                 servicosController.addServico(repositorioServicos);
                                                 segurosController.addSeguro(repositorioSeguros);
                                                 break;
@@ -127,8 +135,8 @@ public class Main {
 
                                             case 3:
                                                 // Buscar Seguro
-                                                servicosController.deleteServico(repositorioServicos);
-                                                segurosController.deleteSeguro(repositorioSeguros);
+                                                servicosController.readServico(repositorioServicos);
+                                                segurosController.readSeguro(repositorioSeguros);
                                                 break;
 
                                             case 4:
@@ -145,152 +153,31 @@ public class Main {
                                         }
                                     } while (opc2 != 0);
 
-            /*                    } else if (opc3 == 2) {
+                                } else if (opc3 == 2) {
                                     do {
                                         menus.manutencao();
                                         opc4 = input.nextInt();
-                                        input.nextLine();
+
                                         switch (opc4) {
 
                                             case 1:
-                                                System.out.print("ID da Manutenção: ");
-                                                int idManutencao = input.nextInt();
-                                                input.nextLine();
-
-                                                System.out.print("Chassi: ");
-                                                int chassi = input.nextInt();
-                                                input.nextLine();
-
-                                                System.out.print("Custo da Manutenção: ");
-                                                BigDecimal custoManutencao = input.nextBigDecimal();
-                                                input.nextLine();
-
-                                                Date manudataProximaManutencao = null;
-
-                                                System.out.print("Data da Próxima Manutenção (dd/MM/yyyy): ");
-                                                String dataProximaManutencao = input.nextLine();
-                                                SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-
-                                                try {
-                                                    manudataProximaManutencao = formatoData.parse(dataProximaManutencao);
-                                                    System.out.println("Data registrada com sucesso: " + manudataProximaManutencao);
-
-                                                } catch (Exception e) {
-                                                    System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
-                                                }
-
-                                                System.out.print("Responsável: ");
-                                                String responsavel = input.nextLine();
-
-                                                System.out.print("Tipo de Manutenção: ");
-                                                String tipoManutencao = input.nextLine();
-
-                                                System.out.print("Status: "); // Em processo, concluida ou cancelada.
-                                                String status = input.nextLine();
-
-                                                Nvv.Manutencao novaManutencao = manutencaoService.addManutencao(idManutencao, chassi, custoManutencao,
-                                                        dataProximaManutencao, responsavel, tipoManutencao, status);
-
-                                                System.out.println("Manutenção adicionada com ID: " + novaManutencao.getIdManutencao());
-                                                break;
+                                                // Adicionar Manutencao
+                                                manutencaoController.addManutencao(repositorioManutencoes); break;
 
                                             case 2:
-                                                System.out.println("\n--- Lista de Manutenções ---");
-
-                                                for (Nvv.Manutencao manutencao : manutencaoService.getAllManutencoes()) {
-                                                    System.out.println("ID: " + manutencao.getIdManutencao() + ", Chassi: " + manutencao.getChassi() + ", Responsável: " + manutencao.getResponsavel());
-
-                                                }
-                                                break;
+                                                // Listar Manuteções
+                                                manutencaoController.getAllManutencoes(repositorioManutencoes); break;
 
                                             case 3:
-                                                System.out.print("Digite o ID da manutenção: ");
-                                                int idBuscar = input.nextInt();
-                                                input.nextLine();
-
-                                                Nvv.Manutencao manutencaoEncontrada = manutencaoService.getManutencao(idBuscar);
-
-                                                if (manutencaoEncontrada != null) {
-                                                    System.out.println("Manutenção encontrada: Tipo " + manutencaoEncontrada.getTipoManutencao() + ", Status " + manutencaoEncontrada.getStatus());
-
-                                                } else {
-                                                    System.out.println("Manutenção não encontrada.");
-
-                                                }
-                                                break;
+                                                // Buscar Veiculos
+                                                manutencaoController.readManutencao(repositorioManutencoes); break;
 
                                             case 4:
-                                                System.out.print("Digite o ID da manutenção para atualizar: ");
-                                                int idAtualizar = input.nextInt();
-                                                input.nextLine();
-
-                                                Nvv.Manutencao manutencaoParaAtualizar = manutencaoService.getManutencao(idAtualizar);
-
-                                                if (manutencaoParaAtualizar != null) {
-                                                    Date manuNovaDataProxima = null;
-
-                                                    System.out.print("Novo Chassi: ");
-                                                    int novoChassi = input.nextInt();
-                                                    input.nextLine();
-
-                                                    System.out.print("Novo Custo da Manutenção: ");
-                                                    BigDecimal novoCusto = input.nextBigDecimal();
-                                                    input.nextLine();
-
-                                                    System.out.print("Nova Data da Próxima Manutenção (dd/MM/yyyy): ");
-                                                    String novaDataProxima = input.nextLine();
-                                                    SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
-
-                                                    try {
-                                                        manuNovaDataProxima = formatoData1.parse(novaDataProxima);
-                                                        System.out.println("Data registrada com sucesso: " + manuNovaDataProxima);
-
-                                                    } catch (ParseException i) {
-                                                        System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
-                                                        System.out.println("Tente novamente...");
-
-                                                    }
-
-                                                    System.out.print("Novo Responsável: ");
-                                                    String novoResponsavel = input.nextLine();
-
-                                                    System.out.print("Novo Tipo de Manutenção: ");
-                                                    String novoTipo = input.nextLine();
-
-                                                    System.out.print("Novo Status: ");
-                                                    String novoStatus = input.nextLine();
-
-                                                    if (manutencaoService.updateManutencao(idAtualizar, novoChassi, novoCusto, novaDataProxima, novoResponsavel, novoTipo, novoStatus)) {
-                                                        System.out.println("Manutenção atualizada com sucesso.");
-
-                                                    } else {
-                                                        System.out.println("Erro ao atualizar a manutenção.");
-
-                                                    }
-                                                    break;
-
-                                                } else {
-                                                    System.out.println("Manutenção não encontrada.");
-                                                }
-                                                break;
-
-                                            case 5:
-                                                System.out.print("Digite o ID da manutenção para deletar: ");
-                                                int idDeletar = input.nextInt();
-                                                input.nextLine();
-
-                                                if (manutencaoService.deleteManutencao(idDeletar)) {
-                                                    System.out.println("\nManutenção deletada com sucesso.");
-
-                                                } else {
-                                                    System.out.println("\nManutenção não encontrada.");
-
-                                                }
-                                                break;
+                                                // Deletar Manutencao
+                                                manutencaoController.deleteManutencao(repositorioManutencoes); break;
 
                                             case 0:
-                                                System.out.println("Saindo...");
-                                                break;
+                                                System.out.println("Retornando ao menu principal..."); break;
 
                                             default:
                                                 System.out.println("Opção inválida. Tente novamente.");
@@ -306,7 +193,7 @@ public class Main {
                         }
                     } while (opc2 != 0);
                     break;
-*/
+
                 case 4:
                     do {
                         menus.compraVeiculo();
@@ -314,74 +201,23 @@ public class Main {
 
                         switch (opc2) {
                             case 1:
-                                Date compraDataNCV = null;
-
-                                System.out.print("ID do NCV: ");
-                                int idNCV = input.nextInt();
-
-                                System.out.print("ID do Funcionário: ");
-                                int idFuncionario = input.nextInt();
-                                input.nextLine();
-
-                                System.out.print("Data do NCV (dd/MM/yyyy): ");
-                                String dataNCV = input.nextLine();
-                                SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
-
-                                try {
-                                    compraDataNCV = formatoData1.parse(dataNCV);
-                                    System.out.println("Data registrada com sucesso: " + compraDataNCV);
-
-                                } catch (ParseException i) {
-                                    System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
-                                    System.out.println("Tente novamente...");
-                                }
-
-                                System.out.print("Valor do NCV: ");
-                                BigDecimal valorNCV = input.nextBigDecimal();
-
-                                Date NovaDataNCV = new Date();
-                                Ncv novoNcv = ncvService.addNcv(idNCV, idFuncionario, NovaDataNCV, valorNCV);
-                                System.out.println("NCV adicionado com ID: " + novoNcv.getIdNCV());
-                                break;
+                                // Adicionar Notas de Compras
+                                ncvsController.addNcv(repositorioNcvs); break;
 
                             case 2:
-                                System.out.println("\n--- Lista de NCVs ---");
-
-                                for (Ncv ncv : ncvService.getAllNcvs()) {
-                                    System.out.println("ID: " + ncv.getIdNCV() + ", Funcionário: " + ncv.getIdFuncionario() + ", Valor: " + ncv.getValorNCV());
-                                }
-                                break;
+                                // Listar Notas de Compras
+                                ncvsController.getAllNcvs(repositorioNcvs); break;
 
                             case 3:
-                                System.out.print("Digite o ID do NCV: ");
-                                int idBuscar = input.nextInt();
-                                Ncv ncvEncontrado = ncvService.getNcv(idBuscar);
-
-                                if (ncvEncontrado != null) {
-                                    System.out.println("NCV encontrado: ID " + ncvEncontrado.getIdNCV() + ", Data " + ", Valor " + ncvEncontrado.getValorNCV());
-
-                                } else {
-                                    System.out.println("NCV não encontrado.");
-
-                                }
-                                break;
+                                // Buscar Nota
+                                ncvsController.readNcv(repositorioNcvs); break;
 
                             case 4:
-                                System.out.print("Digite o ID do NCV para deletar: ");
-                                int idDeletar = input.nextInt();
-
-                                if (ncvService.deleteNcv(idDeletar)) {
-                                    System.out.println("NCV deletado com sucesso.");
-
-                                } else {
-                                    System.out.println("NCV não encontrado.");
-
-                                }
-                                break;
+                                // Deletar Nota
+                                ncvsController.deleteNcv(repositorioNcvs); break;
 
                             case 0:
-                                System.out.println("Saindo...");
-                                break;
+                                System.out.println("Retornando ao menu principal..."); break;
 
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
@@ -396,87 +232,60 @@ public class Main {
 
                         switch (opc2) {
                             case 1:
-                                Date vendaDataNVV = null;
-
-                                System.out.print("ID do NVV: ");
-                                int idNVV = input.nextInt();
-
-                                System.out.print("ID do Funcionário: ");
-                                int idFuncionario = input.nextInt();
-                                input.nextLine();
-
-                                System.out.print("Data do NVV (dd/MM/yyyy): ");
-                                String dataNVV = input.nextLine();
-                                SimpleDateFormat formatoData1 = new SimpleDateFormat("dd/MM/yyyy");
-
-                                try {
-                                    vendaDataNVV = formatoData1.parse(dataNVV);
-                                    System.out.println("Data registrada com sucesso: " + vendaDataNVV);
-
-                                } catch (ParseException e) {
-                                    System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
-                                    System.out.println("Tente novamente...");
-
-                                }
-
-                                System.out.print("Valor do NVV: ");
-                                double valorNVV = input.nextDouble();
-
-                                Nvv novoNvv = nvvService.addNvv(idNVV, idFuncionario, dataNVV, valorNVV);
-                                System.out.println("NVV adicionado com ID: " + novoNvv.getIdNVV());
-                                break;
+                                // Adicionar Notas de Vendas
+                                nvvsController.addNvv(repositorioNvvs); break;
 
                             case 2:
-                                System.out.println("\n--- Lista de NVVs ---");
-
-                                for (Nvv nvv : nvvService.getAllNvvs()) {
-                                    System.out.println("ID: " + nvv.getIdNVV() + ", Funcionário: " + nvv.getIdFuncionario() +
-                                            ", Data: " + ", Valor: " + nvv.getValorNVV());
-
-                                }
-                                break;
+                                // Listar Notas de Compras
+                                nvvsController.getAllNvvs(repositorioNvvs); break;
 
                             case 3:
-                                System.out.print("Digite o ID do NVV: ");
-                                int idBuscar = input.nextInt();
-
-                                Nvv nvvEncontrado = nvvService.getNvv(idBuscar);
-
-                                if (nvvEncontrado != null) {
-                                    System.out.println("NVV encontrado: ID " + nvvEncontrado.getIdNVV() + ", Funcionário " + nvvEncontrado.getIdFuncionario() +
-                                            ", Data " + ", Valor " + nvvEncontrado.getValorNVV());
-
-                                } else {
-                                    System.out.println("NVV não encontrado.");
-
-                                }
-                                break;
+                                // Buscar Nota
+                                nvvsController.readNvv(repositorioNvvs); break;
 
                             case 4:
-                                System.out.print("Digite o ID do NVV para deletar: ");
-                                int idDeletar = input.nextInt();
-
-                                if (nvvService.deleteNvv(idDeletar)) {
-                                    System.out.println("NVV deletado com sucesso.");
-
-                                } else {
-                                    System.out.println("NVV não encontrado.");
-
-                                }
-                                break;
+                                // Deletar Nota
+                                nvvsController.deleteNvv(repositorioNvvs); break;
 
                             case 0:
-                                System.out.println("Saindo...");
-                                break;
+                                System.out.println("Retornando ao menu principal..."); break;
 
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
                     } while (opc2 != 0);
+                case 6:
+                    do{
+                        menus.funcionarios();
+                        opc2 = input.nextInt();
 
+                        switch (opc2){
+                            case 1:
+                                // Adicionar Funcionario
+                                funcionariosController.addFuncionario(repositorioFuncionarios); break;
+
+                            case 2:
+                                // Listar Funcionarios
+                                funcionariosController.getAllFuncionarios(repositorioFuncionarios); break;
+
+                            case 3:
+                                // Buscar Funcionario
+                                funcionariosController.readFuncionario(repositorioFuncionarios); break;
+
+                            case 4:
+                                // Deletar Funcionario
+                                funcionariosController.deleteFuncionario(repositorioFuncionarios); break;
+
+                            case 0:
+                                System.out.println("Retornando ao menu principal..."); break;
+
+                            default:
+                                System.out.println("Opção inválida. Tente novamente.");
+                        }
+                    }while (opc2 != 0);
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
-
             }
         } while (opc != 0);
         input.close();

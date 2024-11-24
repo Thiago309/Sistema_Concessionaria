@@ -8,12 +8,10 @@ import java.util.List;
 public class RepositorioClientesLista implements RepositorioClientes {
     List<Cliente> clientes;
 
-    public RepositorioClientesLista() {
-        clientes = new ArrayList<Cliente>();
-    }
+    public RepositorioClientesLista() {clientes = new ArrayList<Cliente>();}
 
     @Override
-    public void criar(Cliente cliente) { clientes.add(cliente); }
+    public void criar(Cliente cliente) {clientes.add(cliente);}
 
     @Override
     public Cliente buscar(String cpf) {
