@@ -3,11 +3,10 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="cliente") //Nome da tabela no SQL.
-@MappedSuperclass // Indica que essa é a super class para o SQL.
 public class Cliente {
     @Id
     @Column(name="idCliente")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Gera ID automaticamente no banco
+    @GeneratedValue(strategy = GenerationType.IDENTITY)// Gera ID automaticamente no banco
     private int idCliente;
 
     @Column(name="nome")
@@ -44,10 +43,9 @@ public class Cliente {
     private String email;
 
     // Construtor
-    public Cliente(int idCliente, String nome, String cpf,String cep, String logradouro, int numero, String complemento,
+    public Cliente(String nome, String cpf,String cep, String logradouro, int numero, String complemento,
                    String bairro, String telefone, String estado, String cidade, String email) {
 
-        this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
         this.cep = cep;
@@ -100,4 +98,21 @@ public class Cliente {
 
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
+
+    @Override
+    public String toString() {
+        return "Cliente: " +
+                "idCliente=" + idCliente +
+                "\n nome='" + nome + '\'' +
+                "\n cpf='" + cpf + '\'' +
+                "\n cep='" + cep + '\'' +
+                "\n logradouro='" + logradouro + '\'' +
+                "\n numero=" + numero +
+                "\n complemento='" + complemento + '\'' +
+                "\n bairro='" + bairro + '\'' +
+                "\n telefone='" + telefone + '\'' +
+                "\n estado='" + estado + '\'' +
+                "\n cidade='" + cidade + '\'' +
+                "\n email='" + email + '\'';
+    }
 }

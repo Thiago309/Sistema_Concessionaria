@@ -3,7 +3,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="Veiculo")
-@MappedSuperclass
 public class Veiculo {
     @Id
     @Column(name="idVeiculo")
@@ -100,5 +99,27 @@ public class Veiculo {
     public void setAno(String ano) {
         this.ano = ano;
     }
+
+    @Override
+    public String toString() {
+        // Garantir que a quilometragem não seja exibida em notação científica
+        String qtdKmStr = String.format("%.2f", qtdKm); // Formata a quilometragem com 2 casas decimais
+
+        // Garantir que a cor seja exibida corretamente
+        String corStr = (cor != null && !cor.isEmpty()) ? cor : "Não informada";
+
+        return "Veículo" +
+                "\nID=" + idVeiculo +
+                "\nChassi='" + chassi + '\'' +
+                "\nQuilometragem=" + qtdKmStr +
+                "\nCor='" + corStr + '\'' +
+                "\nLocalização='" + localizacaoPatio + '\'' +
+                "\nModelo='" + modelo + '\'' +
+                "\nMarca='" + marca + '\'' +
+                "\nStatus='" + statusVeiculo + '\'' +
+                "\nAno='" + ano + '\'';
+    }
+
+
 }
 

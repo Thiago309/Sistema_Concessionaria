@@ -30,9 +30,13 @@ public class VeiculosController {
         qtdKm = input.nextDouble();
         veiculo.setQtdKm(qtdKm);
 
+        input.nextLine();
+
         System.out.println("Digite a cor do automovel: ");
         cor = input.nextLine();
         veiculo.setCor(cor);
+
+        input.nextLine();
 
         System.out.println("Digite o localizacao no pátio: ");
         localizacaoPatio = input.nextLine();
@@ -50,7 +54,13 @@ public class VeiculosController {
         statusVeiculo = input.nextLine();
         veiculo.setStatusVeiculo(statusVeiculo);
 
+        System.out.println("Informe o ano do veiculo: ");
+        ano = input.nextLine();  // Agora lê o ano corretamente
+        veiculo.setAno(ano);
+
         repositorioVeiculos.criar(veiculo);
+
+        System.out.println("\nVeículo cadastrado com sucesso!");
     }
 
     public void deleteVeiculo(RepositorioVeiculos repositorioVeiculos) {

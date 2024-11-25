@@ -46,6 +46,7 @@ public class ClientesController {
         cliente.setNumero(numero);
 
         System.out.print("Digite o Complemento Residencial: ");
+        input.nextLine();
         complemento = input.nextLine();
         cliente.setComplemento(complemento);
 
@@ -68,6 +69,9 @@ public class ClientesController {
         System.out.print("Digite o Email: ");
         email = input.nextLine();
         cliente.setEmail(email);
+
+        System.out.println("\nCadastro concluído com sucesso! O cliente " + cliente.getNome() + " foi registrado.");
+
 
         repositorioClientes.criar(cliente);
     }
