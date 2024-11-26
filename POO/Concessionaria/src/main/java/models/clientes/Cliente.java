@@ -102,17 +102,17 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente: " +
-                "idCliente=" + idCliente +
-                "\n nome='" + nome + '\'' +
-                "\n cpf='" + cpf + '\'' +
-                "\n cep='" + cep + '\'' +
-                "\n logradouro='" + logradouro + '\'' +
-                "\n numero=" + numero +
-                "\n complemento='" + complemento + '\'' +
-                "\n bairro='" + bairro + '\'' +
-                "\n telefone='" + telefone + '\'' +
-                "\n estado='" + estado + '\'' +
-                "\n cidade='" + cidade + '\'' +
-                "\n email='" + email + '\'';
+                "\nidCliente= " + idCliente +
+                "\n nome= " + nome +
+                "\n cpf= " + cpf +
+                "\n cep= " + cep +
+                "\n logradouro= " + logradouro +
+                "\n numero= " + numero +
+                "\n complemento= " + complemento +
+                "\n bairro= " + bairro +
+                "\n telefone= " + telefone +
+                "\n estado= " + estado +
+                "\n cidade= " + cidade +
+                "\n email= " + email ;
     }
 }

@@ -109,15 +109,15 @@ public class Veiculo {
         String corStr = (cor != null && !cor.isEmpty()) ? cor : "Não informada";
 
         return "Veículo" +
-                "\nID=" + idVeiculo +
-                "\nChassi='" + chassi + '\'' +
-                "\nQuilometragem=" + qtdKmStr +
-                "\nCor='" + corStr + '\'' +
-                "\nLocalização='" + localizacaoPatio + '\'' +
-                "\nModelo='" + modelo + '\'' +
-                "\nMarca='" + marca + '\'' +
-                "\nStatus='" + statusVeiculo + '\'' +
-                "\nAno='" + ano + '\'';
+                "\nID= " + idVeiculo +
+                "\nChassi= " + chassi +
+                "\nQuilometragem= " + qtdKmStr +
+                "\nCor= " + corStr +
+                "\nLocalização= " + localizacaoPatio +
+                "\nModelo= " + modelo +
+                "\nMarca= " + marca +
+                "\nStatus= " + statusVeiculo +
+                "\nAno= " + ano ;
     }
 
 

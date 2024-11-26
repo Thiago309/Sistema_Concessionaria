@@ -36,7 +36,6 @@ public class VeiculosController {
         cor = input.nextLine();
         veiculo.setCor(cor);
 
-        input.nextLine();
 
         System.out.println("Digite o localizacao no pátio: ");
         localizacaoPatio = input.nextLine();

@@ -35,7 +35,7 @@ public class Main {
         FuncionariosController funcionariosController = new FuncionariosController();
         RepositorioFuncionarios repositorioFuncionarios = new RepositorioFuncionariosLista();
 
-        int opc, opc2, opc3, opc4;
+        int opc, opc2, opc3, opcSeguro, opcManutencao;
 
         do {
             menus.principal();
@@ -114,13 +114,14 @@ public class Main {
                                 System.out.println("Qual tipo de serviço você deseja agendar?");
                                 System.out.println("Digite: \n1. Seguro \n2. Manutenção");
                                 opc3 = input.nextInt();
-
+                                
                                 if (opc3 == 1) {
+
                                     do {
                                         menus.seguros();
-                                        opc4 = input.nextInt();
+                                        opcSeguro = input.nextInt();
 
-                                        switch (opc4) {
+                                        switch (opcSeguro) {
                                             case 1:
                                                 // Adicionar Seguros
                                                 servicosController.addServico(repositorioServicos);
@@ -151,15 +152,14 @@ public class Main {
                                             default:
                                                 System.out.println("Opção inválida. Tente novamente.");
                                         }
-                                    } while (opc2 != 0);
+                                    } while (opcSeguro != 0);
 
                                 } else if (opc3 == 2) {
                                     do {
                                         menus.manutencao();
-                                        opc4 = input.nextInt();
+                                        opcManutencao = input.nextInt();
 
-                                        switch (opc4) {
-
+                                        switch (opcManutencao) {
                                             case 1:
                                                 // Adicionar Manutencao
                                                 manutencaoController.addManutencao(repositorioManutencoes); break;
@@ -181,15 +181,21 @@ public class Main {
 
                                             default:
                                                 System.out.println("Opção inválida. Tente novamente.");
-
                                         }
-                                    } while (opc4 != 0);
+                                    } while (opcManutencao != 0);
                                     break;
 
                                 } else {
-                                    System.out.println("Opção invalida. Tente novamente. Mais tarde.");
+                                    System.out.println("Opção inválida. Tente novamente.");
                                 }
                                 break;
+
+                            case 0:
+                                System.out.println("Retornando ao menu principal...");
+                                break;
+
+                            default:
+                                System.out.println("Opção inválida. Tente novamente.");
                         }
                     } while (opc2 != 0);
                     break;
