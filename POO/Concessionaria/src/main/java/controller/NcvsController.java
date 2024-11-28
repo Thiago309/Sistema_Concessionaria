@@ -35,20 +35,24 @@ public class NcvsController {
         NcvIdFuncionario = input.nextInt();
         ncv.setNcvIdFuncionario(NcvIdFuncionario);
 
-        Date dataNCV1 = null;
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        while(true) {
 
-        System.out.print("Informe a Data da compra do veiculo (dd/MM/yyyy): ");
-        dataNCV = input.nextLine();
+            Date dataNCV1 = null;
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-        try{
-            dataNCV1 = formatoData.parse(dataNCV);
-            ncv.setDataNCV(String.valueOf(dataNCV1));
-            System.out.println("Data registrada com sucesso: " + dataNCV1 + "\n");
-        }catch (ParseException e){
-            System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            System.out.print("Informe a Data da compra do veiculo (dd/MM/yyyy): ");
+            dataNCV = input.next();
+
+            try {
+                dataNCV1 = formatoData.parse(dataNCV);
+                ncv.setDataNCV(String.valueOf(dataNCV1));
+                System.out.println("Data registrada com sucesso: " + dataNCV1 + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
         }
-
         System.out.println("Informe o valor da nota de Compra: ");
         valorNCV = input.nextDouble();
         ncv.setValorNCV(valorNCV);

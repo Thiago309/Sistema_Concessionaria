@@ -1,7 +1,5 @@
 package models.servicos;
-
 import java.math.BigDecimal;
-
 import jakarta.persistence.*;
 
 @Entity

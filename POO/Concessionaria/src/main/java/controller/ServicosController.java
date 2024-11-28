@@ -1,9 +1,7 @@
 package controller;
 
 import interfaces.RepositorioServicos;
-import jakarta.persistence.Column;
 import models.servicos.Servico;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,27 +28,31 @@ public class ServicosController {
         idServico = input.nextInt();
         servico.setIdServico(idServico);
 
-        Date servDataInicial = null, servDataFinal = null; // iniciando variaveis
+        while(true) {
 
-        System.out.print("Informe a Data Inicial do servico (dd/MM/yyyy): ");
-        dataInicial = input.nextLine();
+            Date servDataInicial = null, servDataFinal = null; // iniciando variaveis
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-        System.out.print("Informe a Data Final (dd/MM/yyyy): ");
-        dataFinal = input.nextLine();
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+            System.out.print("Informe a Data Inicial do servico (dd/MM/yyyy): ");
+            dataInicial = input.next();
 
-        try {
-            servDataInicial = formatoData.parse(dataInicial);
-            servico.setDataInicial(String.valueOf(servDataInicial));
+            System.out.print("Informe a Data Final (dd/MM/yyyy): ");
+            dataFinal = input.next();
 
-            servDataFinal = formatoData.parse(dataFinal);
-            servico.setDataFinal(String.valueOf(servDataFinal));
+            try {
+                servDataInicial = formatoData.parse(dataInicial);
+                servico.setDataInicial(String.valueOf(servDataInicial));
 
-            System.out.println("Datas registradas com sucesso: " + "Data Inicial " + servDataInicial + "\nData Final "
-                    + servDataFinal + "\n");
+                servDataFinal = formatoData.parse(dataFinal);
+                servico.setDataFinal(String.valueOf(servDataFinal));
 
-        } catch (ParseException e) {
-            System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+                System.out.println("Datas registradas com sucesso: " + "Data Inicial " + servDataInicial + "\nData Final "
+                        + servDataFinal + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
         }
 
         System.out.println("Informe a condição de negociacao: ");

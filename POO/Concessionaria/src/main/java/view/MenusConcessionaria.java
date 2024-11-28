@@ -33,11 +33,11 @@ public class MenusConcessionaria {
     }
 
     public void servicos() {
-        System.out.println("\n--- Lista de Veiculos ---");
-        System.out.println("1. Adicionar Veiculos");
-        System.out.println("2. Listar Veiculos");
-        System.out.println("3. Buscar Veiculos");
-        System.out.println("4. Deletar Veiculos");
+        System.out.println("\n--- Lista de Serviços ---");
+        System.out.println("1. Adicionar Serviços");
+        System.out.println("2. Listar Serviços");
+        System.out.println("3. Buscar Serviços");
+        System.out.println("4. Deletar Serviços");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }

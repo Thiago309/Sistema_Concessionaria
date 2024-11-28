@@ -111,8 +111,8 @@ public class Main {
 
                         switch (opc2) {
                             case 1:
-                                System.out.println("Qual tipo de serviço você deseja agendar?");
-                                System.out.println("Digite: \n1. Seguro \n2. Manutenção");
+                                System.out.println("Qual tipo de serviço você deseja utilizar?");
+                                System.out.println("Informe: \n1. Seguro \n2. Manutenção");
                                 opc3 = input.nextInt();
                                 
                                 if (opc3 == 1) {
@@ -162,18 +162,22 @@ public class Main {
                                         switch (opcManutencao) {
                                             case 1:
                                                 // Adicionar Manutencao
+                                                servicosController.addServico(repositorioServicos);
                                                 manutencaoController.addManutencao(repositorioManutencoes); break;
 
                                             case 2:
                                                 // Listar Manuteções
+                                                servicosController.addServico(repositorioServicos);
                                                 manutencaoController.getAllManutencoes(repositorioManutencoes); break;
 
                                             case 3:
                                                 // Buscar Veiculos
+                                                servicosController.addServico(repositorioServicos);
                                                 manutencaoController.readManutencao(repositorioManutencoes); break;
 
                                             case 4:
                                                 // Deletar Manutencao
+                                                servicosController.addServico(repositorioServicos);
                                                 manutencaoController.deleteManutencao(repositorioManutencoes); break;
 
                                             case 0:

@@ -41,18 +41,23 @@ public class ManutencaoController {
         tipoManutencao = input.next();
         manutencao.setTipoManutencao(tipoManutencao);
 
-        System.out.println("Informe a data sugerida para a proxima manutenção.\n Informe neste formato (dd/MM/yyyy): ");
-        datapProximaManutencao = input.next();
+        while(true) {
 
-        Date datapProximaManutencao1 = null;
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+            Date datapProximaManutencao1 = null;
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-        try{
-            datapProximaManutencao1 = formatoData.parse(datapProximaManutencao);
-            manutencao.setDatapProximaManutencao(String.valueOf(datapProximaManutencao1));
-            System.out.println("Data registrada com sucesso: " + datapProximaManutencao1 + "\n");
-        }catch (ParseException e){
-            System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            System.out.println("Informe a data sugerida para a proxima manutenção.\n Informe neste formato (dd/MM/yyyy): ");
+            datapProximaManutencao = input.next();
+
+            try {
+                datapProximaManutencao1 = formatoData.parse(datapProximaManutencao);
+                manutencao.setDatapProximaManutencao(String.valueOf(datapProximaManutencao1));
+                System.out.println("Data registrada com sucesso: " + datapProximaManutencao1 + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
         }
 
         System.out.println("Informe a situação atual da manutenção (Em processo, concluida ou não efetuada com sucesso.): ");

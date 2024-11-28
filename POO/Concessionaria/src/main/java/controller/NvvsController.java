@@ -35,21 +35,24 @@ public class NvvsController {
         nvvIdFuncionario = input.nextInt();
         nvv.setNvvIdFuncionario(nvvIdFuncionario);
 
-        Date dataNVV1 = null;
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        while(true) {
 
-        System.out.print("Informe a Data da venda do veiculo (dd/MM/yyyy): ");
-        dataNVV = input.nextLine();
+            Date dataNVV1 = null;
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-        try{
-            dataNVV1 = formatoData.parse(dataNVV);
-            nvv.setDataNVV(String.valueOf(dataNVV1));
-            System.out.println("Data registrada com sucesso: " + dataNVV1 + "\n");
+            System.out.print("Informe a Data da venda do veiculo (dd/MM/yyyy): ");
+            dataNVV = input.next();
 
-        } catch (ParseException e) {
-            System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            try {
+                dataNVV1 = formatoData.parse(dataNVV);
+                nvv.setDataNVV(String.valueOf(dataNVV1));
+                System.out.println("Data registrada com sucesso: " + dataNVV1 + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
         }
-
         System.out.println("Informe o valor da nota de Venda: ");
         valorNVV = input.nextDouble();
         nvv.setValorNVV(valorNVV);

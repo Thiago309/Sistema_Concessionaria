@@ -32,28 +32,31 @@ public class SegurosController {
         segChassi = input.next();
         seguro.setSegChassi(segChassi);
 
-        Date segDataInicial1 = null, segDataFinal1 = null;
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        while(true) {
 
-        System.out.print("Informe a Data Inicial do servico (dd/MM/yyyy): ");
-        segDataInicial = input.next();
+            Date segDataInicial1 = null, segDataFinal1 = null;
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-        System.out.print("Informe a Data Final (dd/MM/yyyy): ");
-        segDataFinal = input.next();
+            System.out.print("Informe a Data Inicial do servico (dd/MM/yyyy): ");
+            segDataInicial = input.next();
 
-        try{
-            segDataInicial1 = formatoData.parse(segDataInicial);
-            seguro.setSegDataInicial(String.valueOf(segDataInicial1));
+            System.out.print("Informe a Data Final (dd/MM/yyyy): ");
+            segDataFinal = input.next();
 
-            segDataFinal1 = formatoData.parse(segDataFinal);
-            seguro.setSegDataFinal(String.valueOf(segDataFinal1));
+            try {
+                segDataInicial1 = formatoData.parse(segDataInicial);
+                seguro.setSegDataInicial(String.valueOf(segDataInicial1));
 
-            System.out.println("Datas registradas com sucesso: " + "Data Inicial " + segDataInicial1 + "\nData Final "
-                    + segDataFinal1 + "\n");
+                segDataFinal1 = formatoData.parse(segDataFinal);
+                seguro.setSegDataFinal(String.valueOf(segDataFinal1));
 
-        }catch (ParseException e){
-            System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+                System.out.println("Datas registradas com sucesso: " + "Data Inicial " + segDataInicial1 + "\nData Final "
+                        + segDataFinal1 + "\n");
 
+                break;
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
         }
 
         System.out.println("Informe o preço do seguro: ");
