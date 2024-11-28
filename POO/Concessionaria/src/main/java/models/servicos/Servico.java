@@ -2,7 +2,7 @@ package models.servicos;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="servico")
+@Table(name="Servico")
 @MappedSuperclass // Indica que essa é a super class para o SQL.
 public class Servico {
     @Id

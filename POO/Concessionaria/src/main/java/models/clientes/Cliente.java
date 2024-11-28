@@ -2,7 +2,7 @@ package models.clientes;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="cliente") //Nome da tabela no SQL.
+@Table(name="Cliente") //Nome da tabela no SQL.
 public class Cliente {
     @Id
     @Column(name="idCliente")

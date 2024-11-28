@@ -212,11 +212,11 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Notas de Compras
-                                ncvsController.addNcv(repositorioNcvs); break;
+                                ncvsController.addNcv(); break;
 
                             case 2:
                                 // Listar Notas de Compras
-                                ncvsController.getAllNcvs(repositorioNcvs); break;
+                                ncvsController.getAllNcvs(); break;
 
                             case 3:
                                 // Buscar Nota
@@ -224,7 +224,7 @@ public class Main {
 
                             case 4:
                                 // Deletar Nota
-                                ncvsController.deleteNcv(repositorioNcvs); break;
+                                ncvsController.deleteNcv(); break;
 
                             case 0:
                                 System.out.println("Retornando ao menu principal..."); break;

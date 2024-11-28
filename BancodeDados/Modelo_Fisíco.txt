@@ -1,7 +1,6 @@
 CREATE DATABASE Concessionaria;
-
+GO
 USE Concessionaria;
-
 CREATE TABLE Funcionario (
     ID_Funcionario INT PRIMARY KEY IDENTITY(1000, 10),
     Nome VARCHAR(100) NOT NULL
@@ -171,117 +170,98 @@ CREATE TABLE Servico_Manutencao (
     FOREIGN KEY (ID_Manutencao) REFERENCES Manutencao(ID_Manutencao),
     FOREIGN KEY (ID_Servico) REFERENCES Servico(ID_Servico)
 );
+INSERT INTO Funcionario(Nome) VALUES
+                        ('João Costa'),
+						('Matheus Ribeiro'),
+						('Ana Maria');
 
--- Inserindo dados na tabela Funcionario
-INSERT INTO Funcionario (Nome) VALUES
-('Carlos Silva'),
-('Maria Oliveira'),
-('José Santos');
-
--- Inserindo dados na tabela Cliente
 INSERT INTO Cliente (Nome, Complemento, CEP, Logradouro, Telefone, Estado, Cidade, Email) VALUES
 ('Ana Costa', 'Apto 101', '01000-000', 'Rua da Alegria', '11999999999', 'SP', 'São Paulo', 'ana.costa@email.com'),
 ('Pedro Almeida', 'Casa', '02000-000', 'Avenida da Luz', '11888888888', 'RJ', 'Rio de Janeiro', 'pedro.almeida@email.com'),
 ('Mariana Ferreira', 'Bloco B', '03000-000', 'Praça da Paz', '11777777777', 'MG', 'Belo Horizonte', 'mariana.ferreira@email.com');
 
--- Inserindo dados na tabela Veiculo
 INSERT INTO Veiculo (Chassi, qtKm, Cor, localizacaoPatio, Modelo, Marca, statusVeiculo, Ano) VALUES
 (12345678901234567, 1000.00, 'Preto', 'Pátio A', 'Fusca', 'Volkswagen', 'Disponível', '1975'),
 (23456789012345678, 5000.00, 'Prata', 'Pátio B', 'Civic', 'Honda', 'Vendido', '2020'),
 (34567890123456789, 3000.00, 'Azul', 'Pátio C', 'Onix', 'Chevrolet', 'Disponível', '2019');
 
--- Inserindo dados na tabela Tipo
 INSERT INTO Tipo (Cod_Tipo, Categoria, Descricao) VALUES
 (1, 'Sedan', 'Veículos de quatro portas e bom espaço interno'),
 (2, 'Hatch', 'Veículos com porta traseira e bom espaço de carga'),
 (3, 'SUV', 'Veículos utilitários esportivos, mais altos e robustos');
 
--- Inserindo dados na tabela Servico
 INSERT INTO Servico (dataInicial, dataFinal, condicaoNegociacao, descricaoServico) VALUES
 ('2024-01-01', '2024-01-10', 'À Vista', 'Troca de óleo'),
 ('2024-01-05', '2024-01-15', 'Parcelado', 'Revisão completa'),
 ('2024-01-10', '2024-01-20', 'À Vista', 'Alinhamento e balanceamento');
 
--- Inserindo dados na tabela NCV
 INSERT INTO NCV (ID_Funcionario, dataNCV, valorNCV) VALUES
 (1000, '2024-10-01', 1500.00),
 (1010, '2024-10-05', 2500.00),
 (1020, '2024-10-10', 2000.00);
 
 
--- Inserindo dados na tabela NVV
 INSERT INTO NVV (ID_Funcionario, dataNVV, valorNVV) VALUES
 (1000, '2024-10-02', 3000.00),
 (1010, '2024-10-06', 4500.00),
 (1020, '2024-10-11', 5000.00);
 
--- Inserindo dados na tabela PF
 INSERT INTO PF (CPF, ID_Cliente, Sexo, dataNascimento) VALUES
 ('12345678901', 1000, 'F', '1990-05-15'),
 ('98765432100', 1010, 'M', '1985-10-30'),
 ('45678912300', 1020, 'F', '1995-03-20');
 
--- Inserindo dados na tabela PJ
 INSERT INTO PJ (CNPJ, ID_Cliente, inscricaoEstadual, nomeFantasia, Site) VALUES
 ('12345678000195', 1000, '12345678', 'Loja do Carro', 'www.lojacarros.com'),
 ('98765432000196', 1010, '87654321', 'Venda Rápida', 'www.vendarapida.com'),
 ('45678912000197', 1020, '23456789', 'Autos & Cia', 'www.autosecia.com');
 
--- Inserindo dados na tabela Tipo_Veiculo
 INSERT INTO Tipo_Veiculo (Chassi, Cod_Tipo) VALUES
 (12345678901234567, 1),
 (23456789012345678, 2),
 (34567890123456789, 3);
 
--- Inserindo dados na tabela Veiculo_NCV
 INSERT INTO Veiculo_NCV (ID_NCV, Chassi, qtdCompraVeiculo, valorVeiculo) VALUES
-(1000, 12345678901234567, 1, 15000.00),
-(1001, 23456789012345678, 2, 30000.00),
-(1002, 34567890123456789, 1, 40000.00);
+(1001, 12345678901234567, 1, 15000.00),
+(1002, 23456789012345678, 2, 30000.00),
+(1003, 34567890123456789, 1, 40000.00);
 
--- Inserindo dados na tabela Veiculo_NVV
 INSERT INTO Veiculo_NVV (ID_NVV, Chassi, qtdVendaVeiculo, valorVeiculoV) VALUES
 (1000, 12345678901234567, 1, 18000.00),
 (1010, 23456789012345678, 1, 28000.00),
 (1020, 34567890123456789, 1, 35000.00);
 
--- Inserindo dados na tabela Pagamento
 INSERT INTO Pagamento (ID_NVV, dataEfetuacao, Valor) VALUES
 (1000, '2024-10-15', 18000.00),
 (1010, '2024-10-16', 28000.00),
 (1020, '2024-10-17', 35000.00);
 
--- Inserindo dados na tabela Cheque
 INSERT INTO Cheque (numeroCheque, ID_Pagamento, Agencia, Banco) VALUES
 (123456, 1000, '1234', 'Itaú'),
 (654321, 1010, '5678', 'Bradesco'),
 (789012, 1020, '9012', 'Santander');
 
--- Inserindo dados na tabela Cartao
 INSERT INTO Cartao (ID_Cartao,ID_Pagamento, numeroCartao, Nome, Validade, CVV, numeroParcelas, valorParcelas) VALUES
 (1, 1000, '1234567812345678', 'Ana Costa', '2025-12-31', '123', 3, 6000.00),
 (2, 1010, '2345678923456789', 'Pedro Almeida', '2026-01-15', '456', 5, 5600.00),
 (3, 1020, '3456789034567890', 'Mariana Ferreira', '2026-02-20', '789', 2, 17500.00);
 
--- Inserindo dados na tabela Financiamento
 INSERT INTO Financiamento (ID_Pagamento, finValorParcelas, fimNumeroParcelas, Juros) VALUES
 (1000, 6000.00, 3, 2.5),
 (1010, 5600.00, 5, 3.0),
 (1020, 17500.00, 2, 1.5);
 
--- Inserindo dados na tabela Seguro
 INSERT INTO Seguro (numeroApolice, Chassi, segDataInicial, segDataFinal, segPreco, Cobertura, Franquia) VALUES
 (1001, 12345678901234567, '2024-01-01', '2025-01-01', 1500.00, 'Completa', 500.00),
 (1002, 23456789012345678, '2024-01-05', '2025-01-05', 2000.00, 'Parcial', 800.00),
 (1003, 34567890123456789, '2024-01-10', '2025-01-10', 1800.00, 'Completa', 600.00);
 
--- Inserindo dados na tabela Manutencao
 INSERT INTO Manutencao (Chassi, custoManutencao, dataProximaManutencao, Responsavel, tipoManutencao, Status) VALUES
 (12345678901234567, 500.00, '2024-06-01', 'Carlos', 'Troca de óleo', 'Pendente'),
 (23456789012345678, 300.00, '2024-07-01', 'Maria', 'Alinhamento', 'Finalizado'),
 (34567890123456789, 700.00, '2024-05-01', 'José', 'Revisão', 'Pendente');
 
--- Inserindo dados na tabela Servico_Manutencao
+
 INSERT INTO Servico_Manutencao (ID_Manutencao, ID_Servico) VALUES
 (1000, 1000),
 (1010, 1010),
@@ -293,14 +273,117 @@ SELECT
     SUM(n.valorNCV) AS Soma_Valores_NCV,
     AVG(n.valorNCV) AS Media_Valores_NCV,
     MAX(n.valorNCV) AS Max_Valor_NCV,
-    MIN(n.valorNCV) AS Min_Valor_NCV
+    MIN(n.valorNCV) AS Min_Valor_NCV,
+    v.Modelo AS Modelo_Veiculo
 FROM 
     Funcionario AS f
 JOIN 
     NCV AS n ON f.ID_Funcionario = n.ID_Funcionario
 JOIN 
-    NVV AS v ON f.ID_Funcionario = v.ID_Funcionario
+    Veiculo_NCV AS vn ON n.ID_NCV = vn.ID_NCV
+JOIN 
+    Veiculo AS v ON vn.Chassi = v.Chassi
 GROUP BY 
-    f.ID_Funcionario, f.Nome
-ORDER BY 
-    f.Nome;
+    f.Nome, v.Modelo;
+
+	CREATE TRIGGER AtualizaKmVeiculo
+ON Veiculo_NCV
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @Chassi BIGINT, @QtdCompra INT;
+    
+    -- Obtendo os valores inseridos
+    SELECT @Chassi = Chassi, @QtdCompra = qtdCompraVeiculo
+    FROM INSERTED;
+
+    -- Atualizando a quantidade de km do veículo
+    UPDATE Veiculo
+    SET qtKm = qtKm + @QtdCompra * 100  -- Supondo que cada veículo comprado adiciona 100 km
+    WHERE Chassi = @Chassi;
+END;
+GO
+
+
+
+CREATE PROCEDURE AdicionarPagamento
+    @ID_NVV INT,
+    @DataEfetuacao DATE,
+    @Valor DECIMAL(10,2),
+    @TipoPagamento VARCHAR(20),  -- Tipo de pagamento: 'Cheque', 'Cartao', 'Financiamento'
+    @DetalhesPagamento VARCHAR(100)  -- Detalhes sobre o pagamento
+AS
+BEGIN
+    DECLARE @ID_Pagamento INT;
+
+    -- Inserindo o pagamento
+    INSERT INTO Pagamento (ID_NVV, dataEfetuacao, Valor)
+    VALUES (@ID_NVV, @DataEfetuacao, @Valor);
+
+    -- Obtendo o ID do pagamento inserido
+    SET @ID_Pagamento = SCOPE_IDENTITY();
+
+    -- Adicionando o tipo de pagamento
+    IF @TipoPagamento = 'Cheque'
+    BEGIN
+        INSERT INTO Cheque (ID_Pagamento, Agencia, Banco)
+        VALUES (@ID_Pagamento, @DetalhesPagamento, 'Banco Exemplo');
+    END
+    ELSE IF @TipoPagamento = 'Cartao'
+    BEGIN
+        INSERT INTO Cartao (ID_Pagamento, numeroCartao, Nome, Validade, CVV, numeroParcelas, valorParcelas)
+        VALUES (@ID_Pagamento, '1234567812345678', 'Ana Costa', '2025-12-31', '123', 3, @Valor);
+    END
+    ELSE IF @TipoPagamento = 'Financiamento'
+    BEGIN
+        INSERT INTO Financiamento (ID_Pagamento, finValorParcelas, fimNumeroParcelas, Juros)
+        VALUES (@ID_Pagamento, @Valor, 3, 2.5);
+    END
+END;
+GO
+
+
+
+CREATE FUNCTION CalcularLucroVendaVeiculo (@Chassi BIGINT)
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+    DECLARE @PrecoCompra DECIMAL(10, 2);
+    DECLARE @PrecoVenda DECIMAL(10, 2);
+    DECLARE @Lucro DECIMAL(10, 2);
+
+    -- Obtendo o preço de compra do veículo
+    SELECT @PrecoCompra = valorVeiculo
+    FROM Veiculo_NCV
+    WHERE Chassi = @Chassi;
+
+    -- Obtendo o preço de venda do veículo
+    SELECT @PrecoVenda = valorVeiculoV
+    FROM Veiculo_NVV
+    WHERE Chassi = @Chassi;
+
+    -- Calculando o lucro
+    SET @Lucro = @PrecoVenda - @PrecoCompra;
+
+    -- Retornando o lucro
+    RETURN @Lucro;
+END;
+GO
+
+CREATE INDEX idx_statusVeiculo
+ON Veiculo (statusVeiculo);
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="seguro")
+@Table(name="Seguro")
 @MappedSuperclass
 public class Seguro {
     @Id
@@ -25,7 +25,7 @@ public class Seguro {
     @Column(name="cobertura")
     private String cobertura;
 
-    @Column(name="tranquil")
+    @Column(name="franquia")
     private double franquia;
 
     public Seguro(int numeroApolice, String segChassi, String segDataInicial, String segDataFinal, double segPreco,

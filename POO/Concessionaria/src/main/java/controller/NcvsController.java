@@ -2,6 +2,8 @@ package controller;
 import interfaces.RepositorioNcvs;
 import jakarta.persistence.Column;
 import models.notas.Ncv;
+import repository_jpa.NcvRepository;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +25,7 @@ public class NcvsController {
     String dataNCV;
     double valorNCV;
 
-    public void addNcv(RepositorioNcvs repositorioNcvs) {
+    public void addNcv() {
         ncv = new Ncv();
 
         System.out.println("Você selecionou a opção registrar uma Nota de Compra de Veiculo.\n");
@@ -57,17 +59,19 @@ public class NcvsController {
         valorNCV = input.nextDouble();
         ncv.setValorNCV(valorNCV);
 
-        repositorioNcvs.criar(ncv);
+        //repositorioNcvs.criar(ncv);
+        //repositorioNcvs.salvarNota(Nota);
+        NcvRepository.saveAccount(ncv);
     }
 
-    public void deleteNcv(RepositorioNcvs repositorioNcvs) {
+    public void deleteNcv() {
 
         System.out.println("Você selecionou a opção remover uma nota de compra.\n");
         System.out.println("Digite o id da nota de compra: ");
         idNCV = input.nextInt();
 
         if(idNCV != 0){
-            repositorioNcvs.remover(idNCV);
+            NcvRepository.removeAccountById(idNCV);
             System.out.println("Nota removida com sucesso.");
 
         }else{
@@ -88,8 +92,13 @@ public class NcvsController {
         }
     }
 
-    public void getAllNcvs(RepositorioNcvs repositorioNcvs) {
+    public void getAllNcvs() {
         System.out.println("Você selecionou a opção de listar todas as notas de compras.\n");
-        System.out.println(repositorioNcvs.listarTodos());
+        //System.out.println(repositorioNcvs.listarTodos());
+        System.out.println("Lista de Notas de Compras: ");
+
+        for (Ncv ncv : NcvRepository.listAll()) {
+            System.out.println(ncv);
+        }
     }
 }

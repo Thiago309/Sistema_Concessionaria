@@ -8,7 +8,7 @@ import jakarta.persistence.*;
  *******************************************************************/
 
 @Entity
-@Table(name="NCV")
+@Table(name="Nvv")
 @MappedSuperclass
 public class Nvv {
     @Id

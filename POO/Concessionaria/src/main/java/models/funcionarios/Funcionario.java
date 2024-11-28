@@ -2,7 +2,7 @@ package models.funcionarios;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="cliente")
+@Table(name="Funcionario")
 @MappedSuperclass
 public class Funcionario {
     @Id

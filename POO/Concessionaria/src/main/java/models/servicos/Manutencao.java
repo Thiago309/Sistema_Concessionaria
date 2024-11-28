@@ -2,7 +2,7 @@ package models.servicos;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="cliente")
+@Table(name="Manutencao")
 @MappedSuperclass
 public class Manutencao {
     @Id
