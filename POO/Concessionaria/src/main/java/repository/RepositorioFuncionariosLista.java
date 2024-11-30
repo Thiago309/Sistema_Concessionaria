@@ -1,12 +1,11 @@
 package repository;
-
 import interfaces.RepositorioFuncionarios;
 import models.funcionarios.Funcionario;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
-    List<Funcionario> funcionarios;
+    private List<Funcionario> funcionarios;
 
     public RepositorioFuncionariosLista() {funcionarios = new ArrayList<Funcionario>();}
 

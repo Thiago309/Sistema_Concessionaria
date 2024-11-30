@@ -1,8 +1,6 @@
 package controller;
-
-import interfaces.RepositorioSeguros;
-import jakarta.persistence.Column;
 import models.servicos.Seguro;
+import repository_jpa.SegurosRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,18 +8,13 @@ import java.util.Scanner;
 
 public class SegurosController {
     Scanner input = new Scanner(System.in);
-    Seguro seguro;
+    Seguro seguro = new Seguro();
 
     int numeroApolice;
-    String segChassi;
-    String segDataInicial;
-    String segDataFinal;
-    double segPreco;
-    String cobertura;
-    double franquia;
+    String segChassi, segDataInicial, segDataFinal, cobertura ;
+    double segPreco, franquia;
 
-    public void addSeguro(RepositorioSeguros repositorioSeguros) {
-        seguro = new Seguro();
+    public void addSeguro() {
 
         System.out.println("Você selecionou a opção registrar um seguro.\n");
         System.out.println("Digite o numero da Apolice do seguro: ");
@@ -52,8 +45,8 @@ public class SegurosController {
 
                 System.out.println("Datas registradas com sucesso: " + "Data Inicial " + segDataInicial1 + "\nData Final "
                         + segDataFinal1 + "\n");
-
                 break;
+
             } catch (ParseException e) {
                 System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
             }
@@ -73,39 +66,51 @@ public class SegurosController {
         franquia = input.nextDouble();
         seguro.setFranquia(franquia);
 
-        repositorioSeguros.criar(seguro);
+        //repositorioSeguros.criar(seguro);
+        SegurosRepository.saveAccount(seguro);
+        System.out.println("Seguro "+ seguro.getNumeroApolice() + " do veiculo "
+                + seguro.getSegChassi()+ " resgistrada com sucesso!");
+
     }
 
-    public void deleteSeguro(RepositorioSeguros repositorioSeguros) {
+    public void deleteSeguro() {
 
         System.out.println("Você selecionou a opção remover um seguro.\n");
         System.out.println("Digite o numero da Apolice do seguro: ");
         numeroApolice = input.nextInt();
 
         if (numeroApolice != 0){
-            repositorioSeguros.remover(numeroApolice);
-            System.out.println("Seguro removido com sucesso!");
+            //repositorioSeguros.remover(numeroApolice);
+            SegurosRepository.removeAccountById(numeroApolice);
+            System.out.println("Seguro "+ seguro.getNumeroApolice() + " removido com sucesso!");
 
         }else{
             System.out.println("Seguro não encontrado em nosso banco de dados!");
         }
     }
 
-    public void readSeguro(RepositorioSeguros repositorioSeguros) {
+    public void readSeguro() {
 
         System.out.println("Você selecionou a opção buscar por um seguro.\n");
         System.out.println("Digite o numero da Apolice do seguro: ");
         numeroApolice = input.nextInt();
+
         if (numeroApolice != 0){
-            System.out.println("Informações do Seguro:\n " + repositorioSeguros.buscar(numeroApolice));
+            //System.out.println("Informações do Seguro:\n " + repositorioSeguros.buscar(numeroApolice));
+            System.out.println("Informações do Seguro:\n " + SegurosRepository.getById(numeroApolice));
 
         } else{
             System.out.println("Seguro não encontrado em nosso banco de dados!");
         }
     }
 
-    public void getAllSeguros(RepositorioSeguros repositorioSeguros) {
+    public void getAllSeguros() {
         System.out.println("Você selecionou a opção de listar todos os seguros.\n");
-        System.out.println(repositorioSeguros.listarTodos());
+        //System.out.println(repositorioSeguros.listarTodos());
+        System.out.println("Lista de Seguros: ");
+
+        for (Seguro seguro : SegurosRepository.listAll()) {
+            System.out.println(seguro);
+        }
     }
 }

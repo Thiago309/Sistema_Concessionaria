@@ -1,5 +1,4 @@
 package repository;
-
 import interfaces.RepositorioVeiculos;
 import models.veiculos.Veiculo;
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ public class RepositorioVeiculosLista implements RepositorioVeiculos {
     public RepositorioVeiculosLista() {
         veiculos = new ArrayList<Veiculo>();
     }
-
 
     @Override
     public void criar(Veiculo veiculo) {veiculos.add(veiculo);}

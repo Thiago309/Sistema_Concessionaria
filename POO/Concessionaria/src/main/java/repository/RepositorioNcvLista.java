@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioNcvLista implements RepositorioNcvs {
-    List<Ncv> ncvs;
+    private List<Ncv> ncvs;
 
     public RepositorioNcvLista() {ncvs = new ArrayList<Ncv>();}
 

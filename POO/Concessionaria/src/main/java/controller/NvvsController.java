@@ -1,11 +1,10 @@
 package controller;
-import interfaces.RepositorioNvvs;
-import jakarta.persistence.Column;
 import models.notas.Nvv;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import repository_jpa.NvvRepository;
 
 /*******************************************************************
  * Nota de Venda do Veiculo.                                       *
@@ -14,17 +13,16 @@ import java.util.Scanner;
  *******************************************************************/
 
 public class NvvsController {
+    //RepositorioNvvs nvvs;
+    Nvv nvv = new Nvv();
     Scanner input = new Scanner(System.in);
-    Nvv nvv;
 
-    int idNVV;
-    String nvvChassi;
-    int nvvIdFuncionario;
-    String dataNVV;
+    int idNVV, nvvIdFuncionario;
+    String nvvChassi, dataNVV;
     double valorNVV;
 
-    public void addNvv(RepositorioNvvs repositorioNvvs) {
-        nvv = new Nvv();
+    public void addNvv() {
+        //nvvs = new RepositorioNvvLista();
 
         System.out.println("Você selecionou a opção registrar uma Nota de Venda de Veiculo.\n");
         System.out.println("Digite o chassi do Veiculo: ");
@@ -57,37 +55,47 @@ public class NvvsController {
         valorNVV = input.nextDouble();
         nvv.setValorNVV(valorNVV);
 
-        repositorioNvvs.criar(nvv);
+        //repositorioNvvs.criar(nvv);
+        NvvRepository.saveAccount(nvv);
+        System.out.println("Nota de venda "+ nvv.getIdNVV() + " de veiculo resgistrada com sucesso!");
+
     }
 
-    public void deleteNvv(RepositorioNvvs repositorioNvvs) {
+    public void deleteNvv() {
         System.out.println("Você selecionou a opção remover uma nota de venda.\n");
         System.out.println("Digite o id da nota de venda: ");
         idNVV = input.nextInt();
 
         if(idNVV != 0) {
-            repositorioNvvs.remover(idNVV);
-            System.out.println("Nota removida com sucesso.");
+            //repositorioNvvs.remover(idNVV);
+            NvvRepository.removeAccountById(idNVV);
+            System.out.println("Nota de venda "+ nvv.getIdNVV() + " de veiculo removida com sucesso!");
+
         }else{
             System.out.println("Nota não encontrada em nosso banco de dados!");
         }
     }
 
-    public void readNvv(RepositorioNvvs repositorioNvvs) {
+    public void readNvv() {
         System.out.println("Você selecionou a opção buscar por uma nota de venda.\n");
         System.out.println("Digite o id da nota de venda: ");
         idNVV = input.nextInt();
 
         if(idNVV != 0) {
-            System.out.println("Informações da nota de venda:\n " + repositorioNvvs.buscar(idNVV));
-
+            //System.out.println("Informações da nota de venda:\n " + repositorioNvvs.buscar(idNVV));
+            System.out.println("Informações da nota de venda:\n " + NvvRepository.getById(idNVV));
         }else{
             System.out.println("Nota de venda não encontrada em nosso banco de dados!");
         }
     }
 
-    public void getAllNvvs(RepositorioNvvs repositorioNvvs) {
+    public void getAllNvvs() {
         System.out.println("Você selecionou a opção de listar todas as notas de vendas.\n");
-        System.out.println(repositorioNvvs.listarTodos());
+        //System.out.println(repositorioNvvs.listarTodos());
+        System.out.println("Lista de Notas de Vendas: ");
+
+        for (Nvv nvv : NvvRepository.listAll()){
+            System.out.println(nvv);
+        }
     }
 }

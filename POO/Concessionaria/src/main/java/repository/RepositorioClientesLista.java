@@ -1,12 +1,11 @@
 package repository;
-
 import interfaces.RepositorioClientes;
 import models.clientes.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioClientesLista implements RepositorioClientes {
-    List<Cliente> clientes;
+    private List<Cliente> clientes;
 
     public RepositorioClientesLista() {clientes = new ArrayList<Cliente>();}
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioServicosLista implements RepositorioServicos {
-    List<Servico> servicos;
+    private List<Servico> servicos;
 
     public RepositorioServicosLista() {
         servicos = new ArrayList<Servico>();

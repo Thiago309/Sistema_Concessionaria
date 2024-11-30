@@ -1,44 +1,43 @@
 package repository_jpa;
 import factory.DbFactory;
 import jakarta.persistence.EntityManager;
-import models.notas.Ncv;
+import models.notas.Nvv;
 import java.util.List;
 
-public class NcvRepository {
+public class NvvRepository {
     private static EntityManager entityManager;
 
-    public static void saveAccount(Ncv ncv){
+    public static void saveAccount(Nvv nvv) {
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            entityManager.persist(ncv);
+            entityManager.persist(nvv);
             DbFactory.saveAndClose(entityManager);
 
-        } catch (Exception ex) {
+        }catch(Exception ex){
             System.out.println(ex.getMessage());
             //Se a transição não for realizada com sucesso, volte para a versão anterior.
             entityManager.getTransaction().rollback();
         }
     }
-
     // Retorna os valores da tabela utilizando o id.
-    public static Ncv getById(final int idNCV) {
+    public static Nvv getById(final int idNVV){
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.find(Ncv.class, idNCV);
+        return entityManager.find(Nvv.class, idNVV);
     }
 
-    public static List<Ncv> listAll(){
-        String query = "SELECT ncv FROM Ncv ncv";
+    public static List<Nvv> listAll(){
+        String query = "SELECT nvv FROM Nvv nvv";
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.createQuery(query, Ncv.class).getResultList();
+        return entityManager.createQuery(query, Nvv.class).getResultList();
     }
 
-    public static void removeAccountById(final int idNCV) {
+    public static void removeAccountById(final int idNVV){
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            Ncv ncv = getById(idNCV);
-            entityManager.remove(ncv);
+            Nvv nvv = getById(idNVV);
+            entityManager.remove(nvv);
             DbFactory.saveAndClose(entityManager);
 
         }catch(Exception ex){

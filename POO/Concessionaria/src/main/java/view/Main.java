@@ -1,39 +1,20 @@
 package view;
-
 import java.util.*;
 import controller.*;
-import interfaces.*;
-import repository.*;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
         MenusConcessionaria menus = new MenusConcessionaria();
-
         ClientesController clientesController = new ClientesController();
-        RepositorioClientes repositorioClientes = new RepositorioClientesLista();
-
         VeiculosController veiculosController = new VeiculosController();
-        RepositorioVeiculos repositorioVeiculos = new RepositorioVeiculosLista();
-
         ServicosController servicosController = new ServicosController();
-        RepositorioServicos repositorioServicos = new RepositorioServicosLista();
-
         SegurosController segurosController = new SegurosController();
-        RepositorioSeguros repositorioSeguros = new RepositorioSegurosLista();
-
         ManutencaoController manutencaoController = new ManutencaoController();
-        RepositorioManutencoes repositorioManutencoes = new RepositorioManutencoesLista();
-
         NcvsController ncvsController = new NcvsController();
-        RepositorioNcvs repositorioNcvs = new RepositorioNcvLista();
-
         NvvsController nvvsController = new NvvsController();
-        RepositorioNvvs repositorioNvvs = new RepositorioNvvLista();
-
         FuncionariosController funcionariosController = new FuncionariosController();
-        RepositorioFuncionarios repositorioFuncionarios = new RepositorioFuncionariosLista();
 
         int opc, opc2, opc3, opcSeguro, opcManutencao;
 
@@ -50,19 +31,19 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Cliente
-                                clientesController.addCliente(repositorioClientes); break;
+                                clientesController.addCliente(); break;
 
                             case 2:
                                 // Listar Clientes
-                                clientesController.getAllClientes(repositorioClientes); break;
+                                clientesController.getAllClientes(); break;
 
                             case 3:
                                 // Buscar Cliente
-                                clientesController.readCliente(repositorioClientes); break;
+                                clientesController.readCliente(); break;
 
                             case 4:
                                 // Deletar Cliente
-                                clientesController.deleteCliente(repositorioClientes); break;
+                                clientesController.deleteCliente(); break;
 
                             case 0:
                                 System.out.println("Retornando ao menu principal..."); break;
@@ -81,19 +62,19 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Veículo
-                                veiculosController.addVeiculo(repositorioVeiculos); break;
+                                veiculosController.addVeiculo(); break;
 
                             case 2:
                                 // Listar Veículos
-                                veiculosController.getAllClientes(repositorioVeiculos); break;
+                                veiculosController.getAllClientes(); break;
 
                             case 3:
                                 // Buscar Veículo
-                                veiculosController.readVeiculo(repositorioVeiculos); break;
+                                veiculosController.readVeiculo(); break;
 
                             case 4:
                                 // Deletar Veículo
-                                veiculosController.deleteVeiculo(repositorioVeiculos); break;
+                                veiculosController.deleteVeiculo(); break;
 
                             case 0:
                                 System.out.println("Retornando ao menu principal..."); break;
@@ -124,26 +105,26 @@ public class Main {
                                         switch (opcSeguro) {
                                             case 1:
                                                 // Adicionar Seguros
-                                                servicosController.addServico(repositorioServicos);
-                                                segurosController.addSeguro(repositorioSeguros);
+                                                servicosController.addServico();
+                                                segurosController.addSeguro();
                                                 break;
 
                                             case 2:
                                                 // Listar Seguros
-                                                servicosController.getAllServicos(repositorioServicos);
-                                                segurosController.getAllSeguros(repositorioSeguros);
+                                                servicosController.getAllServicos();
+                                                segurosController.getAllSeguros();
                                                 break;
 
                                             case 3:
                                                 // Buscar Seguro
-                                                servicosController.readServico(repositorioServicos);
-                                                segurosController.readSeguro(repositorioSeguros);
+                                                servicosController.readServico();
+                                                segurosController.readSeguro();
                                                 break;
 
                                             case 4:
                                                 // Deletar Seguro
-                                                servicosController.deleteServico(repositorioServicos);
-                                                segurosController.deleteSeguro(repositorioSeguros);
+                                                servicosController.deleteServico();
+                                                segurosController.deleteSeguro();
                                                 break;
 
                                             case 0:
@@ -162,23 +143,23 @@ public class Main {
                                         switch (opcManutencao) {
                                             case 1:
                                                 // Adicionar Manutencao
-                                                servicosController.addServico(repositorioServicos);
-                                                manutencaoController.addManutencao(repositorioManutencoes); break;
+                                                servicosController.addServico();
+                                                manutencaoController.addManutencao(); break;
 
                                             case 2:
                                                 // Listar Manuteções
-                                                servicosController.addServico(repositorioServicos);
-                                                manutencaoController.getAllManutencoes(repositorioManutencoes); break;
+                                                servicosController.addServico();
+                                                manutencaoController.getAllManutencoes(); break;
 
                                             case 3:
                                                 // Buscar Veiculos
-                                                servicosController.addServico(repositorioServicos);
-                                                manutencaoController.readManutencao(repositorioManutencoes); break;
+                                                servicosController.addServico();
+                                                manutencaoController.readManutencao(); break;
 
                                             case 4:
                                                 // Deletar Manutencao
-                                                servicosController.addServico(repositorioServicos);
-                                                manutencaoController.deleteManutencao(repositorioManutencoes); break;
+                                                servicosController.addServico();
+                                                manutencaoController.deleteManutencao(); break;
 
                                             case 0:
                                                 System.out.println("Retornando ao menu principal..."); break;
@@ -220,7 +201,7 @@ public class Main {
 
                             case 3:
                                 // Buscar Nota
-                                ncvsController.readNcv(repositorioNcvs); break;
+                                ncvsController.readNcv(); break;
 
                             case 4:
                                 // Deletar Nota
@@ -243,19 +224,19 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Notas de Vendas
-                                nvvsController.addNvv(repositorioNvvs); break;
+                                nvvsController.addNvv(); break;
 
                             case 2:
                                 // Listar Notas de Compras
-                                nvvsController.getAllNvvs(repositorioNvvs); break;
+                                nvvsController.getAllNvvs(); break;
 
                             case 3:
                                 // Buscar Nota
-                                nvvsController.readNvv(repositorioNvvs); break;
+                                nvvsController.readNvv(); break;
 
                             case 4:
                                 // Deletar Nota
-                                nvvsController.deleteNvv(repositorioNvvs); break;
+                                nvvsController.deleteNvv(); break;
 
                             case 0:
                                 System.out.println("Retornando ao menu principal..."); break;
@@ -272,19 +253,19 @@ public class Main {
                         switch (opc2){
                             case 1:
                                 // Adicionar Funcionario
-                                funcionariosController.addFuncionario(repositorioFuncionarios); break;
+                                funcionariosController.addFuncionario(); break;
 
                             case 2:
                                 // Listar Funcionarios
-                                funcionariosController.getAllFuncionarios(repositorioFuncionarios); break;
+                                funcionariosController.getAllFuncionarios(); break;
 
                             case 3:
                                 // Buscar Funcionario
-                                funcionariosController.readFuncionario(repositorioFuncionarios); break;
+                                funcionariosController.readFuncionario(); break;
 
                             case 4:
                                 // Deletar Funcionario
-                                funcionariosController.deleteFuncionario(repositorioFuncionarios); break;
+                                funcionariosController.deleteFuncionario(); break;
 
                             case 0:
                                 System.out.println("Retornando ao menu principal..."); break;

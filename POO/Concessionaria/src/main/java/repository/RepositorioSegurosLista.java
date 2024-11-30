@@ -1,12 +1,11 @@
 package repository;
-
 import interfaces.RepositorioSeguros;
 import models.servicos.Seguro;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioSegurosLista implements RepositorioSeguros {
-    List<Seguro> seguros;
+    private List<Seguro> seguros;
 
     public RepositorioSegurosLista() {seguros = new ArrayList<Seguro>();}
 

@@ -1,17 +1,18 @@
 package repository_jpa;
 import factory.DbFactory;
 import jakarta.persistence.EntityManager;
-import models.notas.Ncv;
+import models.servicos.Manutencao;
+import models.servicos.Servico;
 import java.util.List;
 
-public class NcvRepository {
+public class ManutencaoRepository {
     private static EntityManager entityManager;
 
-    public static void saveAccount(Ncv ncv){
+    public static void saveAccount(Manutencao manutencao) {
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            entityManager.persist(ncv);
+            entityManager.persist(manutencao);
             DbFactory.saveAndClose(entityManager);
 
         } catch (Exception ex) {
@@ -22,23 +23,23 @@ public class NcvRepository {
     }
 
     // Retorna os valores da tabela utilizando o id.
-    public static Ncv getById(final int idNCV) {
+    public static Manutencao getById(final int idManutencao) {
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.find(Ncv.class, idNCV);
+        return entityManager.find(Manutencao.class, idManutencao);
     }
 
-    public static List<Ncv> listAll(){
-        String query = "SELECT ncv FROM Ncv ncv";
+    public static List<Manutencao> listAll(){
+        String query = "SELECT manutencao FROM Manutencao manutencao";
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.createQuery(query, Ncv.class).getResultList();
+        return entityManager.createQuery(query, Manutencao.class).getResultList();
     }
 
-    public static void removeAccountById(final int idNCV) {
+    public static void removeAccountById(final int idManutencao) {
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            Ncv ncv = getById(idNCV);
-            entityManager.remove(ncv);
+            Manutencao manutencao = getById(idManutencao);
+            entityManager.remove(manutencao);
             DbFactory.saveAndClose(entityManager);
 
         }catch(Exception ex){

@@ -1,9 +1,6 @@
 package controller;
-import interfaces.RepositorioNcvs;
-import jakarta.persistence.Column;
 import models.notas.Ncv;
 import repository_jpa.NcvRepository;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,17 +13,15 @@ import java.util.Scanner;
  *****************************************************************/
 
 public class NcvsController {
+    //RepositorioNcvs nvcs;
+    Ncv ncv = new Ncv();
     Scanner input = new Scanner(System.in);
-    Ncv ncv;
 
-    int idNCV;
-    String ncvChassi;
-    int NcvIdFuncionario;
-    String dataNCV;
+    int idNCV,NcvIdFuncionario;
+    String ncvChassi, dataNCV;
     double valorNCV;
 
     public void addNcv() {
-        ncv = new Ncv();
 
         System.out.println("Você selecionou a opção registrar uma Nota de Compra de Veiculo.\n");
         System.out.println("Digite o chassi do Veiculo: ");
@@ -62,6 +57,7 @@ public class NcvsController {
         //repositorioNcvs.criar(ncv);
         //repositorioNcvs.salvarNota(Nota);
         NcvRepository.saveAccount(ncv);
+        System.out.println("Nota de compra "+ ncv.getIdNCV() + " de veiculo resgistrada com sucesso!");
     }
 
     public void deleteNcv() {
@@ -72,20 +68,20 @@ public class NcvsController {
 
         if(idNCV != 0){
             NcvRepository.removeAccountById(idNCV);
-            System.out.println("Nota removida com sucesso.");
+            System.out.println("Nota de compra "+ ncv.getIdNCV() +" removida com sucesso.");
 
         }else{
             System.out.println("Nota não encontrada em nosso banco de dados!");
         }
     }
 
-    public void readNcv(RepositorioNcvs repositorioNcvs) {
+    public void readNcv() {
         System.out.println("Você selecionou a opção buscar por uma nota de compra.\n");
         System.out.println("Digite o id da nota de compra: ");
         idNCV = input.nextInt();
 
         if(idNCV != 0){
-            System.out.println("Informações da nota de compra:\n " + repositorioNcvs.buscar(idNCV));
+            System.out.println("Informações da nota de compra:\n " + NcvRepository.getById(idNCV));
 
         }else{
             System.out.println("Nota de compra não encontrada em nosso banco de dados!");

@@ -1,28 +1,17 @@
 package controller;
-import interfaces.RepositorioClientes;
-import jakarta.persistence.Column;
 import models.clientes.Cliente;
+import repository_jpa.ClienteRepository;
+
 import java.util.Scanner;
 
 public class ClientesController {
     Scanner input = new Scanner(System.in);
-    Cliente cliente;
+    Cliente cliente = new Cliente();
 
-    int idCliente;
-    String cpf;
-    String nome;
-    String cep;
-    String logradouro;
-    int numero;
-    String complemento;
-    String bairro;
-    String telefone;
-    String estado;
-    String cidade;
-    String email;
+    int idCliente, numero;
+    String cpf, nome, cep, logradouro, complemento, bairro, telefone, estado, cidade, email;
 
-    public void addCliente(RepositorioClientes repositorioClientes) {
-        cliente = new Cliente();
+    public void addCliente() {
 
         System.out.println("Você selecionou a opção registrar um cliente.\n");
         System.out.print("Digite o nome do cliente: ");
@@ -71,43 +60,48 @@ public class ClientesController {
         cliente.setEmail(email);
 
         System.out.println("\nCadastro concluído com sucesso! O cliente " + cliente.getNome() + " foi registrado.");
-
-
-        repositorioClientes.criar(cliente);
+        //repositorioClientes.criar(cliente);
+        ClienteRepository.saveAccount(cliente);
     }
 
-    public void deleteCliente(RepositorioClientes repositorioClientes) {
+    public void deleteCliente() {
 
         System.out.println("Você selecionou a opção remover um cliente.\n");
         System.out.print("Digite o CPF do cliente: ");
         cpf = input.nextLine();
 
         if (cpf != null){
-            repositorioClientes.remover(cpf);
-            System.out.println("Cliente deletado com sucesso!");
+            //repositorioClientes.remover(cpf);
+            ClienteRepository.removeAccountById(idCliente);
+            System.out.println("Cliente deletado" + cliente.getNome()+ " com sucesso!");
 
         }else{
             System.out.println("Cliente não encontrado em nosso banco de dados!");
-
         }
     }
 
-    public void readCliente(RepositorioClientes repositorioClientes) {
+    public void readCliente() {
 
         System.out.println("Você selecionou a opção buscar por um cliente.\n");
-        System.out.print("Digite o CPF do cliente: ");
+        System.out.println("Digite o CPF do cliente: ");
         cpf = input.nextLine();
+
         if (cpf != null) {
-            System.out.println("Informações do Cliente:\n " + repositorioClientes.buscar(cpf));
+            //System.out.println("Informações do Cliente:\n " + repositorioClientes.buscar(cpf));
+            System.out.println("Informações do Cliente:\n " + ClienteRepository.getById(idCliente));
 
         } else {
             System.out.println("Cliente não encontrado em nosso banco de dados!");
-
         }
     }
 
-    public void getAllClientes(RepositorioClientes repositorioClientes) {
+    public void getAllClientes() {
         System.out.println("Você selecionou a opção listar todos os clientes.\n");
-        System.out.println(repositorioClientes.listarTodos());
+        //System.out.println(repositorioClientes.listarTodos());
+        System.out.println("Lista de Clientes: ");
+
+        for(Cliente cliente : ClienteRepository.listAll()){
+            System.out.println(cliente);
+        }
     }
 }

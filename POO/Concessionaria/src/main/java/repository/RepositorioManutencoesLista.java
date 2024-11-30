@@ -1,13 +1,11 @@
 package repository;
-
 import interfaces.RepositorioManutencoes;
 import models.servicos.Manutencao;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioManutencoesLista implements RepositorioManutencoes {
-    List<Manutencao> manutencoes;
+    private List<Manutencao> manutencoes;
 
     public RepositorioManutencoesLista() {
         manutencoes = new ArrayList<Manutencao>();
