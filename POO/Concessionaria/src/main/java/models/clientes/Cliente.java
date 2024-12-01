@@ -5,9 +5,9 @@ import jakarta.persistence.*;
 @Table(name="Cliente") //Nome da tabela no SQL.
 public class Cliente {
     @Id
-    @Column(name="idCliente")
+    @Column(name="idcliente")
     @GeneratedValue(strategy = GenerationType.IDENTITY)// Gera ID automaticamente no banco
-    private int idCliente;
+    private int idcliente;
 
     @Column(name="nome")
     private String nome;
@@ -63,8 +63,8 @@ public class Cliente {
     public Cliente() {}
 
     // Getters e Setters
-    public int getIdCliente() {return idCliente;}
-    public void setIdCliente(int idCliente) {this.idCliente = idCliente;}
+    public int getIdcliente() {return idcliente;}
+    public void setIdcliente(int idcliente) {this.idcliente = idcliente;}
 
     public String getNome() {return nome;}
     public void setNome(String nome) {this.nome = nome;}
@@ -102,7 +102,7 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente: " +
-                "\nidCliente= " + idCliente +
+                "\nidCliente= " + idcliente +
                 "\n nome= " + nome +
                 "\n cpf= " + cpf +
                 "\n cep= " + cep +

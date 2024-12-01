@@ -7,18 +7,20 @@ public class FuncionariosController {
     Scanner input = new Scanner(System.in);
     Funcionario funcionario = new Funcionario();
 
-    int idFuncionario;
+    int idfuncionario;
     String nome;
 
     public void addFuncionario() {
 
         System.out.println("Você selecionou a opção registrar um funcionario.\n");
-        System.out.println("Digite a matricula do funcionario: ");
+        /*System.out.println("Digite a matricula (ID) do funcionario: ");
         idFuncionario = input.nextInt();
-        funcionario.setIdFuncionario(idFuncionario);
+        funcionario.setIdFuncionario(idFuncionario);*/
+
+        // O ID é gerado automaticamente.
 
         System.out.println("Digite o nome do funcionario: ");
-        nome = input.nextLine();
+        nome = input.next();
         funcionario.setNome(nome);
 
         //repositorioFuncionarios.criar(funcionario);
@@ -30,12 +32,12 @@ public class FuncionariosController {
     public void deleteFuncionario() {
         System.out.println("Você selecionou a opção remover um funcionario.\n");
         System.out.println("Digite a matricula do funcionario: ");
-        idFuncionario = input.nextInt();
+        idfuncionario = input.nextInt();
 
-        if (idFuncionario != 0) {
+        if (idfuncionario != 0) {
             //repositorioFuncionarios.remover(idFuncionario);
-            FuncionarioRepository.removeAccountById(idFuncionario);
-            System.out.println("O funcionario " + funcionario.getNome() + " foi removido com sucesso!");
+            FuncionarioRepository.removeAccountById(idfuncionario);
+            System.out.println("O funcionario foi removido com sucesso!");
 
         } else {
             System.out.println("Funcionario não encontrado em nosso banco de dados!");
@@ -45,11 +47,11 @@ public class FuncionariosController {
     public void readFuncionario() {
         System.out.println("Você selecionou a opção buscar por um funcionario.\n");
         System.out.println("Digite a matricula do funcionario: ");
-        idFuncionario = input.nextInt();
+        idfuncionario = input.nextInt();
 
-        if (idFuncionario != 0) {
+        if (idfuncionario != 0) {
             //System.out.println("Informações do Funcionario\n " + repositorioFuncionarios.buscar(idFuncionario));
-            System.out.println("Informações do Funcionario\n " + FuncionarioRepository.getById(idFuncionario));
+            System.out.println("Informações do Funcionario\n " + FuncionarioRepository.getById(idfuncionario));
         } else {
             System.out.println("Funcionario não encontrado em nosso banco de dados!");
         }

@@ -22,9 +22,9 @@ public class FuncionarioRepository {
     }
 
     // Retorna os valores da tabela utilizando o id.
-    public static Funcionario getById(final int idFuncionario) {
+    public static Funcionario getById(final int idfuncionario) {
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.find(Funcionario.class, idFuncionario);
+        return entityManager.find(Funcionario.class, idfuncionario);
     }
 
     public static List<Funcionario> listAll(){
@@ -33,11 +33,11 @@ public class FuncionarioRepository {
         return entityManager.createQuery(query, Funcionario.class).getResultList();
     }
 
-    public static void removeAccountById(final int idFuncionario) {
+    public static void removeAccountById(final int idfuncionario) {
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            Funcionario funcionario = getById(idFuncionario);
+            Funcionario funcionario = getById(idfuncionario);
             entityManager.remove(funcionario);
             DbFactory.saveAndClose(entityManager);
 

@@ -69,7 +69,7 @@ public class NvvsController {
         if(idNVV != 0) {
             //repositorioNvvs.remover(idNVV);
             NvvRepository.removeAccountById(idNVV);
-            System.out.println("Nota de venda "+ nvv.getIdNVV() + " de veiculo removida com sucesso!");
+            System.out.println("Nota de venda de veiculo removida com sucesso!");
 
         }else{
             System.out.println("Nota não encontrada em nosso banco de dados!");

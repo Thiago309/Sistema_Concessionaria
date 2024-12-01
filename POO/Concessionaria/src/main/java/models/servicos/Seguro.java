@@ -6,6 +6,10 @@ import jakarta.persistence.*;
 @MappedSuperclass
 public class Seguro {
     @Id
+    @Column(name="idseguro")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idseguro;
+
     @Column(name="numeroApolice")
     private int numeroApolice;
 
@@ -27,9 +31,10 @@ public class Seguro {
     @Column(name="franquia")
     private double franquia;
 
-    public Seguro(int numeroApolice, String segChassi, String segDataInicial, String segDataFinal, double segPreco,
+    public Seguro(int idseguro, int numeroApolice, String segChassi, String segDataInicial, String segDataFinal, double segPreco,
                   String cobertura, double franquia) {
 
+        this.idseguro = idseguro;
         this.numeroApolice = numeroApolice;
         this.segChassi = segChassi;
         this.segDataInicial = segDataInicial;
@@ -40,6 +45,9 @@ public class Seguro {
     }
     //Construtor da class Seguro
     public Seguro() {}
+
+    public int getIdSeguro() {return idseguro;}
+    public void setIdSeguro(int idseguro) {this.idseguro = idseguro;}
 
     // Getters e setters
     public int getNumeroApolice() {return numeroApolice;}

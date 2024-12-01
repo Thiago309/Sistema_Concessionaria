@@ -13,10 +13,10 @@ public class RepositorioSegurosLista implements RepositorioSeguros {
     public void criar(Seguro seguro) {seguros.add(seguro);}
 
     @Override
-    public Seguro buscar(int numeroApolice){
+    public Seguro buscar(int idseguro){
         Seguro seguroProcurado = null;
         for (Seguro seguro : seguros) {
-            if (seguro.getNumeroApolice() == numeroApolice) {
+            if (seguro.getNumeroApolice() == idseguro) {
                 seguroProcurado = seguro;
             }
         }
@@ -24,11 +24,11 @@ public class RepositorioSegurosLista implements RepositorioSeguros {
     }
 
     @Override
-    public void remover(int numeroApolice){
+    public void remover(int idseguro){
         int posicao = -1;
         for (Seguro seguro : seguros) {
-            if (seguro.getNumeroApolice() == numeroApolice) {
-                posicao = seguro.getNumeroApolice();
+            if (seguro.getIdSeguro() == idseguro) {
+                posicao = seguro.getIdSeguro();
             }
         }
         if(posicao != -1){

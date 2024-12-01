@@ -23,9 +23,9 @@ public class ServicoRepository {
     }
 
     // Retorna os valores da tabela utilizando o id.
-    public static Servico getById(final int idServico) {
+    public static Servico getById(final int idservico) {
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.find(Servico.class, idServico);
+        return entityManager.find(Servico.class, idservico);
     }
 
     public static List<Servico> listAll(){
@@ -34,11 +34,11 @@ public class ServicoRepository {
         return entityManager.createQuery(query, Servico.class).getResultList();
     }
 
-    public static void removeAccountById(final int idServico) {
+    public static void removeAccountById(final int idservico) {
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            Servico servico = getById(idServico);
+            Servico servico = getById(idservico);
             entityManager.remove(servico);
             DbFactory.saveAndClose(entityManager);
 

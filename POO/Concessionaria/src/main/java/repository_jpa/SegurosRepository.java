@@ -22,9 +22,9 @@ public class SegurosRepository {
     }
 
     // Retorna os valores da tabela utilizando o id.
-    public static Seguro getById(final int numeroApolice) {
+    public static Seguro getById(final int idseguro) {
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.find(Seguro.class, numeroApolice);
+        return entityManager.find(Seguro.class, idseguro);
     }
 
     public static List<Seguro> listAll(){
@@ -33,11 +33,11 @@ public class SegurosRepository {
         return entityManager.createQuery(query, Seguro.class).getResultList();
     }
 
-    public static void removeAccountById(final int numeroApolice) {
+    public static void removeAccountById(final int idseguro) {
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            Seguro seguro = getById(numeroApolice);
+            Seguro seguro = getById(idseguro);
             entityManager.remove(seguro);
             DbFactory.saveAndClose(entityManager);
 

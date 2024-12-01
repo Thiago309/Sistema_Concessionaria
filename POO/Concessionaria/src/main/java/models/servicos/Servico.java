@@ -6,9 +6,9 @@ import jakarta.persistence.*;
 @MappedSuperclass // Indica que essa é a super class para o SQL.
 public class Servico {
     @Id
-    @Column(name="idServico")
+    @Column(name="idservico")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idServico;
+    private int idservico;
 
     @Column(name="dataInicial")
     private String dataInicial;
@@ -23,10 +23,10 @@ public class Servico {
     private String descricaoServico;
 
     // Contrutor da class Servico
-    public Servico(int idServico, String dataInicial, String dataFinal, String condicaoNegociacao,
+    public Servico(int idservico, String dataInicial, String dataFinal, String condicaoNegociacao,
                    String descricaoServico) {
 
-        this.idServico = idServico;
+        this.idservico = idservico;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.condicaoNegociacao = condicaoNegociacao;
@@ -36,8 +36,8 @@ public class Servico {
     public Servico() {}
 
     // Getters e Setters
-    public int getIdServico() {return idServico;}
-    public void setIdServico(int idServico) {this.idServico = idServico;}
+    public int getIdServico() {return idservico;}
+    public void setIdServico(int idservico) {this.idservico = idservico;}
 
     public String getDataInicial() {return dataInicial;}
     public void setDataInicial(String dataInicial) {this.dataInicial = dataInicial;}

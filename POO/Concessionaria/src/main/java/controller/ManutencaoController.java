@@ -38,7 +38,7 @@ public class ManutencaoController {
             Date datapProximaManutencao1 = null;
             SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-            System.out.println("Informe a data sugerida para a proxima manutenção.\n Informe neste formato (dd/MM/yyyy): ");
+            System.out.println("Informe a data sugerida para a proxima manutenção (dd/MM/yyyy):");
             datapProximaManutencao = input.next();
 
             try {
@@ -53,7 +53,7 @@ public class ManutencaoController {
         }
 
         System.out.println("Informe a situação atual da manutenção (Em processo, concluida ou não efetuada com sucesso.): ");
-        Status = input.next();
+        Status = input.nextLine();
         manutencao.setStatus(Status);
 
         //repositorioManutencoes.criar(manutencao);
@@ -70,7 +70,7 @@ public class ManutencaoController {
         if(idManutencao != 0){
             //repositorioManutencoes.remover(idManutencao);
             ManutencaoRepository.removeAccountById(idManutencao);
-            System.out.println("Manutenção removida " + manutencao.getIdManutencao() +"com sucesso!");
+            System.out.println("Manutenção removida com sucesso!");
 
         }else{
             System.out.println("Manutenção não encontrada em nosso banco de dados!");
@@ -82,6 +82,7 @@ public class ManutencaoController {
         System.out.println("Você selecionou a opção buscar por uma manutenção.\n");
         System.out.println("Informe o id da Manutenção: ");
         idManutencao = input.nextInt();
+
         if(idManutencao != 0){
             //System.out.println("Informações da Manutenção\n " + repositorioManutencoes.buscar(idManutencao));
             System.out.println("Informações da Manutenção\n " + ManutencaoRepository.getById(idManutencao));

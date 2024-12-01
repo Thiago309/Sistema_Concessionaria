@@ -6,22 +6,22 @@ import jakarta.persistence.*;
 @MappedSuperclass
 public class Funcionario {
     @Id
-    @Column(name="idFuncionario")
+    @Column(name="idfuncionario")
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Gera ID automaticamente no banco
-    private int idFuncionario;
+    private int idfuncionario;
 
     @Column(name="nome")
     private String nome;
 
-    public Funcionario(int idFuncionario, String nome) {
-        this.idFuncionario = idFuncionario;
+    public Funcionario(int idfuncionario, String nome) {
+        this.idfuncionario = idfuncionario;
         this.nome = nome;
     }
 
     public Funcionario() {}
 
-    public int getIdFuncionario() {return idFuncionario;}
-    public void setIdFuncionario(int idFuncionario) {this.idFuncionario = idFuncionario;}
+    public int getIdFuncionario() {return idfuncionario;}
+    public void setIdFuncionario(int idfuncionario) {this.idfuncionario = idfuncionario;}
 
     public String getNome() {return nome;}
     public void setNome(String nome) {this.nome = nome;}

@@ -16,7 +16,7 @@ public class Main {
         NvvsController nvvsController = new NvvsController();
         FuncionariosController funcionariosController = new FuncionariosController();
 
-        int opc, opc2, opc3, opcSeguro, opcManutencao;
+        int opc, opc2, opc3;
 
         do {
             menus.principal();
@@ -49,7 +49,7 @@ public class Main {
                                 System.out.println("Retornando ao menu principal..."); break;
 
                             default:
-                                System.out.println("Opção inválida. Tente novamente.");
+                                System.out.println("Opção inválida. Tente novamente."); break;
                         }
                     } while (opc2 != 0);
                     break;
@@ -97,6 +97,7 @@ public class Main {
                                 opc3 = input.nextInt();
                                 
                                 if (opc3 == 1) {
+                                    int opcSeguro;
 
                                     do {
                                         menus.seguros();
@@ -105,30 +106,26 @@ public class Main {
                                         switch (opcSeguro) {
                                             case 1:
                                                 // Adicionar Seguros
-                                                servicosController.addServico();
                                                 segurosController.addSeguro();
                                                 break;
 
                                             case 2:
                                                 // Listar Seguros
-                                                servicosController.getAllServicos();
                                                 segurosController.getAllSeguros();
                                                 break;
 
                                             case 3:
                                                 // Buscar Seguro
-                                                servicosController.readServico();
                                                 segurosController.readSeguro();
                                                 break;
 
                                             case 4:
                                                 // Deletar Seguro
-                                                servicosController.deleteServico();
                                                 segurosController.deleteSeguro();
                                                 break;
 
                                             case 0:
-                                                System.out.println("Retornando ao menu principal..."); break;
+                                                System.out.println("Retornando ao menu principal...");break;
 
                                             default:
                                                 System.out.println("Opção inválida. Tente novamente.");
@@ -136,6 +133,8 @@ public class Main {
                                     } while (opcSeguro != 0);
 
                                 } else if (opc3 == 2) {
+                                    int opcManutencao;
+
                                     do {
                                         menus.manutencao();
                                         opcManutencao = input.nextInt();
@@ -143,26 +142,22 @@ public class Main {
                                         switch (opcManutencao) {
                                             case 1:
                                                 // Adicionar Manutencao
-                                                servicosController.addServico();
-                                                manutencaoController.addManutencao(); break;
+                                                manutencaoController.addManutencao();break;
 
                                             case 2:
                                                 // Listar Manuteções
-                                                servicosController.addServico();
-                                                manutencaoController.getAllManutencoes(); break;
+                                                manutencaoController.getAllManutencoes();break;
 
                                             case 3:
                                                 // Buscar Veiculos
-                                                servicosController.addServico();
-                                                manutencaoController.readManutencao(); break;
+                                                manutencaoController.readManutencao();break;
 
                                             case 4:
                                                 // Deletar Manutencao
-                                                servicosController.addServico();
-                                                manutencaoController.deleteManutencao(); break;
+                                                manutencaoController.deleteManutencao();break;
 
                                             case 0:
-                                                System.out.println("Retornando ao menu principal..."); break;
+                                                System.out.println("Retornando ao menu principal...");
 
                                             default:
                                                 System.out.println("Opção inválida. Tente novamente.");
@@ -174,6 +169,14 @@ public class Main {
                                     System.out.println("Opção inválida. Tente novamente.");
                                 }
                                 break;
+                            case 2:
+                                servicosController.getAllServicos(); break;
+
+                            case 3:
+                                servicosController.readServico();break;
+
+                            case 4:
+                                servicosController.deleteServico();break;
 
                             case 0:
                                 System.out.println("Retornando ao menu principal...");

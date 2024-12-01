@@ -22,22 +22,16 @@ public class ClienteRepository {
     }
 
     // Retorna os valores da tabela utilizando o id.
-    public static Cliente getById(final int idCliente) {
+    public static Cliente getById(final int idcliente) {
         entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.find(Cliente.class, idCliente);
+        return entityManager.find(Cliente.class, idcliente);
     }
 
-    public static List<Cliente> listAll(){
-        String query = "SELECT cliente FROM Cliente cliente";
-        entityManager = DbFactory.configFactoryDataBase();
-        return entityManager.createQuery(query, Cliente.class).getResultList();
-    }
-
-    public static void removeAccountById(final int idCliente) {
+    public static void removeAccountById(final int idcliente) {
         entityManager = DbFactory.configFactoryDataBase();
 
         try{
-            Cliente cliente = getById(idCliente);
+            Cliente cliente = getById(idcliente);
             entityManager.remove(cliente);
             DbFactory.saveAndClose(entityManager);
 
@@ -45,5 +39,11 @@ public class ClienteRepository {
             System.out.println(ex.getMessage()); // Mostra o motivo do error.
             entityManager.getTransaction().rollback();
         }
+    }
+
+    public static List<Cliente> listAll(){
+        String query = "SELECT cliente FROM Cliente cliente";
+        entityManager = DbFactory.configFactoryDataBase();
+        return entityManager.createQuery(query, Cliente.class).getResultList();
     }
 }

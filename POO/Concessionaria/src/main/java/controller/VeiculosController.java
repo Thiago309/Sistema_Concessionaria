@@ -55,10 +55,10 @@ public class VeiculosController {
     }
 
     public void deleteVeiculo() {
-        System.out.print("Digite o Chassi do veiculo: ");
-        chassi = input.nextLine();
+        System.out.print("Digite o ID do veiculo: ");
+        idVeiculo = input.nextInt();
 
-        if (chassi != null) {
+        if (idVeiculo != 0) {
             //repositorioVeiculos.remover(chassi);
             VeiculosRepository.removeAccountById(idVeiculo);
             System.out.println("Veiculo deletado com sucesso!");
@@ -69,10 +69,10 @@ public class VeiculosController {
     }
 
     public void readVeiculo() {
-        System.out.print("Digite o Chassi do veiculo: ");
-        chassi = input.nextLine();
+        System.out.print("Digite o ID do veiculo: ");
+        idVeiculo = input.nextInt();
 
-        if (chassi != null) {
+        if (idVeiculo != 0) {
             //System.out.println("Informações do Veiculo: \n" + repositorioVeiculos.buscar(chassi));
             System.out.println("Informações do Veiculo: \n" + VeiculosRepository.getById(idVeiculo));
 

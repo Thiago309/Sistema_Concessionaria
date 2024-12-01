@@ -10,7 +10,7 @@ public class SegurosController {
     Scanner input = new Scanner(System.in);
     Seguro seguro = new Seguro();
 
-    int numeroApolice;
+    int idseguro, numeroApolice;
     String segChassi, segDataInicial, segDataFinal, cobertura ;
     double segPreco, franquia;
 
@@ -76,12 +76,12 @@ public class SegurosController {
     public void deleteSeguro() {
 
         System.out.println("Você selecionou a opção remover um seguro.\n");
-        System.out.println("Digite o numero da Apolice do seguro: ");
-        numeroApolice = input.nextInt();
+        System.out.println("Digite o ID do seguro: ");
+        idseguro = input.nextInt();
 
-        if (numeroApolice != 0){
+        if (idseguro != 0){
             //repositorioSeguros.remover(numeroApolice);
-            SegurosRepository.removeAccountById(numeroApolice);
+            SegurosRepository.removeAccountById(idseguro);
             System.out.println("Seguro "+ seguro.getNumeroApolice() + " removido com sucesso!");
 
         }else{
@@ -92,12 +92,12 @@ public class SegurosController {
     public void readSeguro() {
 
         System.out.println("Você selecionou a opção buscar por um seguro.\n");
-        System.out.println("Digite o numero da Apolice do seguro: ");
-        numeroApolice = input.nextInt();
+        System.out.println("Digite o ID do seguro: ");
+        idseguro = input.nextInt();
 
-        if (numeroApolice != 0){
+        if (idseguro != 0){
             //System.out.println("Informações do Seguro:\n " + repositorioSeguros.buscar(numeroApolice));
-            System.out.println("Informações do Seguro:\n " + SegurosRepository.getById(numeroApolice));
+            System.out.println("Informações do Seguro:\n " + SegurosRepository.getById(idseguro));
 
         } else{
             System.out.println("Seguro não encontrado em nosso banco de dados!");

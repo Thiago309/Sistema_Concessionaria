@@ -10,22 +10,14 @@ public class ServicosController {
     Scanner input = new Scanner(System.in);
     Servico servico =  new Servico();
 
-    int idServico;
+    int idservico;
     String dataInicial, dataFinal, condicaoNeociacao, descricaoServico ;
 
     public void addServico() {
 
-        System.out.println("Você selecionou a opção registrar um serviço.\n");
-        /*O id do serviço tem que ser informado já que é uma tabela de relacionamento com a tabela manutenção ou
-        seguro*/
-
-        System.out.println("Digite o id do servico: ");
-        idServico = input.nextInt();
-        servico.setIdServico(idServico);
-
         while(true) {
 
-            Date servDataInicial = null, servDataFinal = null; // iniciando variaveis
+            Date servDataInicial, servDataFinal; // iniciando variaveis
             SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
             System.out.print("Informe a Data Inicial do servico (dd/MM/yyyy): ");
@@ -51,11 +43,11 @@ public class ServicosController {
         }
 
         System.out.println("Informe a condição de negociacao: ");
-        condicaoNeociacao = input.nextLine();
+        condicaoNeociacao = input.next();
         servico.setCondicaoNegociacao(condicaoNeociacao);
 
         System.out.println("Descreva como o serviço foi realizado: ");
-        descricaoServico = input.nextLine();
+        descricaoServico = input.next();
         servico.setDescricaoServico(descricaoServico);
 
         //repositorioServicos.criar(servico);
@@ -68,12 +60,12 @@ public class ServicosController {
 
         System.out.println("Você selecionou a opção deletar um serviço.\n");
         System.out.print("Informe o ID do servico: ");
-        idServico = input.nextInt();
+        idservico = input.nextInt();
 
-        if (idServico != 0) {
+        if (idservico != 0) {
             //repositorioServicos.remover(idServico);
-            ServicoRepository.removeAccountById(idServico);
-            System.out.println("Servico "+ servico.getIdServico()+ " removido com sucesso!");
+            ServicoRepository.removeAccountById(idservico);
+            System.out.println("Servico removido com sucesso!");
 
         }else{
             System.out.println("Serviço não encontrado em nosso banco de dados!");
@@ -84,11 +76,11 @@ public class ServicosController {
     public void readServico() {
         System.out.println("Você selecionou a opção buscar por um serviço.\n");
         System.out.print("Informe o ID do servico: ");
-        idServico = input.nextInt();
+        idservico = input.nextInt();
 
-        if (idServico != 0) {
+        if (idservico != 0) {
             //System.out.println("Informações do Serviço:\n " + repositorioServicos.buscar(idServico));
-            System.out.println("Informações do Serviço:\n " + ServicoRepository.getById(idServico));
+            System.out.println("Informações do Serviço:\n " + ServicoRepository.getById(idservico));
 
         }else{
             System.out.println("Servico não encontrado em nosso banco de dados!");
@@ -99,7 +91,7 @@ public class ServicosController {
         System.out.println("Você selecionou a opção listar todos os serviços.\n");
         //System.out.println(repositorioServicos.listarTodos());
 
-        for (Servico Servico : ServicoRepository.listAll()) {
+        for (Servico servico : ServicoRepository.listAll()) {
             System.out.println(servico);
         }
     }

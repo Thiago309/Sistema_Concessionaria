@@ -8,7 +8,7 @@ public class ClientesController {
     Scanner input = new Scanner(System.in);
     Cliente cliente = new Cliente();
 
-    int idCliente, numero;
+    int idcliente, numero;
     String cpf, nome, cep, logradouro, complemento, bairro, telefone, estado, cidade, email;
 
     public void addCliente() {
@@ -67,13 +67,13 @@ public class ClientesController {
     public void deleteCliente() {
 
         System.out.println("Você selecionou a opção remover um cliente.\n");
-        System.out.print("Digite o CPF do cliente: ");
-        cpf = input.nextLine();
+        System.out.print("Digite o ID do cliente: ");
+        idcliente = input.nextInt();
 
-        if (cpf != null){
+        if (idcliente != 0){
             //repositorioClientes.remover(cpf);
-            ClienteRepository.removeAccountById(idCliente);
-            System.out.println("Cliente deletado" + cliente.getNome()+ " com sucesso!");
+            ClienteRepository.removeAccountById(idcliente);
+            System.out.println("Cliente deletado com sucesso!");
 
         }else{
             System.out.println("Cliente não encontrado em nosso banco de dados!");
@@ -83,12 +83,12 @@ public class ClientesController {
     public void readCliente() {
 
         System.out.println("Você selecionou a opção buscar por um cliente.\n");
-        System.out.println("Digite o CPF do cliente: ");
-        cpf = input.nextLine();
+        System.out.println("Digite o ID do cliente: ");
+        idcliente = input.nextInt();
 
-        if (cpf != null) {
+        if (idcliente != 0) {
             //System.out.println("Informações do Cliente:\n " + repositorioClientes.buscar(cpf));
-            System.out.println("Informações do Cliente:\n " + ClienteRepository.getById(idCliente));
+            System.out.println("Informações do Cliente:\n " + ClienteRepository.getById(idcliente));
 
         } else {
             System.out.println("Cliente não encontrado em nosso banco de dados!");

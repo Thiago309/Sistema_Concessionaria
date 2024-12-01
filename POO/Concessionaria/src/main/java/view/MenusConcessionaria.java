@@ -34,7 +34,7 @@ public class MenusConcessionaria {
 
     public void servicos() {
         System.out.println("\n--- Lista de Serviços ---");
-        System.out.println("1. Adicionar Serviços");
+        System.out.println("1. Gerenciar Serviços");
         System.out.println("2. Listar Serviços");
         System.out.println("3. Buscar Serviços");
         System.out.println("4. Deletar Serviços");
@@ -48,7 +48,7 @@ public class MenusConcessionaria {
         System.out.println("2. Listar Seguros");
         System.out.println("3. Buscar Seguro");
         System.out.println("4. Deletar Seguro");
-        System.out.println("0. Sair");
+        System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -57,9 +57,9 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Manutenção");
         System.out.println("2. Listar Manutenções");
         System.out.println("3. Buscar Manutenção");
-        System.out.println("4. Atualizar Manutenção"); // **Alteração: Adicionada a opção de Atualizar**
-        System.out.println("5. Deletar Manutenção"); // **Alteração: Mudou de 4 para 5**
-        System.out.println("0. Sair");
+        //.out.println("4. Atualizar Manutenção"); // **Alteração: Adicionada a opção de Atualizar**
+        System.out.println("4. Deletar Manutenção"); // **Alteração: Mudou de 4 para 5**
+        System.out.println("0. Voltar");
         System.out.print("\nEscolha uma opção: ");
     }
 

@@ -68,7 +68,7 @@ public class NcvsController {
 
         if(idNCV != 0){
             NcvRepository.removeAccountById(idNCV);
-            System.out.println("Nota de compra "+ ncv.getIdNCV() +" removida com sucesso.");
+            System.out.println("Nota de compra removida com sucesso.");
 
         }else{
             System.out.println("Nota não encontrada em nosso banco de dados!");
