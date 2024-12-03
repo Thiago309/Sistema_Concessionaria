@@ -46,4 +46,17 @@ public class NcvRepository {
             entityManager.getTransaction().rollback();
         }
     }
+
+    public static void updateNcv(Ncv ncvAtualizado){
+        entityManager = DbFactory.configFactoryDataBase();
+
+        try{
+            entityManager.merge(ncvAtualizado);
+            DbFactory.saveAndClose(entityManager);
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            entityManager.getTransaction().rollback();
+        }
+    }
 }

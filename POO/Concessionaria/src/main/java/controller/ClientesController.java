@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class ClientesController {
     Scanner input = new Scanner(System.in);
     Cliente cliente = new Cliente();
+    Cliente clienteAtualizado = new Cliente();
 
     int idcliente, numero;
     String cpf, nome, cep, logradouro, complemento, bairro, telefone, estado, cidade, email;
@@ -59,7 +60,7 @@ public class ClientesController {
         email = input.nextLine();
         cliente.setEmail(email);
 
-        System.out.println("\nCadastro concluído com sucesso! O cliente " + cliente.getNome() + " foi registrado.");
+        System.out.println("\nCadastro concluído com sucesso! O cliente foi registrado.");
         //repositorioClientes.criar(cliente);
         ClienteRepository.saveAccount(cliente);
     }
@@ -106,6 +107,57 @@ public class ClientesController {
     }
 
     public void updateCliente(){
+        System.out.println("Você selecionou a opção alterar um cliente.\n");
+        System.out.println("Informe o ID do cliente: ");
+        idcliente = input.nextInt();
+        clienteAtualizado.setIdcliente(idcliente);
 
+        System.out.print("Digite o nome do cliente: ");
+        nome = input.nextLine();
+        clienteAtualizado.setNome(nome);
+
+        System.out.print("Digite o CPF do cliente: ");
+        cpf = input.nextLine();
+        clienteAtualizado.setCpf(cpf);
+
+        System.out.print("Digite o CEP: ");
+        cep = input.nextLine();
+        clienteAtualizado.setCep(cep);
+
+        System.out.print("Digite o Logradouro: ");
+        logradouro = input.nextLine();
+        clienteAtualizado.setLogradouro(logradouro);
+
+        System.out.print("Digite o Número: ");
+        numero = input.nextInt();
+        clienteAtualizado.setNumero(numero);
+
+        System.out.print("Digite o Complemento Residencial: ");
+        input.nextLine();
+        complemento = input.nextLine();
+        clienteAtualizado.setComplemento(complemento);
+
+        System.out.print("Digite o Bairro: ");
+        bairro = input.nextLine();
+        clienteAtualizado.setBairro(bairro);
+
+        System.out.print("Digite o Telefone: ");
+        telefone = input.nextLine();
+        clienteAtualizado.setTelefone(telefone);
+
+        System.out.print("Digite o Estado: ");
+        estado = input.nextLine();
+        clienteAtualizado.setEstado(estado);
+
+        System.out.print("Digite o Cidade: ");
+        cidade = input.nextLine();
+        clienteAtualizado.setCidade(cidade);
+
+        System.out.print("Digite o Email: ");
+        email = input.nextLine();
+        clienteAtualizado.setEmail(email);
+
+        ClienteRepository.updateAccount(clienteAtualizado);
+        System.out.println("\nCadastro concluído com sucesso! O cliente foi registrado.");
     }
 }

@@ -1,6 +1,7 @@
 package repository_jpa;
 import factory.DbFactory;
 import jakarta.persistence.EntityManager;
+import models.clientes.Cliente;
 import models.servicos.Manutencao;
 import models.servicos.Servico;
 import java.util.List;
@@ -44,6 +45,19 @@ public class ManutencaoRepository {
 
         }catch(Exception ex){
             System.out.println(ex.getMessage()); // Mostra o motivo do error.
+            entityManager.getTransaction().rollback();
+        }
+    }
+
+    public static void updateAccount(Manutencao manutencaoAtualizada) {
+        entityManager = DbFactory.configFactoryDataBase();
+
+        try{
+            entityManager.merge(manutencaoAtualizada);
+            DbFactory.saveAndClose(entityManager);
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
             entityManager.getTransaction().rollback();
         }
     }

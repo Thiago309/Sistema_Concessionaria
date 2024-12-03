@@ -1,6 +1,7 @@
 package repository_jpa;
 import factory.DbFactory;
 import jakarta.persistence.EntityManager;
+import models.clientes.Cliente;
 import models.funcionarios.Funcionario;
 import java.util.List;
 
@@ -43,6 +44,19 @@ public class FuncionarioRepository {
 
         }catch(Exception ex){
             System.out.println(ex.getMessage()); // Mostra o motivo do error.
+            entityManager.getTransaction().rollback();
+        }
+    }
+
+    public static void updateAccount(Funcionario funcionarioAtualizado){
+        entityManager = DbFactory.configFactoryDataBase();
+
+        try{
+            entityManager.merge(funcionarioAtualizado);
+            DbFactory.saveAndClose(entityManager);
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
             entityManager.getTransaction().rollback();
         }
     }

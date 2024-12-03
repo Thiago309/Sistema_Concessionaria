@@ -42,6 +42,10 @@ public class Main {
                                 clientesController.readCliente(); break;
 
                             case 4:
+                                // Editar Cliente
+                                clientesController.updateCliente(); break;
+
+                            case 5:
                                 // Deletar Cliente
                                 clientesController.deleteCliente(); break;
 

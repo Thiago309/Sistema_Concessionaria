@@ -17,7 +17,8 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Cliente");
         System.out.println("2. Listar Clientes");
         System.out.println("3. Buscar Cliente");
-        System.out.println("4. Deletar Cliente");
+        System.out.println("4. Alterar Cliente");
+        System.out.println("5. Deletar Cliente");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
@@ -27,7 +28,8 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Veiculos");
         System.out.println("2. Listar Veiculos");
         System.out.println("3. Buscar Veiculos");
-        System.out.println("4. Deletar Veiculos");
+        System.out.println("4. Alterar Veiculo");
+        System.out.println("5. Deletar Veiculos");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
@@ -37,7 +39,8 @@ public class MenusConcessionaria {
         System.out.println("1. Gerenciar Serviços");
         System.out.println("2. Listar Serviços");
         System.out.println("3. Buscar Serviços");
-        System.out.println("4. Deletar Serviços");
+        System.out.println("4. Alterar Serviços");
+        System.out.println("5. Deletar Serviços");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
@@ -47,7 +50,8 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Seguro");
         System.out.println("2. Listar Seguros");
         System.out.println("3. Buscar Seguro");
-        System.out.println("4. Deletar Seguro");
+        System.out.println("4. Alterar Seguro");
+        System.out.println("5. Deletar Seguro");
         System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
     }
@@ -57,8 +61,8 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Manutenção");
         System.out.println("2. Listar Manutenções");
         System.out.println("3. Buscar Manutenção");
-        //.out.println("4. Atualizar Manutenção"); // **Alteração: Adicionada a opção de Atualizar**
-        System.out.println("4. Deletar Manutenção"); // **Alteração: Mudou de 4 para 5**
+        System.out.println("4. Atualizar Manutenção");
+        System.out.println("5. Deletar Manutenção");
         System.out.println("0. Voltar");
         System.out.print("\nEscolha uma opção: ");
     }
@@ -68,7 +72,8 @@ public class MenusConcessionaria {
         System.out.println("1. Realizar Compra de Veiculos");
         System.out.println("2. Listar Compras Realizadas de Veiculos");
         System.out.println("3. Procurar por nota de Compra");
-        System.out.println("4. Deletar Compra Realizada de Veiculo");
+        System.out.println("4. Alterar Compra de Veiculos");
+        System.out.println("5. Deletar Compra Realizada de Veiculo");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
@@ -78,7 +83,8 @@ public class MenusConcessionaria {
         System.out.println("1. Realizar Venda de Veiculos");
         System.out.println("2. Listar Vendas Realizadas de Veiculos");
         System.out.println("3. Procurar por nota de Venda");
-        System.out.println("4. Deletar Venda Realizada de Veiculo");
+        System.out.println("4. Alterar Venda Realizada de Veiculo");
+        System.out.println("5. Deletar Venda Realizada de Veiculo");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
@@ -88,7 +94,8 @@ public class MenusConcessionaria {
         System.out.println("1. Adicionar Funcionarios");
         System.out.println("2. Listar Funcionarios");
         System.out.println("3. Buscar Funcionarios");
-        System.out.println("4. Deletar Funcionarios");
+        System.out.println("4. Alterar Funcionarios");
+        System.out.println("5. Deletar Funcionarios");
         System.out.println("0. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
