@@ -34,9 +34,10 @@ public class Veiculo {
     private String ano;
 
     // Construtor
-    public Veiculo(String chassi, double qtdKm, String cor, String localizacaoPatio, String modelo, String marca,
+    public Veiculo(int idVeiculo,String chassi, double qtdKm, String cor, String localizacaoPatio, String modelo, String marca,
                    String statusVeiculo, String ano) {
 
+        this.idVeiculo = idVeiculo;
         this.chassi = chassi;
         this.qtdKm = qtdKm;
         this.cor = cor;
@@ -50,6 +51,11 @@ public class Veiculo {
     public Veiculo() {}
 
     // Getters e Setters
+
+
+    public int getIdVeiculo() {return idVeiculo;}
+    public void setIdVeiculo(int idVeiculo) {this.idVeiculo = idVeiculo;}
+
     public String getChassi() {
         return chassi;
     }
