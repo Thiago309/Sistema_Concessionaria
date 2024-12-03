@@ -46,4 +46,17 @@ public class ClienteRepository {
         entityManager = DbFactory.configFactoryDataBase();
         return entityManager.createQuery(query, Cliente.class).getResultList();
     }
+
+    public static void updateAccount(Cliente clienteAtualizado){
+        entityManager = DbFactory.configFactoryDataBase();
+
+        try{
+            entityManager.merge(clienteAtualizado);
+            DbFactory.saveAndClose(entityManager);
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            entityManager.getTransaction().rollback();
+        }
+    }
 }
