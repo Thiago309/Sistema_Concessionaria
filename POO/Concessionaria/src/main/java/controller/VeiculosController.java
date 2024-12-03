@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class VeiculosController {
     Scanner input = new Scanner(System.in);
     Veiculo veiculo = new Veiculo();
+    Veiculo veiculoAtualizado = new Veiculo();
 
     int idVeiculo;
     String chassi, cor, localizacaoPatio, modelo, marca, statusVeiculo, ano;
@@ -14,6 +15,7 @@ public class VeiculosController {
 
     public void addVeiculo() {
 
+        System.out.println("Você selecionou a opção registrar um veiculo.\n");
         System.out.println("Digite o numero de chassi do veiculo: ");
         chassi = input.nextLine();
         veiculo.setChassi(chassi);
@@ -27,7 +29,6 @@ public class VeiculosController {
         System.out.println("Digite a cor do automovel: ");
         cor = input.nextLine();
         veiculo.setCor(cor);
-
 
         System.out.println("Digite o localizacao no pátio: ");
         localizacaoPatio = input.nextLine();
@@ -89,5 +90,49 @@ public class VeiculosController {
         for (Veiculo veiculo : VeiculosRepository.listAll()) {
             System.out.println(veiculo);
         }
+    }
+
+    public void updateVeiculo() {
+        System.out.println("Você selecionou a opção alterar um veiculo.\n");
+        System.out.println("Digite o ID do veiculo: ");
+        idVeiculo = input.nextInt();
+        veiculoAtualizado.setIdVeiculo(idVeiculo);
+
+        System.out.println("Digite o numero de chassi do veiculo: ");
+        chassi = input.nextLine();
+        veiculoAtualizado.setChassi(chassi);
+
+        System.out.println("Digite a quantidade de quilometros rodados: ");
+        qtdKm = input.nextDouble();
+        veiculoAtualizado.setQtdKm(qtdKm);
+
+        input.nextLine();
+
+        System.out.println("Digite a cor do automovel: ");
+        cor = input.nextLine();
+        veiculoAtualizado.setCor(cor);
+
+        System.out.println("Digite o localizacao no pátio: ");
+        localizacaoPatio = input.nextLine();
+        veiculoAtualizado.setLocalizacaoPatio(localizacaoPatio);
+
+        System.out.println("Digite o modelo: ");
+        modelo = input.nextLine();
+        veiculoAtualizado.setModelo(modelo);
+
+        System.out.println("Digite o marca: ");
+        marca = input.nextLine();
+        veiculoAtualizado.setMarca(marca);
+
+        System.out.println("Informe o Status do veiculo (Disponivel ou não para a venda): ");
+        statusVeiculo = input.nextLine();
+        veiculoAtualizado.setStatusVeiculo(statusVeiculo);
+
+        System.out.println("Informe o ano do veiculo: ");
+        ano = input.nextLine();  // Agora lê o ano corretamente
+        veiculoAtualizado.setAno(ano);
+
+        VeiculosRepository.updateAccount(veiculoAtualizado);
+        System.out.println("\nVeículo cadastrado com sucesso!");
     }
 }

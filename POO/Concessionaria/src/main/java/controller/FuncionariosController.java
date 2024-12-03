@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class FuncionariosController {
     Scanner input = new Scanner(System.in);
     Funcionario funcionario = new Funcionario();
+    Funcionario funcionarioAtualizado = new Funcionario();
 
     int idfuncionario;
     String nome;
@@ -25,8 +26,7 @@ public class FuncionariosController {
 
         //repositorioFuncionarios.criar(funcionario);
         FuncionarioRepository.saveAccount(funcionario);
-        System.out.println("\nCadastro concluído com sucesso! O funcionario " + funcionario.getNome()
-                + " foi registrado.");
+        System.out.println("\nCadastro concluído com sucesso! O funcionario foi registrado.");
     }
 
     public void deleteFuncionario() {
@@ -65,5 +65,19 @@ public class FuncionariosController {
         for (Funcionario funcionario : FuncionarioRepository.listAll()) {
             System.out.println(funcionario);
         }
+    }
+
+    public void updateFuncionario() {
+        System.out.println("Você selecionou a opção alterar um funcionario.\n");
+        System.out.println("Informe o ID do funcionario: ");
+        idfuncionario = input.nextInt();
+        funcionarioAtualizado.setIdFuncionario(idfuncionario);
+
+        System.out.println("Digite o nome do funcionario: ");
+        nome = input.next();
+        funcionarioAtualizado.setNome(nome);
+
+        FuncionarioRepository.updateAccount(funcionarioAtualizado);
+        System.out.println("\nCadastro concluído com sucesso! O funcionario foi registrado.");
     }
 }

@@ -113,6 +113,7 @@ public class ClientesController {
         clienteAtualizado.setIdcliente(idcliente);
 
         System.out.print("Digite o nome do cliente: ");
+        input.nextLine();
         nome = input.nextLine();
         clienteAtualizado.setNome(nome);
 

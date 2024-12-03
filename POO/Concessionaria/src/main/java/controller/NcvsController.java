@@ -13,8 +13,9 @@ import java.util.Scanner;
  *****************************************************************/
 
 public class NcvsController {
-    //RepositorioNcvs nvcs;
+
     Ncv ncv = new Ncv();
+    Ncv ncvAtualizado = new Ncv();
     Scanner input = new Scanner(System.in);
 
     int idNCV,NcvIdFuncionario;
@@ -54,8 +55,6 @@ public class NcvsController {
         valorNCV = input.nextDouble();
         ncv.setValorNCV(valorNCV);
 
-        //repositorioNcvs.criar(ncv);
-        //repositorioNcvs.salvarNota(Nota);
         NcvRepository.saveAccount(ncv);
         System.out.println("Nota de compra "+ ncv.getIdNCV() + " de veiculo resgistrada com sucesso!");
     }
@@ -96,5 +95,45 @@ public class NcvsController {
         for (Ncv ncv : NcvRepository.listAll()) {
             System.out.println(ncv);
         }
+    }
+
+    public void updateNcv() {
+        System.out.println("Você selecionou a opção alterar uma Nota de Compra de Veiculo.\n");
+        System.out.println("Informe o ID da nota de compra: ");
+        idNCV = input.nextInt();
+        ncvAtualizado.setIdNCV(idNCV);
+
+        System.out.println("Digite o chassi do Veiculo: ");
+        ncvChassi = input.nextLine();
+        ncvAtualizado.setNcvChassi(ncvChassi);
+
+        System.out.println("Digite a matricula do funcionario que realizou o processo: ");
+        NcvIdFuncionario = input.nextInt();
+        ncvAtualizado.setNcvIdFuncionario(NcvIdFuncionario);
+
+        while(true) {
+
+            Date dataNCV1 = null;
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+
+            System.out.print("Informe a Data da compra do veiculo (dd/MM/yyyy): ");
+            dataNCV = input.next();
+
+            try {
+                dataNCV1 = formatoData.parse(dataNCV);
+                ncvAtualizado.setDataNCV(String.valueOf(dataNCV1));
+                System.out.println("Data registrada com sucesso: " + dataNCV1 + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
+        }
+        System.out.println("Informe o valor da nota de Compra: ");
+        valorNCV = input.nextDouble();
+        ncvAtualizado.setValorNCV(valorNCV);
+
+        NcvRepository.updateNcv(ncvAtualizado);
+        System.out.println("Nota de compra "+ ncv.getIdNCV() + " de veiculo resgistrada com sucesso!");
     }
 }

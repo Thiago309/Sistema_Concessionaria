@@ -13,7 +13,7 @@ import repository_jpa.NvvRepository;
  *******************************************************************/
 
 public class NvvsController {
-    //RepositorioNvvs nvvs;
+    Nvv nvvAtualizado = new Nvv();
     Nvv nvv = new Nvv();
     Scanner input = new Scanner(System.in);
 
@@ -22,7 +22,6 @@ public class NvvsController {
     double valorNVV;
 
     public void addNvv() {
-        //nvvs = new RepositorioNvvLista();
 
         System.out.println("Você selecionou a opção registrar uma Nota de Venda de Veiculo.\n");
         System.out.println("Digite o chassi do Veiculo: ");
@@ -58,7 +57,6 @@ public class NvvsController {
         //repositorioNvvs.criar(nvv);
         NvvRepository.saveAccount(nvv);
         System.out.println("Nota de venda "+ nvv.getIdNVV() + " de veiculo resgistrada com sucesso!");
-
     }
 
     public void deleteNvv() {
@@ -97,5 +95,45 @@ public class NvvsController {
         for (Nvv nvv : NvvRepository.listAll()){
             System.out.println(nvv);
         }
+    }
+
+    public void updateNvv(){
+        System.out.println("Você selecionou a opção alterar uma Nota de Venda de Veiculo.\n");
+        System.out.println("Informe o ID da nota de venda: ");
+        idNVV = input.nextInt();
+        nvvAtualizado.setIdNVV(idNVV);
+
+        System.out.println("Digite o chassi do Veiculo: ");
+        nvvChassi = input.nextLine();
+        nvvAtualizado.setNvvChassi(nvvChassi);
+
+        System.out.println("Digite a matricula do funcionario que realizou o processo: ");
+        nvvIdFuncionario = input.nextInt();
+        nvvAtualizado.setNvvIdFuncionario(nvvIdFuncionario);
+
+        while(true) {
+
+            Date dataNVV1 = null;
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+
+            System.out.print("Informe a Data da venda do veiculo (dd/MM/yyyy): ");
+            dataNVV = input.next();
+
+            try {
+                dataNVV1 = formatoData.parse(dataNVV);
+                nvvAtualizado.setDataNVV(String.valueOf(dataNVV1));
+                System.out.println("Data registrada com sucesso: " + dataNVV1 + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
+        }
+        System.out.println("Informe o valor da nota de Venda: ");
+        valorNVV = input.nextDouble();
+        nvvAtualizado.setValorNVV(valorNVV);
+
+        NvvRepository.updateAccount(nvvAtualizado);
+        System.out.println("Nota de venda do veiculo resgistrada com sucesso!");
     }
 }

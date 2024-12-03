@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class ManutencaoController {
     Scanner input = new Scanner(System.in);
     Manutencao manutencao = new Manutencao();
+    Manutencao manutencaoAtualizada = new Manutencao();
 
     int idManutencao;
     String manuChassi,datapProximaManutencao, responsavel, tipoManutencao, Status;
@@ -53,10 +54,10 @@ public class ManutencaoController {
         }
 
         System.out.println("Informe a situação atual da manutenção (Em processo, concluida ou não efetuada com sucesso.): ");
+        input.nextLine();
         Status = input.nextLine();
         manutencao.setStatus(Status);
 
-        //repositorioManutencoes.criar(manutencao);
         ManutencaoRepository.saveAccount(manutencao);
         System.out.println("A manutenção foi registrada com sucesso!");
     }
@@ -100,5 +101,56 @@ public class ManutencaoController {
         for (Manutencao manutencao : ManutencaoRepository.listAll()) {
             System.out.println(manutencao);
         }
+    }
+
+    public void updateManutencao() {
+        System.out.println("Você selecionou a opção alterar uma manutenção.\n");
+        System.out.println("Informe o ID da manutenção: ");
+        idManutencao = input.nextInt();
+        manutencaoAtualizada.setIdManutencao(idManutencao);
+
+        System.out.println("Informe o numero do Chassi do veiculo: ");
+        input.nextLine();
+        manuChassi = input.nextLine();
+        manutencaoAtualizada.setManuChassi(manuChassi);
+
+        System.out.println("Digite o custo da manutencao: ");
+        custoManutencao = input.nextDouble();
+        manutencaoAtualizada.setCustoManutencao(custoManutencao);
+
+        System.out.println("Informe o técnico responsavel pela manutenção: ");
+        responsavel = input.next();
+        manutencaoAtualizada.setResponsavel(responsavel);
+
+        System.out.println("Informe qual tipo de manutenção foi realizada (Preventiva / Corretiva): ");
+        tipoManutencao = input.next();
+        manutencaoAtualizada.setTipoManutencao(tipoManutencao);
+
+        while(true) {
+
+            Date datapProximaManutencao1 = null;
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+
+            System.out.println("Informe a data sugerida para a proxima manutenção (dd/MM/yyyy):");
+            datapProximaManutencao = input.next();
+
+            try {
+                datapProximaManutencao1 = formatoData.parse(datapProximaManutencao);
+                manutencaoAtualizada.setDatapProximaManutencao(String.valueOf(datapProximaManutencao1));
+                System.out.println("Data registrada com sucesso: " + datapProximaManutencao1 + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
+        }
+
+        System.out.println("Informe a situação atual da manutenção (Em processo, concluida ou não efetuada com sucesso.): ");
+        input.nextLine();
+        Status = input.nextLine();
+        manutencaoAtualizada.setStatus(Status);
+
+        ManutencaoRepository.updateAccount(manutencao);
+        System.out.println("A manutenção foi registrada com sucesso!");
     }
 }

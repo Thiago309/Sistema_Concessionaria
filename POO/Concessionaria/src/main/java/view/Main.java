@@ -77,6 +77,10 @@ public class Main {
                                 veiculosController.readVeiculo(); break;
 
                             case 4:
+                                // Alterar Veiculo
+                                veiculosController.updateVeiculo(); break;
+
+                            case 5:
                                 // Deletar Veículo
                                 veiculosController.deleteVeiculo(); break;
 
@@ -110,23 +114,23 @@ public class Main {
                                         switch (opcSeguro) {
                                             case 1:
                                                 // Adicionar Seguros
-                                                segurosController.addSeguro();
-                                                break;
+                                                segurosController.addSeguro();break;
 
                                             case 2:
                                                 // Listar Seguros
-                                                segurosController.getAllSeguros();
-                                                break;
+                                                segurosController.getAllSeguros();break;
 
                                             case 3:
                                                 // Buscar Seguro
-                                                segurosController.readSeguro();
-                                                break;
+                                                segurosController.readSeguro();break;
 
                                             case 4:
+                                                // Alterar Seguro
+                                                segurosController.updateSeguro();break;
+
+                                            case 5:
                                                 // Deletar Seguro
-                                                segurosController.deleteSeguro();
-                                                break;
+                                                segurosController.deleteSeguro();break;
 
                                             case 0:
                                                 System.out.println("Retornando ao menu principal...");break;
@@ -153,15 +157,19 @@ public class Main {
                                                 manutencaoController.getAllManutencoes();break;
 
                                             case 3:
-                                                // Buscar Veiculos
+                                                // Buscar Manutencao
                                                 manutencaoController.readManutencao();break;
 
                                             case 4:
+                                                // Alterar Manutencao
+                                                manutencaoController.updateManutencao();break;
+
+                                            case 5:
                                                 // Deletar Manutencao
                                                 manutencaoController.deleteManutencao();break;
 
                                             case 0:
-                                                System.out.println("Retornando ao menu principal...");
+                                                System.out.println("Retornando ao menu principal...");break;
 
                                             default:
                                                 System.out.println("Opção inválida. Tente novamente.");
@@ -174,17 +182,20 @@ public class Main {
                                 }
                                 break;
                             case 2:
-                                servicosController.getAllServicos(); break;
+                                segurosController.getAllSeguros();
+                                manutencaoController.getAllManutencoes(); break;
 
                             case 3:
                                 servicosController.readServico();break;
 
                             case 4:
+                                servicosController.updateServico();break;
+
+                            case 5:
                                 servicosController.deleteServico();break;
 
                             case 0:
-                                System.out.println("Retornando ao menu principal...");
-                                break;
+                                System.out.println("Retornando ao menu principal...");break;
 
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
@@ -211,6 +222,10 @@ public class Main {
                                 ncvsController.readNcv(); break;
 
                             case 4:
+                                // Atualizar Nota
+                                ncvsController.updateNcv();break;
+
+                            case 5:
                                 // Deletar Nota
                                 ncvsController.deleteNcv(); break;
 
@@ -242,6 +257,10 @@ public class Main {
                                 nvvsController.readNvv(); break;
 
                             case 4:
+                                // Alterar Nota
+                                nvvsController.updateNvv();break;
+
+                            case 5:
                                 // Deletar Nota
                                 nvvsController.deleteNvv(); break;
 
@@ -271,6 +290,10 @@ public class Main {
                                 funcionariosController.readFuncionario(); break;
 
                             case 4:
+                                // Alterar Funcionario
+                                funcionariosController.updateFuncionario();break;
+
+                            case 5:
                                 // Deletar Funcionario
                                 funcionariosController.deleteFuncionario(); break;
 

@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class ServicosController {
     Scanner input = new Scanner(System.in);
     Servico servico =  new Servico();
+    Servico servicoAtualizar = new Servico();
 
     int idservico;
     String dataInicial, dataFinal, condicaoNeociacao, descricaoServico ;
@@ -94,5 +95,45 @@ public class ServicosController {
         for (Servico servico : ServicoRepository.listAll()) {
             System.out.println(servico);
         }
+    }
+
+    public void updateServico() {
+        while(true) {
+
+            Date servDataInicial, servDataFinal; // iniciando variaveis
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+
+            System.out.print("Informe a Data Inicial do servico (dd/MM/yyyy): ");
+            dataInicial = input.next();
+
+            System.out.print("Informe a Data Final (dd/MM/yyyy): ");
+            dataFinal = input.next();
+
+            try {
+                servDataInicial = formatoData.parse(dataInicial);
+                servicoAtualizar.setDataInicial(String.valueOf(servDataInicial));
+
+                servDataFinal = formatoData.parse(dataFinal);
+                servicoAtualizar.setDataFinal(String.valueOf(servDataFinal));
+
+                System.out.println("Datas registradas com sucesso: " + "Data Inicial " + servDataInicial + "\nData Final "
+                        + servDataFinal + "\n");
+                break;
+
+            } catch (ParseException e) {
+                System.out.println("Formato de data inválido. Por favor, use o formato dd/MM/yyyy.");
+            }
+        }
+
+        System.out.println("Informe a condição de negociacao: ");
+        condicaoNeociacao = input.next();
+        servicoAtualizar.setCondicaoNegociacao(condicaoNeociacao);
+
+        System.out.println("Descreva como o serviço foi realizado: ");
+        descricaoServico = input.next();
+        servicoAtualizar.setDescricaoServico(descricaoServico);
+
+        ServicoRepository.updateAccount(servicoAtualizar);
+        System.out.println("Servico "+ servico.getIdServico()+ " resgistrado com sucesso!");
     }
 }

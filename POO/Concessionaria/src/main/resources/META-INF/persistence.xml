@@ -32,5 +32,4 @@
             <property name="hbm2ddl.auto" value="create" />
         </properties>
     </persistence-unit>
-
 </persistence>
