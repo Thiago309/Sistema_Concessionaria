@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="Veiculo")
+@MappedSuperclass
 public class Veiculo {
     @Id
     @Column(name="idVeiculo")
@@ -125,7 +126,4 @@ public class Veiculo {
                 "\nStatus= " + statusVeiculo +
                 "\nAno= " + ano ;
     }
-
-
 }
-

@@ -1,7 +1,6 @@
 package controller;
 import models.clientes.Cliente;
 import repository_jpa.ClienteRepository;
-
 import java.util.Scanner;
 
 public class ClientesController {
@@ -71,14 +70,8 @@ public class ClientesController {
         System.out.print("Digite o ID do cliente: ");
         idcliente = input.nextInt();
 
-        if (idcliente != 0){
-            //repositorioClientes.remover(cpf);
-            ClienteRepository.removeAccountById(idcliente);
-            System.out.println("Cliente deletado com sucesso!");
-
-        }else{
-            System.out.println("Cliente não encontrado em nosso banco de dados!");
-        }
+        ClienteRepository.removeAccountById(idcliente);
+        System.out.println("Cliente deletado com sucesso!");
     }
 
     public void readCliente() {
@@ -87,13 +80,8 @@ public class ClientesController {
         System.out.println("Digite o ID do cliente: ");
         idcliente = input.nextInt();
 
-        if (idcliente != 0) {
-            //System.out.println("Informações do Cliente:\n " + repositorioClientes.buscar(cpf));
-            System.out.println("Informações do Cliente:\n " + ClienteRepository.getById(idcliente));
+        System.out.println("Informações do Cliente:\n " + ClienteRepository.getById(idcliente));
 
-        } else {
-            System.out.println("Cliente não encontrado em nosso banco de dados!");
-        }
     }
 
     public void getAllClientes() {

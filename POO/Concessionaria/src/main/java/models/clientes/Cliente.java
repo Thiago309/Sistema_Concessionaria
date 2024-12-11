@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="Cliente") //Nome da tabela no SQL.
+@MappedSuperclass
 public class Cliente {
     @Id
     @Column(name="idcliente")

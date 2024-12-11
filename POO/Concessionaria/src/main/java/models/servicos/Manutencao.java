@@ -65,4 +65,15 @@ public class Manutencao {
 
     public String getStatus() {return Status;}
     public void setStatus(String status) {Status = status;}
+
+    @Override
+    public String toString() {
+        return "Manutenção: " +
+                "\nidManutenção= " + idManutencao +
+                "\n Chassi= " + manuChassi +
+                "\n Custo= R$ " + custoManutencao +
+                "\n Técnico Responsavel= " + responsavel +
+                "\n Tipo de Manutenção= " + tipoManutencao +
+                "\n Situação= " + Status;
+    }
 }

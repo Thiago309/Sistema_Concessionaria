@@ -57,4 +57,14 @@ public class Ncv {
 
     public double getValorNCV() {return valorNCV;}
     public void setValorNCV(double valorNCV) {this.valorNCV = valorNCV;}
+
+    @Override
+    public String toString() {
+        return "Notas de Compras: " +
+                "\n idNCV= " + idNCV +
+                "\n Chassi= " + ncvChassi +
+                "\n Funcionario= " + ncvIdFuncionario +
+                "\n Data da Compra= " + dataNCV +
+                "\n Valor da Nota= R$ " + valorNCV;
+    }
 }

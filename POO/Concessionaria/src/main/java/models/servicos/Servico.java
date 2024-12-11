@@ -50,4 +50,14 @@ public class Servico {
 
     public String getDescricaoServico() {return descricaoServico;}
     public void setDescricaoServico(String descricaoServico) {this.descricaoServico = descricaoServico;}
+
+    @Override
+    public String toString() {
+        return "Seguro: " +
+                "\nidServico= " + idservico +
+                "\n Data Inicial= " + dataInicial +
+                "\n Data Final= " + dataFinal +
+                "\n Condição de Negociação= " + condicaoNegociacao +
+                "\n Descrição do Servico= " + descricaoServico;
+    }
 }

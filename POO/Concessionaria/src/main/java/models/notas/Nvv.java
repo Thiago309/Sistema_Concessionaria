@@ -53,4 +53,14 @@ public class Nvv {
 
     public double getValorNVV() {return valorNVV;}
     public void setValorNVV(double valorNVV) {this.valorNVV = valorNVV;}
+
+    @Override
+    public String toString() {
+        return "Notas de Vendas: " +
+                "\n idNCV= " + idNVV +
+                "\n Chassi= " + nvvChassi +
+                "\n Funcionario= " + nvvIdFuncionario +
+                "\n Data da Compra= " + dataNVV +
+                "\n Valor da Nota= R$ " + valorNVV;
+    }
 }

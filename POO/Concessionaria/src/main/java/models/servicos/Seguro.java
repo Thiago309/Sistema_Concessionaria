@@ -70,4 +70,17 @@ public class Seguro {
 
     public double getFranquia() {return franquia;}
     public void setFranquia(double franquia) {this.franquia = franquia;}
+
+    @Override
+    public String toString() {
+        return "Seguro: " +
+                "\nidSeguro= " + idseguro +
+                "\n Numero da Apolice= " + numeroApolice +
+                "\n Chassi= " + segChassi +
+                "\n Data Inicial= " + segDataInicial+
+                "\n Data Final= " + segDataFinal +
+                "\n Valor= R$ " + segPreco +
+                "\n Cobertura= R$ " + cobertura +
+                "\n Franquia= R$ " + franquia;
     }
+}

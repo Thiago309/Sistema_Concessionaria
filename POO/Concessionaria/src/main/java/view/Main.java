@@ -31,7 +31,7 @@ public class Main {
                         switch (opc2) {
                             case 1:
                                 // Adicionar Cliente
-                                clientesController.addCliente(); break;
+                                clientesController.addCliente(); ; break;
 
                             case 2:
                                 // Listar Clientes
